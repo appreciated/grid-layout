@@ -16,14 +16,14 @@ public class DemoView extends VerticalLayout {
 
         FluentGridLayout gridAreaTestLayout = new FluentGridLayout()
                 .withItems(getDiv())
-                .withItemAtArea(getDiv(), 1, 1, 3, 3)
-                .withItemAtArea(getDiv(), 3, 3, 5, 5)
-                .withItemWithSize(getDiv(), 2, 2)
-                .withItemWithSize(getDiv(), 2, 2)
-                .withItemWithHeight(getDiv(), 2)
-                .withItemWithHeight(getDiv(), 2)
-                .withItemWithWidth(getDiv(), 2)
-                .withItemWithWidth(getDiv(), 2)
+                .withItemAtArea(getDiv(), "1", "1", "3", "3")
+                .withItemAtArea(getDiv(), "3", "3", "5", "5")
+                .withItemWithSize(getDiv(), "2", "2")
+                .withItemWithSize(getDiv(), "2", "2")
+                .withItemWithHeight(getDiv(), "2")
+                .withItemWithHeight(getDiv(), "2")
+                .withItemWithWidth(getDiv(), "2")
+                .withItemWithWidth(getDiv(), "2")
                 .withItems(getDiv(),
                         getDiv(),
                         getDiv(),
@@ -36,17 +36,17 @@ public class DemoView extends VerticalLayout {
         FluentGridLayout responsiveTest = new FluentGridLayout()
                 .withWidth("100%")
                 .withTemplateColumns("repeat(auto-fit, minmax(300px, auto))")
-                .withItemWithWidth(getDiv(), 2)
+                .withItemWithWidth(getDiv(), "2")
                 .withItem(getDiv())
-                .withItemWithWidth(getDiv(), 2)
+                .withItemWithWidth(getDiv(), "2")
                 .withItem(getDiv())
-                .withItemWithWidth(getDiv(), 2)
+                .withItemWithWidth(getDiv(), "2")
                 .withItem(getDiv())
-                .withItemWithWidth(getDiv(), 2)
+                .withItemWithWidth(getDiv(), "2")
                 .withItem(getDiv())
-                .withItemWithWidth(getDiv(), 2)
+                .withItemWithWidth(getDiv(), "2")
                 .withItem(getDiv())
-                .withItemWithWidth(getDiv(), 2)
+                .withItemWithWidth(getDiv(), "2")
                 .withItem(getDiv());
         responsiveTest.setSizeFull();
         add(gridAreaTestLayout, responsiveTest);

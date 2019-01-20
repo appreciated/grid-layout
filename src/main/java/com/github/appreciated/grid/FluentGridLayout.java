@@ -10,7 +10,7 @@ public class FluentGridLayout extends GridLayout {
      * @param component the component which column width should be set
      * @param width     the number of columns the item should span over
      */
-    public void setItemWidth(Component component, int width) {
+    public void setItemWidth(Component component, String width) {
         setColumn(component, "span " + width);
     }
 
@@ -20,7 +20,7 @@ public class FluentGridLayout extends GridLayout {
      * @param component the component which row height should be set
      * @param height    the number of rows the item should span over
      */
-    public void setItemHeight(Component component, int height) {
+    public void setItemHeight(Component component, String height) {
         setRow(component, "span " + height);
     }
 
@@ -31,7 +31,7 @@ public class FluentGridLayout extends GridLayout {
      * @param width     the number of columns the item should span over
      * @param height    the number of rows the item should span over
      */
-    public void setItemSize(Component component, int width, int height) {
+    public void setItemSize(Component component, String width, String height) {
         setItemHeight(component, height);
         setItemWidth(component, width);
     }
@@ -58,19 +58,19 @@ public class FluentGridLayout extends GridLayout {
         return this;
     }
 
-    public FluentGridLayout withItemWithWidth(Component component, int width) {
+    public FluentGridLayout withItemWithWidth(Component component, String width) {
         add(component);
         setItemWidth(component, width);
         return this;
     }
 
-    public FluentGridLayout withItemWithSize(Component component, int size, int height) {
+    public FluentGridLayout withItemWithSize(Component component, String size, String height) {
         add(component);
         setItemSize(component, size, height);
         return this;
     }
 
-    public FluentGridLayout withItemAtArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
+    public FluentGridLayout withItemAtArea(Component component, String rowStart, String colStart, String rowEnd, String colEnd) {
         add(component);
         setArea(component, rowStart, colStart, rowEnd, colEnd);
         return this;
@@ -92,7 +92,7 @@ public class FluentGridLayout extends GridLayout {
         return this;
     }
 
-    public FluentGridLayout withItemWithHeight(Component component, int height) {
+    public FluentGridLayout withItemWithHeight(Component component, String height) {
         add(component);
         setItemHeight(component, height);
         return this;
