@@ -79,19 +79,31 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     }
 
     /**
-     * set the number of columns in your grid-layout, also you set here the number of columns desired.
-     * Allowed values
-     * Pixels: 100px 200px 300px 400px; 4 rows having pixel valued size
-     * Auto: auto auto auto auto; 4 rows having the same size
-     * Other: repeat(auto-fill, minmax(250px, 1fr));
+     * Sets the number of columns in your grid-layout.  <br>
+     * #Allowed Values  <br>
+     * Fixed number of rows:  <br>
+     * Pixels: 100px 200px 300px 400px | 4 rows having pixel valued size  <br>
+     * Auto: auto auto auto auto | 4 rows having the same size  <br>
+     * #Dynamic Number of rows  <br>
+     * Other: repeat(auto-fill, minmax(250px, 1fr));  <br>
      *
-     * @param templateColumns "defines the number of columns in your grid layout, and it can define the width of each column."
+     * @param templateColumns "The column definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
      */
     public void setTemplateColumns(String... templateColumns) {
         getStyle().set("grid-template-columns", Arrays.stream(templateColumns).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
     /**
+     * Sets the column and row definition of your grid-layout. Instead of setting the sizes for rows and columns you
+     * define areas by using custom keywords. <br>
+     * <p>
+     * Example:   <br>
+     * 'header header header header header header' <br>
+     * 'menu main main main right right'  <br>
+     * 'menu footer footer footer footer footer';  <br>
+     * <p>
+     * In the second step you set the area for each item which will then span over the above defined area. Use therefor {@link GridLayout#setArea(Component, int, int, int, int)}
+     *
      * @param templateAreas
      */
     public void setTemplateAreas(String[][] templateAreas) {
@@ -216,6 +228,12 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     public GridLayout withItemAtArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
         add(component);
         setArea(component, rowStart, colStart, rowEnd, colEnd);
+        return this;
+    }
+
+    public GridLayout withItemAtArea(Component component, String area) {
+        add(component);
+        component.getElement().getStyle().set("grid-area", area);
         return this;
     }
 
