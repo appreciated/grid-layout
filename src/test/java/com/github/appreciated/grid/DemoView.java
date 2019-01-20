@@ -52,6 +52,23 @@ public class DemoView extends VerticalLayout {
         responsiveTest.setSizeFull();
         add(gridAreaTestLayout, responsiveTest);
         setSizeFull();
+
+        GridLayout areaTest = new GridLayout()
+                .withWidth("100%")
+                .withTemplateAreas(new String[][]{
+                        new String[]{"header", "header", "header", "header", "header"},
+                        new String[]{"left", "content", "content", "content", "right"},
+                        new String[]{"left", "content", "content", "content", "right"},
+                        new String[]{"left", "content", "content", "content", "right"},
+                })
+                .withItemAtArea(getDiv(), "header")
+                .withItemAtArea(getDiv(), "content")
+                .withItemAtArea(getDiv(), "left")
+                .withItemAtArea(getDiv(), "right");
+        areaTest.setSizeFull();
+        add(gridAreaTestLayout, responsiveTest, areaTest);
+        setSizeFull();
+
     }
 
     Div getDiv() {

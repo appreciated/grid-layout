@@ -95,6 +95,18 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     }
 
     /**
+     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
+     *
+     * @param columns
+     * @return
+     */
+    public GridLayout withTemplateColumns(String... columns) {
+        setTemplateColumns(columns);
+        return this;
+    }
+
+
+    /**
      * Sets the number of rows in your grid-layout.  <br>
      * #Allowed Values  <br>
      * Fixed number of rows:  <br>
@@ -104,11 +116,23 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * #Dynamic Number of rows  <br>
      * Other: repeat(auto-fill, minmax(250px, 1fr));  <br>
      *
-     * @param templateColumns "The row definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
+     * @param templateRows "The row definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
      */
-    public void setTemplateRows(String... templateColumns) {
-        getStyle().set("grid-template-rows", Arrays.stream(templateColumns).reduce((s, s2) -> s + " " + s2).orElse(""));
+    public void setTemplateRows(String... templateRows) {
+        getStyle().set("grid-template-rows", Arrays.stream(templateRows).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
+
+    /**
+     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
+     *
+     * @param rows
+     * @return
+     */
+    public GridLayout withTemplateRows(String... rows) {
+        setTemplateRows(rows);
+        return this;
+    }
+
 
     /**
      * Sets the column and row definition of your grid-layout. Instead of setting the sizes for rows and columns you
@@ -124,22 +148,23 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param templateAreas
      */
     public void setTemplateAreas(String[][] templateAreas) {
-        getStyle().set("grid-template-areas",
-                Arrays.stream(templateAreas)
-                        .map(strings -> Arrays.stream(strings).reduce((s, s2) -> s + " " + s2)
-                                .orElse("")
-                        ).reduce((s, s2) -> s + "\n" + s2)
-                        .orElse(""));
+        String areas = Arrays.stream(templateAreas)
+                .map(strings -> Arrays.stream(strings).reduce((s, s2) -> s + " " + s2)
+                        .orElse("")
+                ).reduce((s, s2) -> "'" + s + "' '" + s2 + "'")
+                .orElse("");
+        getStyle().set("grid-template-areas", areas);
     }
 
+
     /**
-     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
+     * Fluent method of {@link GridLayout#setTemplateAreas(String[][])} (String...)}
      *
-     * @param columns
+     * @param templateAreas
      * @return
      */
-    public GridLayout withTemplateColumns(String... columns) {
-        setTemplateColumns(columns);
+    public GridLayout withTemplateAreas(String[][] templateAreas) {
+        setTemplateAreas(templateAreas);
         return this;
     }
 
@@ -225,6 +250,10 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         setColumnStartAndEnd(component, colStart, colEnd);
     }
 
+    public void setArea(Component component, String area) {
+        component.getElement().getStyle().set("grid-area", area);
+    }
+
     public GridLayout withItemWithHeight(Component component, int height) {
         add(component);
         setItemHeight(component, height);
@@ -251,7 +280,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
 
     public GridLayout withItemAtArea(Component component, String area) {
         add(component);
-        component.getElement().getStyle().set("grid-area", area);
+        setArea(component, area);
         return this;
     }
 
