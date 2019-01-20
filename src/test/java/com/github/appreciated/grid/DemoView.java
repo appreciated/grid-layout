@@ -1,19 +1,20 @@
 package com.github.appreciated.grid;
 
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
 import java.util.Random;
 
 @Route("")
-public class DemoView extends Div {
+public class DemoView extends VerticalLayout {
 
     private final Random random;
 
     public DemoView() {
         random = new Random();
 
-        GridLayout gridLayout = new GridLayout()
+        GridLayout gridAreaTestLayout = new GridLayout()
                 .withItems(getDiv())
                 .withItemAtArea(getDiv(), 1, 1, 3, 3)
                 .withItemAtArea(getDiv(), 3, 3, 5, 5)
@@ -29,11 +30,28 @@ public class DemoView extends Div {
                         getDiv(),
                         getDiv()
                 );
+        gridAreaTestLayout.setColumns("200px", "auto", "200px", "auto");
 
-        gridLayout.setColumns("200px", "auto", "200px", "auto");
-        gridLayout.setWidth("100%");
-        gridLayout.setHeight("500px");
-        add(gridLayout);
+        gridAreaTestLayout.setSizeFull();
+
+        GridLayout responsiveTest = new GridLayout()
+                .withWidth("100%")
+                .withColumns("repeat(auto-fit, minmax(300px, 500px))")
+                .withItemWithWidth(getDiv(), 2)
+                .withItem(getDiv())
+                .withItemWithWidth(getDiv(), 2)
+                .withItem(getDiv())
+                .withItemWithWidth(getDiv(), 2)
+                .withItem(getDiv())
+                .withItemWithWidth(getDiv(), 2)
+                .withItem(getDiv())
+                .withItemWithWidth(getDiv(), 2)
+                .withItem(getDiv())
+                .withItemWithWidth(getDiv(), 2)
+                .withItem(getDiv());
+        responsiveTest.setSizeFull();
+        add(gridAreaTestLayout, responsiveTest);
+        setSizeFull();
     }
 
     Div getDiv() {

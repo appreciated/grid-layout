@@ -5,7 +5,7 @@ import com.vaadin.flow.component.*;
 import java.util.Arrays;
 
 @Tag("div")
-public class GridLayout extends Component implements HasStyle, HasComponents, HasSize {
+public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize {
 
     public GridLayout() {
         getStyle().set("display", "grid");
@@ -54,6 +54,11 @@ public class GridLayout extends Component implements HasStyle, HasComponents, Ha
 
     public void setColumns(String... columns) {
         getStyle().set("grid-template-columns", Arrays.stream(columns).reduce((s, s2) -> s + " " + s2).orElse(""));
+    }
+
+    public GridLayout withColumns(String... columns) {
+        setColumns(columns);
+        return this;
     }
 
     public void setItemWidth(Component component, int width) {
@@ -124,6 +129,11 @@ public class GridLayout extends Component implements HasStyle, HasComponents, Ha
         return this;
     }
 
+    public GridLayout withItem(Component component) {
+        add(component);
+        return this;
+    }
+
     public GridLayout withItems(Component... components) {
         add(components);
         return this;
@@ -139,6 +149,11 @@ public class GridLayout extends Component implements HasStyle, HasComponents, Ha
 
     public JustifyContentMode getJustifyContentMode() {
         return JustifyContentMode.toJustifyContentMode(this.getElement().getStyle().get("justify-content"), JustifyContentMode.START);
+    }
+
+    public GridLayout withWidth(String width) {
+        setWidth(width);
+        return this;
     }
 
     public static enum JustifyContentMode {
