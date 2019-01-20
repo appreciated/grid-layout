@@ -151,7 +151,8 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         String areas = Arrays.stream(templateAreas)
                 .map(strings -> Arrays.stream(strings).reduce((s, s2) -> s + " " + s2)
                         .orElse("")
-                ).reduce((s, s2) -> "'" + s + "' '" + s2 + "'")
+                ).map(s -> "'" + s + "'")
+                .reduce((s, s2) -> s + " " + s2)
                 .orElse("");
         getStyle().set("grid-template-areas", areas);
     }
