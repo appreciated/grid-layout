@@ -37,69 +37,81 @@ public class FluentGridLayout extends GridLayout {
     }
 
     /**
-     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
+     * Fluent method of {@link FluentGridLayout#setTemplateColumns(String...)}
      *
      * @param columns
      * @return
      */
-    public GridLayout withTemplateColumns(String... columns) {
+    public FluentGridLayout withTemplateColumns(String... columns) {
         setTemplateColumns(columns);
         return this;
     }
 
     /**
-     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
+     * Fluent method of {@link FluentGridLayout#setTemplateColumns(String...)}
      *
      * @param rows
      * @return
      */
-    public GridLayout withTemplateRows(String... rows) {
+    public FluentGridLayout withTemplateRows(String... rows) {
         setTemplateRows(rows);
         return this;
     }
 
-    public GridLayout withItemWithWidth(Component component, int width) {
+    public FluentGridLayout withItemWithWidth(Component component, int width) {
         add(component);
         setItemWidth(component, width);
         return this;
     }
 
-    public GridLayout withItemWithSize(Component component, int size, int height) {
+    public FluentGridLayout withItemWithSize(Component component, int size, int height) {
         add(component);
         setItemSize(component, size, height);
         return this;
     }
 
-    public GridLayout withItemAtArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
+    public FluentGridLayout withItemAtArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
         add(component);
         setArea(component, rowStart, colStart, rowEnd, colEnd);
         return this;
     }
 
-    public GridLayout withItemAtArea(Component component, String area) {
+    public FluentGridLayout withItemAtArea(Component component, String area) {
         add(component);
         setArea(component, area);
         return this;
     }
 
-    public GridLayout withItem(Component component) {
+    public FluentGridLayout withItem(Component component) {
         add(component);
         return this;
     }
 
-    public GridLayout withItems(Component... components) {
+    public FluentGridLayout withItems(Component... components) {
         add(components);
         return this;
     }
 
-    public GridLayout withItemWithHeight(Component component, int height) {
+    public FluentGridLayout withItemWithHeight(Component component, int height) {
         add(component);
         setItemHeight(component, height);
         return this;
     }
 
-    public GridLayout withWidth(String width) {
+    public FluentGridLayout withWidth(String width) {
         setWidth(width);
         return this;
     }
+
+    /**
+     * Fluent method of {@link FluentGridLayout#setTemplateAreas(String[][])} (String...)}
+     *
+     * @param templateAreas
+     * @return
+     */
+    public FluentGridLayout withTemplateAreas(String[][] templateAreas) {
+        setTemplateAreas(templateAreas);
+        return this;
+    }
+
 }

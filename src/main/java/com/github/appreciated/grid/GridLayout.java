@@ -139,16 +139,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     }
 
 
-    /**
-     * Fluent method of {@link GridLayout#setTemplateAreas(String[][])} (String...)}
-     *
-     * @param templateAreas
-     * @return
-     */
-    public GridLayout withTemplateAreas(String[][] templateAreas) {
-        setTemplateAreas(templateAreas);
-        return this;
-    }
 
     /**
      * Sets the 'grid-column' value of an element

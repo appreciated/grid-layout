@@ -14,7 +14,7 @@ public class DemoView extends VerticalLayout {
     public DemoView() {
         random = new Random();
 
-        GridLayout gridAreaTestLayout = new GridLayout()
+        FluentGridLayout gridAreaTestLayout = new FluentGridLayout()
                 .withItems(getDiv())
                 .withItemAtArea(getDiv(), 1, 1, 3, 3)
                 .withItemAtArea(getDiv(), 3, 3, 5, 5)
@@ -34,7 +34,7 @@ public class DemoView extends VerticalLayout {
 
         gridAreaTestLayout.setSizeFull();
 
-        GridLayout responsiveTest = new GridLayout()
+        FluentGridLayout responsiveTest = new FluentGridLayout()
                 .withWidth("100%")
                 .withTemplateColumns("repeat(auto-fit, minmax(300px, auto))")
                 .withItemWithWidth(getDiv(), 2)
@@ -53,7 +53,7 @@ public class DemoView extends VerticalLayout {
         add(gridAreaTestLayout, responsiveTest);
         setSizeFull();
 
-        GridLayout areaTest = new GridLayout()
+        FluentGridLayout areaTest = new FluentGridLayout()
                 .withWidth("100%")
                 .withTemplateAreas(new String[][]{
                         new String[]{"header", "header", "header", "header", "header"},
