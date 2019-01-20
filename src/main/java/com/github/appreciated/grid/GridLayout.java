@@ -54,17 +54,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     }
 
     /**
-     * @param gap
-     */
-    public void setGap(String gap) {
-        if (gap == null) {
-            getStyle().remove("grid-gap");
-        } else {
-            getStyle().set("grid-gap", gap);
-        }
-    }
-
-    /**
      * @param columnGap
      * @param rowGap
      */
@@ -76,6 +65,17 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
 
     public String getGap() {
         return getStyle().get("grid-gap");
+    }
+
+    /**
+     * @param gap
+     */
+    public void setGap(String gap) {
+        if (gap == null) {
+            getStyle().remove("grid-gap");
+        } else {
+            getStyle().set("grid-gap", gap);
+        }
     }
 
     /**
@@ -94,16 +94,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         getStyle().set("grid-template-columns", Arrays.stream(templateColumns).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
-    /**
-     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
-     *
-     * @param columns
-     * @return
-     */
-    public GridLayout withTemplateColumns(String... columns) {
-        setTemplateColumns(columns);
-        return this;
-    }
 
 
     /**
@@ -122,16 +112,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         getStyle().set("grid-template-rows", Arrays.stream(templateRows).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
-    /**
-     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
-     *
-     * @param rows
-     * @return
-     */
-    public GridLayout withTemplateRows(String... rows) {
-        setTemplateRows(rows);
-        return this;
-    }
+
 
 
     /**
@@ -167,38 +148,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     public GridLayout withTemplateAreas(String[][] templateAreas) {
         setTemplateAreas(templateAreas);
         return this;
-    }
-
-    /**
-     * Convenience method, for users which don't want to dive into the css-grid to set the number of row an item should span over
-     *
-     * @param component the component which column width should be set
-     * @param width     the number of columns the item should span over
-     */
-    public void setItemWidth(Component component, int width) {
-        setColumn(component, "span " + width);
-    }
-
-    /**
-     * Convenience method, for users which don't want to dive into the css-grid to set the number of row an item should span over
-     *
-     * @param component the component which row height should be set
-     * @param height    the number of rows the item should span over
-     */
-    public void setItemHeight(Component component, int height) {
-        setRow(component, "span " + height);
-    }
-
-    /**
-     * Convenience method, for users which don't want to dive into the css-grid to set the number of rows and columns an item should span over
-     *
-     * @param component the component which column width should be set
-     * @param width     the number of columns the item should span over
-     * @param height    the number of rows the item should span over
-     */
-    public void setItemSize(Component component, int width, int height) {
-        setItemHeight(component, height);
-        setItemWidth(component, width);
     }
 
     /**
@@ -255,44 +204,9 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         component.getElement().getStyle().set("grid-area", area);
     }
 
-    public GridLayout withItemWithHeight(Component component, int height) {
-        add(component);
-        setItemHeight(component, height);
-        return this;
-    }
 
-    public GridLayout withItemWithWidth(Component component, int width) {
-        add(component);
-        setItemWidth(component, width);
-        return this;
-    }
-
-    public GridLayout withItemWithSize(Component component, int size, int height) {
-        add(component);
-        setItemSize(component, size, height);
-        return this;
-    }
-
-    public GridLayout withItemAtArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
-        add(component);
-        setArea(component, rowStart, colStart, rowEnd, colEnd);
-        return this;
-    }
-
-    public GridLayout withItemAtArea(Component component, String area) {
-        add(component);
-        setArea(component, area);
-        return this;
-    }
-
-    public GridLayout withItem(Component component) {
-        add(component);
-        return this;
-    }
-
-    public GridLayout withItems(Component... components) {
-        add(components);
-        return this;
+    public JustifyContentMode getJustifyContentMode() {
+        return JustifyContentMode.toJustifyContentMode(this.getElement().getStyle().get("justify-content"), JustifyContentMode.START);
     }
 
     public void setJustifyContentMode(JustifyContentMode justifyContentMode) {
@@ -303,13 +217,17 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
-    public JustifyContentMode getJustifyContentMode() {
-        return JustifyContentMode.toJustifyContentMode(this.getElement().getStyle().get("justify-content"), JustifyContentMode.START);
+
+    public void setAlignContentMode(AlignContentMode alignContentMode) {
+        if (alignContentMode == null) {
+            throw new IllegalArgumentException("The 'alignContentMode' argument can not be null");
+        } else {
+            this.getElement().getStyle().set("align-content", alignContentMode.getFlexValue());
+        }
     }
 
-    public GridLayout withWidth(String width) {
-        setWidth(width);
-        return this;
+    public AlignContentMode getAlignMode() {
+        return AlignContentMode.toAlignment(this.getElement().getStyle().get("align-content"), AlignContentMode.START);
     }
 
     public static enum JustifyContentMode {
@@ -326,28 +244,16 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
             this.flexValue = flexValue;
         }
 
-        String getFlexValue() {
-            return this.flexValue;
-        }
-
         static JustifyContentMode toJustifyContentMode(String flexValue, JustifyContentMode defaultValue) {
             return Arrays.stream(values())
                     .filter((justifyContent) -> justifyContent.getFlexValue().equals(flexValue))
                     .findFirst()
                     .orElse(defaultValue);
         }
-    }
 
-    public void setAlignContentMode(AlignContentMode alignContentMode) {
-        if (alignContentMode == null) {
-            throw new IllegalArgumentException("The 'alignContentMode' argument can not be null");
-        } else {
-            this.getElement().getStyle().set("align-content", alignContentMode.getFlexValue());
+        String getFlexValue() {
+            return this.flexValue;
         }
-    }
-
-    public AlignContentMode getAlignMode() {
-        return AlignContentMode.toAlignment(this.getElement().getStyle().get("align-content"), AlignContentMode.START);
     }
 
     public static enum AlignContentMode {
@@ -364,15 +270,15 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
             this.flexValue = flexValue;
         }
 
-        String getFlexValue() {
-            return this.flexValue;
-        }
-
         static AlignContentMode toAlignment(String flexValue, AlignContentMode defaultValue) {
             return Arrays.stream(values())
                     .filter((alignment) -> alignment.getFlexValue().equals(flexValue))
                     .findFirst()
                     .orElse(defaultValue);
+        }
+
+        String getFlexValue() {
+            return this.flexValue;
         }
     }
 }
