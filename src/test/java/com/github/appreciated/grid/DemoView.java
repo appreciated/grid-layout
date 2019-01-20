@@ -12,25 +12,25 @@ public class DemoView extends Div {
 
     public DemoView() {
         random = new Random();
-        Div element = getDiv();
-        Div element2 = getDiv();
 
-        GridLayout gridLayout = new GridLayout(
-                getDiv(),
-                element,
-                element2,
-                getDiv(),
-                getDiv(),
-                getDiv(),
-                getDiv(),
-                getDiv(),
-                getDiv(),
-                getDiv(),
-                getDiv()
-        );
+        GridLayout gridLayout = new GridLayout()
+                .withItems(getDiv())
+                .withItemAtArea(getDiv(), 1, 1, 3, 3)
+                .withItemAtArea(getDiv(), 3, 3, 5, 5)
+                .withItemWithSize(getDiv(), 2, 2)
+                .withItemWithSize(getDiv(), 2, 2)
+                .withItemWithHeight(getDiv(), 2)
+                .withItemWithHeight(getDiv(), 2)
+                .withItemWithWidth(getDiv(), 2)
+                .withItemWithWidth(getDiv(), 2)
+                .withItems(getDiv(),
+                        getDiv(),
+                        getDiv(),
+                        getDiv(),
+                        getDiv()
+                );
+
         gridLayout.setColumns("200px", "auto", "200px", "auto");
-        gridLayout.setArea(element, 1, 1, 3, 3);
-        gridLayout.setArea(element2, 3, 3, 5, 5);
         gridLayout.setWidth("100%");
         gridLayout.setHeight("500px");
         add(gridLayout);

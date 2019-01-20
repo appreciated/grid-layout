@@ -56,6 +56,19 @@ public class GridLayout extends Component implements HasStyle, HasComponents, Ha
         getStyle().set("grid-template-columns", Arrays.stream(columns).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
+    public void setItemWidth(Component component, int width) {
+        component.getElement().getStyle().set("grid-column", "span " + width);
+    }
+
+    public void setItemHeight(Component component, int height) {
+        component.getElement().getStyle().set("grid-row", "span " + height);
+    }
+
+    public void setItemSize(Component component, int width, int height) {
+        setItemHeight(component, height);
+        setItemWidth(component, width);
+    }
+
     public void setColumnEnd(Component component, int end) {
         component.getElement().getStyle().set("grid-column-end", String.valueOf(end));
     }
@@ -85,6 +98,35 @@ public class GridLayout extends Component implements HasStyle, HasComponents, Ha
     public void setArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
         setRowStartAndEnd(component, rowStart, rowEnd);
         setColumnStartAndEnd(component, colStart, colEnd);
+    }
+
+    public GridLayout withItemWithHeight(Component component, int height) {
+        add(component);
+        setItemHeight(component, height);
+        return this;
+    }
+
+    public GridLayout withItemWithWidth(Component component, int width) {
+        add(component);
+        setItemWidth(component, width);
+        return this;
+    }
+
+    public GridLayout withItemWithSize(Component component, int size, int height) {
+        add(component);
+        setItemSize(component, size, height);
+        return this;
+    }
+
+    public GridLayout withItemAtArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
+        add(component);
+        setArea(component, rowStart, colStart, rowEnd, colEnd);
+        return this;
+    }
+
+    public GridLayout withItems(Component... components) {
+        add(components);
+        return this;
     }
 
     public void setJustifyContentMode(JustifyContentMode justifyContentMode) {
