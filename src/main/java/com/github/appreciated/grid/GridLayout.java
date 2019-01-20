@@ -3,6 +3,7 @@ package com.github.appreciated.grid;
 import com.vaadin.flow.component.*;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 @Tag("div")
 public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize {
@@ -16,6 +17,16 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         this.add(components);
     }
 
+    /**
+     * @return
+     */
+    public String getColumnGap() {
+        return getStyle().get("grid-column-gap");
+    }
+
+    /**
+     * @param columnGap
+     */
     public void setColumnGap(String columnGap) {
         if (columnGap == null) {
             getStyle().remove("grid-column-gap");
@@ -24,10 +35,16 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
-    public String getColumnGap() {
-        return getStyle().get("align-self");
+    /**
+     * @return
+     */
+    public String getRowGap() {
+        return getStyle().get("grid-row-gap");
     }
 
+    /**
+     * @param rowGap
+     */
     public void setRowGap(String rowGap) {
         if (rowGap == null) {
             getStyle().remove("grid-row-gap");
@@ -36,10 +53,9 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
-    public String getRowGap() {
-        return getStyle().get("grid-row-gap");
-    }
-
+    /**
+     * @param gap
+     */
     public void setGap(String gap) {
         if (gap == null) {
             getStyle().remove("grid-gap");
@@ -48,42 +64,104 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
+    /**
+     * @param columnGap
+     * @param rowGap
+     */
+    public void setGap(String columnGap, String rowGap) {
+        Objects.requireNonNull(columnGap);
+        Objects.requireNonNull(rowGap);
+        getStyle().set("grid-gap", columnGap + " " + rowGap);
+    }
+
     public String getGap() {
         return getStyle().get("grid-gap");
     }
 
-    public void setTemplateColumns(String... columns) {
-        getStyle().set("grid-template-columns", Arrays.stream(columns).reduce((s, s2) -> s + " " + s2).orElse(""));
+    /**
+     * set the number of columns in your grid-layout, also you set here the number of columns desired.
+     * Allowed values
+     * Pixels: 100px 200px 300px 400px; 4 rows having pixel valued size
+     * Auto: auto auto auto auto; 4 rows having the same size
+     * Other: repeat(auto-fill, minmax(250px, 1fr));
+     *
+     * @param templateColumns "defines the number of columns in your grid layout, and it can define the width of each column."
+     */
+    public void setTemplateColumns(String... templateColumns) {
+        getStyle().set("grid-template-columns", Arrays.stream(templateColumns).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
+    /**
+     * @param templateAreas
+     */
+    public void setTemplateAreas(String[][] templateAreas) {
+        getStyle().set("grid-template-areas",
+                Arrays.stream(templateAreas)
+                        .map(strings -> Arrays.stream(strings).reduce((s, s2) -> s + " " + s2)
+                                .orElse("")
+                        ).reduce((s, s2) -> s + "\n" + s2)
+                        .orElse(""));
+    }
+
+    /**
+     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
+     *
+     * @param columns
+     * @return
+     */
     public GridLayout withTemplateColumns(String... columns) {
         setTemplateColumns(columns);
         return this;
     }
 
+    /**
+     * Convenience method, for users which don't want to dive into the css-grid to set the number of row an item should span over
+     *
+     * @param component the component which column width should be set
+     * @param width     the number of columns the item should span over
+     */
     public void setItemWidth(Component component, int width) {
         setColumn(component, "span " + width);
     }
 
+    /**
+     * Convenience method, for users which don't want to dive into the css-grid to set the number of row an item should span over
+     *
+     * @param component the component which row height should be set
+     * @param height    the number of rows the item should span over
+     */
     public void setItemHeight(Component component, int height) {
         setRow(component, "span " + height);
     }
 
+    /**
+     * Convenience method, for users which don't want to dive into the css-grid to set the number of rows and columns an item should span over
+     *
+     * @param component the component which column width should be set
+     * @param width     the number of columns the item should span over
+     * @param height    the number of rows the item should span over
+     */
     public void setItemSize(Component component, int width, int height) {
         setItemHeight(component, height);
         setItemWidth(component, width);
     }
 
-    public void setColumn(Component component, String colmun) {
-        component.getElement().getStyle().set("grid-column", colmun);
+    /**
+     * Sets the 'grid-column' value of an element
+     *
+     * @param component
+     * @param column
+     */
+    public void setColumn(Component component, String column) {
+        component.getElement().getStyle().set("grid-column", column);
     }
 
     public void setRow(Component component, String row) {
         component.getElement().getStyle().set("grid-row", row);
     }
 
-    public void setColumnAndColumn(Component component, String colmun) {
-        component.getElement().getStyle().set("grid-column", colmun);
+    public void setColumnAndColumn(Component component, String column) {
+        component.getElement().getStyle().set("grid-column", column);
     }
 
     public void setColumnEnd(Component component, int end) {
