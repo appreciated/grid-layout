@@ -30,13 +30,13 @@ public class DemoView extends VerticalLayout {
                         getDiv(),
                         getDiv()
                 );
-        gridAreaTestLayout.setColumns("200px", "auto", "200px", "auto");
+        gridAreaTestLayout.setTemplateColumns("200px", "auto", "200px", "auto");
 
         gridAreaTestLayout.setSizeFull();
 
         GridLayout responsiveTest = new GridLayout()
                 .withWidth("100%")
-                .withColumns("repeat(auto-fit, minmax(300px, 500px))")
+                .withTemplateColumns("repeat(auto-fit, minmax(300px, 500px))")
                 .withItemWithWidth(getDiv(), 2)
                 .withItem(getDiv())
                 .withItemWithWidth(getDiv(), 2)

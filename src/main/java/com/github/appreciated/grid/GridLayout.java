@@ -52,26 +52,38 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         return getStyle().get("grid-gap");
     }
 
-    public void setColumns(String... columns) {
+    public void setTemplateColumns(String... columns) {
         getStyle().set("grid-template-columns", Arrays.stream(columns).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
-    public GridLayout withColumns(String... columns) {
-        setColumns(columns);
+    public GridLayout withTemplateColumns(String... columns) {
+        setTemplateColumns(columns);
         return this;
     }
 
     public void setItemWidth(Component component, int width) {
-        component.getElement().getStyle().set("grid-column", "span " + width);
+        setColumn(component, "span " + width);
     }
 
     public void setItemHeight(Component component, int height) {
-        component.getElement().getStyle().set("grid-row", "span " + height);
+        setRow(component, "span " + height);
     }
 
     public void setItemSize(Component component, int width, int height) {
         setItemHeight(component, height);
         setItemWidth(component, width);
+    }
+
+    public void setColumn(Component component, String colmun) {
+        component.getElement().getStyle().set("grid-column", colmun);
+    }
+
+    public void setRow(Component component, String row) {
+        component.getElement().getStyle().set("grid-row", row);
+    }
+
+    public void setColumnAndColumn(Component component, String colmun) {
+        component.getElement().getStyle().set("grid-column", colmun);
     }
 
     public void setColumnEnd(Component component, int end) {
@@ -219,6 +231,5 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
                     .orElse(defaultValue);
         }
     }
-
 }
 
