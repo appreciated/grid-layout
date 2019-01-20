@@ -189,8 +189,9 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         component.getElement().getStyle().set("grid-row", row);
     }
 
-    public void setColumnAndColumn(Component component, String column) {
-        component.getElement().getStyle().set("grid-column", column);
+    public void setColumnAndRow(Component component, String column, String row) {
+        setColumn(component, column);
+        setRow(component, row);
     }
 
     public void setColumnEnd(Component component, int end) {
