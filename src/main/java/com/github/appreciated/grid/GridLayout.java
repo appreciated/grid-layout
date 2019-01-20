@@ -8,13 +8,13 @@ import java.util.Objects;
 @Tag("div")
 public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize {
 
-    public GridLayout() {
-        getStyle().set("display", "grid");
-    }
-
     public GridLayout(Component... components) {
         this();
         this.add(components);
+    }
+
+    public GridLayout() {
+        getStyle().set("display", "grid");
     }
 
     /**
@@ -122,16 +122,16 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
+    public String getGrid() {
+        return getStyle().get("grid");
+    }
+
     public void setGrid(String grid) {
         if (grid == null) {
             getStyle().remove("grid");
         } else {
             getStyle().set("grid", grid);
         }
-    }
-
-    public String getGrid() {
-        return getStyle().get("grid");
     }
 
     /**
@@ -161,6 +161,15 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
+    public void getRow(Component component) {
+        component.getElement().getStyle().get("grid-row");
+    }
+
+    public void setColumnAndRow(Component component, String column, String row) {
+        setColumn(component, column);
+        setRow(component, row);
+    }
+
     /**
      * Sets the 'grid-column' value of an element
      *
@@ -183,54 +192,35 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
-    public void getRow(Component component) {
-        component.getElement().getStyle().get("grid-row");
-    }
-
-    public void setColumnAndRow(Component component, String column, String row) {
-        setColumn(component, column);
-        setRow(component, row);
-    }
-
-    public void setColumnEnd(Component component, String end) {
-        if (end == null) {
-            component.getElement().getStyle().remove("grid-column-end");
-        } else {
-            component.getElement().getStyle().set("grid-column-end", end);
-        }
-    }
-
     public String getColumnEnd(Component component) {
         return component.getElement().getStyle().get("grid-column-end");
-    }
-
-    public void setColumnStart(Component component, String start) {
-        if (start == null) {
-            component.getElement().getStyle().remove("grid-column-start");
-        } else {
-            component.getElement().getStyle().set("grid-column-start", start);
-        }
     }
 
     public String getColumnStart(Component component) {
         return component.getElement().getStyle().get("grid-column-start");
     }
 
+    public String getRowEnd(Component component) {
+        return component.getElement().getStyle().get("grid-row-end");
+    }
+
+    public String getRowStart(Component component) {
+        return component.getElement().getStyle().get("grid-row-start");
+    }
+
+    public void setArea(Component component, String rowStart, String colStart, String rowEnd, String colEnd) {
+        setRowStartAndEnd(component, rowStart, rowEnd);
+        setColumnStartAndEnd(component, colStart, colEnd);
+    }
+
+    public void setRowStartAndEnd(Component component, String start, String end) {
+        setRowStart(component, start);
+        setRowEnd(component, end);
+    }
+
     public void setColumnStartAndEnd(Component component, String start, String end) {
         setColumnStart(component, start);
         setColumnEnd(component, end);
-    }
-
-    public void setRowEnd(Component component, String end) {
-        if (end == null) {
-            component.getElement().getStyle().remove("grid-row-end");
-        } else {
-            component.getElement().getStyle().set("grid-row-end", end);
-        }
-    }
-
-    public String getRowEnd(Component component) {
-        return component.getElement().getStyle().get("grid-row-end");
     }
 
     public void setRowStart(Component component, String start) {
@@ -241,18 +231,28 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
-    public String getRowStart(Component component) {
-        return component.getElement().getStyle().get("grid-row-start");
+    public void setRowEnd(Component component, String end) {
+        if (end == null) {
+            component.getElement().getStyle().remove("grid-row-end");
+        } else {
+            component.getElement().getStyle().set("grid-row-end", end);
+        }
     }
 
-    public void setRowStartAndEnd(Component component, String start, String end) {
-        setRowStart(component, start);
-        setRowEnd(component, end);
+    public void setColumnStart(Component component, String start) {
+        if (start == null) {
+            component.getElement().getStyle().remove("grid-column-start");
+        } else {
+            component.getElement().getStyle().set("grid-column-start", start);
+        }
     }
 
-    public void setArea(Component component, String rowStart, String colStart, String rowEnd, String colEnd) {
-        setRowStartAndEnd(component, rowStart, rowEnd);
-        setColumnStartAndEnd(component, colStart, colEnd);
+    public void setColumnEnd(Component component, String end) {
+        if (end == null) {
+            component.getElement().getStyle().remove("grid-column-end");
+        } else {
+            component.getElement().getStyle().set("grid-column-end", end);
+        }
     }
 
     public void setArea(Component component, String area) {
@@ -327,7 +327,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         return AlignContentMode.toAlignment(this.getElement().getStyle().get("align-content"), AlignContentMode.START);
     }
 
-    public static enum JustifyContentMode {
+    public enum JustifyContentMode {
         START("flex-start"),
         END("flex-end"),
         CENTER("center"),
@@ -353,7 +353,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
-    public static enum AlignContentMode {
+    public enum AlignContentMode {
         START("flex-start"),
         END("flex-end"),
         CENTER("center"),

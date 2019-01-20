@@ -5,38 +5,6 @@ import com.vaadin.flow.component.Component;
 public class FluentGridLayout extends GridLayout {
 
     /**
-     * Convenience method, for users which don't want to dive into the css-grid to set the number of row an item should span over
-     *
-     * @param component the component which column width should be set
-     * @param width     the number of columns the item should span over
-     */
-    public void setItemWidth(Component component, String width) {
-        setColumn(component, "span " + width);
-    }
-
-    /**
-     * Convenience method, for users which don't want to dive into the css-grid to set the number of row an item should span over
-     *
-     * @param component the component which row height should be set
-     * @param height    the number of rows the item should span over
-     */
-    public void setItemHeight(Component component, String height) {
-        setRow(component, "span " + height);
-    }
-
-    /**
-     * Convenience method, for users which don't want to dive into the css-grid to set the number of rows and columns an item should span over
-     *
-     * @param component the component which column width should be set
-     * @param width     the number of columns the item should span over
-     * @param height    the number of rows the item should span over
-     */
-    public void setItemSize(Component component, String width, String height) {
-        setItemHeight(component, height);
-        setItemWidth(component, width);
-    }
-
-    /**
      * Fluent method of {@link FluentGridLayout#setTemplateColumns(String...)}
      *
      * @param columns
@@ -64,10 +32,42 @@ public class FluentGridLayout extends GridLayout {
         return this;
     }
 
+    /**
+     * Convenience method, for users which don't want to dive into the css-grid to set the number of rows and columns an item should span over
+     *
+     * @param component the component which column width should be set
+     * @param width     the number of columns the item should span over
+     * @param height    the number of rows the item should span over
+     */
+    public void setItemSize(Component component, String width, String height) {
+        setItemHeight(component, height);
+        setItemWidth(component, width);
+    }
+
     public FluentGridLayout withItemWithSize(Component component, String size, String height) {
         add(component);
         setItemSize(component, size, height);
         return this;
+    }
+
+    /**
+     * Convenience method, for users which don't want to dive into the css-grid to set the number of row an item should span over
+     *
+     * @param component the component which row height should be set
+     * @param height    the number of rows the item should span over
+     */
+    public void setItemHeight(Component component, String height) {
+        setRow(component, "span " + height);
+    }
+
+    /**
+     * Convenience method, for users which don't want to dive into the css-grid to set the number of row an item should span over
+     *
+     * @param component the component which column width should be set
+     * @param width     the number of columns the item should span over
+     */
+    public void setItemWidth(Component component, String width) {
+        setColumn(component, "span " + width);
     }
 
     public FluentGridLayout withItemAtArea(Component component, String rowStart, String colStart, String rowEnd, String colEnd) {
