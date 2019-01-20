@@ -107,7 +107,11 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param templateRows "The row definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
      */
     public void setTemplateRows(String... templateRows) {
-        getStyle().set("grid-template-rows", Arrays.stream(templateRows).reduce((s, s2) -> s + " " + s2).orElse(""));
+        if (templateRows == null) {
+            getStyle().remove("grid-template-rows");
+        } else {
+            getStyle().set("grid-template-rows", Arrays.stream(templateRows).reduce((s, s2) -> s + " " + s2).orElse(""));
+        }
     }
 
     /**
@@ -124,13 +128,17 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param templateAreas
      */
     public void setTemplateAreas(String[][] templateAreas) {
-        String areas = Arrays.stream(templateAreas)
-                .map(strings -> Arrays.stream(strings).reduce((s, s2) -> s + " " + s2)
-                        .orElse("")
-                ).map(s -> "'" + s + "'")
-                .reduce((s, s2) -> s + " " + s2)
-                .orElse("");
-        getStyle().set("grid-template-areas", areas);
+        if (templateAreas == null) {
+            getStyle().remove("grid-template-areas");
+        } else {
+            String areas = Arrays.stream(templateAreas)
+                    .map(strings -> Arrays.stream(strings).reduce((s, s2) -> s + " " + s2)
+                            .orElse("")
+                    ).map(s -> "'" + s + "'")
+                    .reduce((s, s2) -> s + " " + s2)
+                    .orElse("");
+            getStyle().set("grid-template-areas", areas);
+        }
     }
 
     /**
@@ -140,11 +148,19 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param column
      */
     public void setColumn(Component component, String column) {
-        component.getElement().getStyle().set("grid-column", column);
+        if (column == null) {
+            component.getElement().getStyle().remove("grid-column");
+        } else {
+            component.getElement().getStyle().set("grid-column", column);
+        }
     }
 
     public void setRow(Component component, String row) {
-        component.getElement().getStyle().set("grid-row", row);
+        if (row == null) {
+            component.getElement().getStyle().remove("grid-row");
+        } else {
+            component.getElement().getStyle().set("grid-row", row);
+        }
     }
 
     public void setColumnAndRow(Component component, String column, String row) {
@@ -152,39 +168,83 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         setRow(component, row);
     }
 
-    public void setColumnEnd(Component component, int end) {
-        component.getElement().getStyle().set("grid-column-end", String.valueOf(end));
+    public void setColumnEnd(Component component, String end) {
+        if (end == null) {
+            component.getElement().getStyle().remove("grid-column-end");
+        } else {
+            component.getElement().getStyle().set("grid-column-end", end);
+        }
     }
 
-    public void setColumnStart(Component component, int start) {
-        component.getElement().getStyle().set("grid-column-start", String.valueOf(start));
+    public void setColumnStart(Component component, String start) {
+        if (start == null) {
+            component.getElement().getStyle().remove("grid-column-start");
+        } else {
+            component.getElement().getStyle().set("grid-column-start", start);
+        }
     }
 
-    public void setColumnStartAndEnd(Component component, int start, int end) {
+    public void setColumnStartAndEnd(Component component, String start, String end) {
         setColumnStart(component, start);
         setColumnEnd(component, end);
     }
 
-    public void setRowEnd(Component component, int end) {
-        component.getElement().getStyle().set("grid-row-end", String.valueOf(end));
+    public void setRowEnd(Component component, String end) {
+        if (end == null) {
+            component.getElement().getStyle().remove("grid-row-end");
+        } else {
+            component.getElement().getStyle().set("grid-row-end", end);
+        }
     }
 
-    public void setRowStart(Component component, int start) {
-        component.getElement().getStyle().set("grid-row-start", String.valueOf(start));
+    public void setRowStart(Component component, String start) {
+        if (start == null) {
+            component.getElement().getStyle().remove("grid-row-start");
+        } else {
+            component.getElement().getStyle().set("grid-row-start", start);
+        }
     }
 
-    public void setRowStartAndEnd(Component component, int start, int end) {
+    public void setRowStartAndEnd(Component component, String start, String end) {
         setRowStart(component, start);
         setRowEnd(component, end);
     }
 
-    public void setArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
+    public void setArea(Component component, String rowStart, String colStart, String rowEnd, String colEnd) {
         setRowStartAndEnd(component, rowStart, rowEnd);
         setColumnStartAndEnd(component, colStart, colEnd);
     }
 
     public void setArea(Component component, String area) {
-        component.getElement().getStyle().set("grid-area", area);
+        if (area == null) {
+            component.getElement().getStyle().remove("grid-area");
+        } else {
+            component.getElement().getStyle().set("grid-area", area);
+        }
+    }
+
+    public void setAutoColumns(String autoColumns) {
+        if (autoColumns == null) {
+            getElement().getStyle().remove("grid-auto-columns");
+        } else {
+            getStyle().set("grid-auto-columns", autoColumns);
+        }
+    }
+
+    public void setAutoFlow(String autoFlow) {
+        if (autoFlow == null) {
+            getElement().getStyle().remove("grid-auto-columns");
+        } else {
+            getStyle().set("grid-auto-flow", autoFlow);
+        }
+    }
+
+    public void setAutoRows(String autoRows) {
+        if (autoRows == null) {
+            getElement().getStyle().remove("grid-auto-columns");
+        } else {
+            getStyle().set("grid-auto-rows", autoRows);
+        }
     }
 
     public JustifyContentMode getJustifyContentMode() {
