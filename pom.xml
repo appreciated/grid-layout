@@ -98,12 +98,6 @@
                     <!-- Use test scope because the UI/demo classes are in 
                         the test package. -->
                     <useTestScope>true</useTestScope>
-                    <webApp>
-                        <resourceBases>
-                            <resourceBase>${project.basedir}/src/main/resources/META-INF/resources</resourceBase>
-                            <resourceBase>${project.basedir}/src/test/resources/</resourceBase>
-                        </resourceBases>
-                    </webApp>
                 </configuration>
             </plugin>
         </plugins>
