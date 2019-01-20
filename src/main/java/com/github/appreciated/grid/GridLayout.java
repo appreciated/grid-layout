@@ -94,8 +94,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         getStyle().set("grid-template-columns", Arrays.stream(templateColumns).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
-
-
     /**
      * Sets the number of rows in your grid-layout.  <br>
      * #Allowed Values  <br>
@@ -111,9 +109,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     public void setTemplateRows(String... templateRows) {
         getStyle().set("grid-template-rows", Arrays.stream(templateRows).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
-
-
-
 
     /**
      * Sets the column and row definition of your grid-layout. Instead of setting the sizes for rows and columns you
@@ -137,8 +132,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
                 .orElse("");
         getStyle().set("grid-template-areas", areas);
     }
-
-
 
     /**
      * Sets the 'grid-column' value of an element
@@ -194,7 +187,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         component.getElement().getStyle().set("grid-area", area);
     }
 
-
     public JustifyContentMode getJustifyContentMode() {
         return JustifyContentMode.toJustifyContentMode(this.getElement().getStyle().get("justify-content"), JustifyContentMode.START);
     }
@@ -206,7 +198,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
             this.getElement().getStyle().set("justify-content", justifyContentMode.getFlexValue());
         }
     }
-
 
     public void setAlignContentMode(AlignContentMode alignContentMode) {
         if (alignContentMode == null) {
