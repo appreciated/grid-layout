@@ -31,7 +31,6 @@ public class DemoView extends VerticalLayout {
                         getDiv()
                 );
         gridAreaTestLayout.setTemplateColumns("200px", "auto", "200px", "auto");
-
         gridAreaTestLayout.setSizeFull();
 
         FluentGridLayout responsiveTest = new FluentGridLayout()
@@ -68,7 +67,6 @@ public class DemoView extends VerticalLayout {
         areaTest.setSizeFull();
         add(gridAreaTestLayout, responsiveTest, areaTest);
         setSizeFull();
-
     }
 
     Div getDiv() {
