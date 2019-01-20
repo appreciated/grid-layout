@@ -114,6 +114,22 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
+    public void setTemplate(String template) {
+        if (template == null) {
+            getStyle().remove("grid-template");
+        } else {
+            getStyle().set("grid-template", template);
+        }
+    }
+
+    public void setGrid(String grid) {
+        if (grid == null) {
+            getStyle().remove("grid");
+        } else {
+            getStyle().set("grid", grid);
+        }
+    }
+
     /**
      * Sets the column and row definition of your grid-layout. Instead of setting the sizes for rows and columns you
      * define areas by using custom keywords. <br>
