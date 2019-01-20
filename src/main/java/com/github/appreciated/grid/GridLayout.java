@@ -130,6 +130,10 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
+    public String getGrid() {
+        return getStyle().get("grid");
+    }
+
     /**
      * Sets the column and row definition of your grid-layout. Instead of setting the sizes for rows and columns you
      * define areas by using custom keywords. <br>
@@ -179,6 +183,10 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
+    public void getRow(Component component) {
+        component.getElement().getStyle().get("grid-row");
+    }
+
     public void setColumnAndRow(Component component, String column, String row) {
         setColumn(component, column);
         setRow(component, row);
@@ -192,12 +200,20 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
+    public String getColumnEnd(Component component) {
+        return component.getElement().getStyle().get("grid-column-end");
+    }
+
     public void setColumnStart(Component component, String start) {
         if (start == null) {
             component.getElement().getStyle().remove("grid-column-start");
         } else {
             component.getElement().getStyle().set("grid-column-start", start);
         }
+    }
+
+    public String getColumnStart(Component component) {
+        return component.getElement().getStyle().get("grid-column-start");
     }
 
     public void setColumnStartAndEnd(Component component, String start, String end) {
@@ -213,12 +229,20 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
+    public String getRowEnd(Component component) {
+        return component.getElement().getStyle().get("grid-row-end");
+    }
+
     public void setRowStart(Component component, String start) {
         if (start == null) {
             component.getElement().getStyle().remove("grid-row-start");
         } else {
             component.getElement().getStyle().set("grid-row-start", start);
         }
+    }
+
+    public String getRowStart(Component component) {
+        return component.getElement().getStyle().get("grid-row-start");
     }
 
     public void setRowStartAndEnd(Component component, String start, String end) {
@@ -233,31 +257,47 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
 
     public void setArea(Component component, String area) {
         if (area == null) {
-            component.getElement().getStyle().remove("grid-area");
+            getStyle().remove("grid-area");
         } else {
-            component.getElement().getStyle().set("grid-area", area);
+            getStyle().set("grid-area", area);
         }
+    }
+
+    public String getArea() {
+        return getStyle().get("grid-area");
+    }
+
+    public String getAutoColumns() {
+        return getStyle().get("grid-auto-columns");
     }
 
     public void setAutoColumns(String autoColumns) {
         if (autoColumns == null) {
-            getElement().getStyle().remove("grid-auto-columns");
+            getStyle().remove("grid-auto-columns");
         } else {
             getStyle().set("grid-auto-columns", autoColumns);
         }
     }
 
+    public String getAutoFlow() {
+        return getStyle().get("grid-auto-flow");
+    }
+
     public void setAutoFlow(String autoFlow) {
         if (autoFlow == null) {
-            getElement().getStyle().remove("grid-auto-columns");
+            getStyle().remove("grid-auto-flow");
         } else {
             getStyle().set("grid-auto-flow", autoFlow);
         }
     }
 
+    public String getAutoRows() {
+        return getStyle().get("grid-auto-rows");
+    }
+
     public void setAutoRows(String autoRows) {
         if (autoRows == null) {
-            getElement().getStyle().remove("grid-auto-columns");
+            getStyle().remove("grid-auto-rows");
         } else {
             getStyle().set("grid-auto-rows", autoRows);
         }
