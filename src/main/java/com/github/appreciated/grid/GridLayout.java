@@ -182,19 +182,19 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
-    public void setAlignContentMode(AlignmentMode alignContentMode) {
+    public void setAlignContentMode(AlignContentMode alignContentMode) {
         if (alignContentMode == null) {
-            throw new IllegalArgumentException("The 'justifyContentMode' argument can not be null");
+            throw new IllegalArgumentException("The 'alignContentMode' argument can not be null");
         } else {
             this.getElement().getStyle().set("align-content", alignContentMode.getFlexValue());
         }
     }
 
-    public AlignmentMode getAlignContentMode() {
-        return AlignmentMode.toAlignment(this.getElement().getStyle().get("align-content"), AlignmentMode.START);
+    public AlignContentMode getAlignMode() {
+        return AlignContentMode.toAlignment(this.getElement().getStyle().get("align-content"), AlignContentMode.START);
     }
 
-    public static enum AlignmentMode {
+    public static enum AlignContentMode {
         START("flex-start"),
         END("flex-end"),
         CENTER("center"),
@@ -204,7 +204,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
 
         private final String flexValue;
 
-        AlignmentMode(String flexValue) {
+        AlignContentMode(String flexValue) {
             this.flexValue = flexValue;
         }
 
@@ -212,7 +212,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
             return this.flexValue;
         }
 
-        static AlignmentMode toAlignment(String flexValue, AlignmentMode defaultValue) {
+        static AlignContentMode toAlignment(String flexValue, AlignContentMode defaultValue) {
             return Arrays.stream(values())
                     .filter((alignment) -> alignment.getFlexValue().equals(flexValue))
                     .findFirst()
