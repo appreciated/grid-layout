@@ -36,7 +36,7 @@ public class DemoView extends VerticalLayout {
 
         GridLayout responsiveTest = new GridLayout()
                 .withWidth("100%")
-                .withTemplateColumns("repeat(auto-fit, minmax(300px, 500px))")
+                .withTemplateColumns("repeat(auto-fit, minmax(300px, auto))")
                 .withItemWithWidth(getDiv(), 2)
                 .withItem(getDiv())
                 .withItemWithWidth(getDiv(), 2)
