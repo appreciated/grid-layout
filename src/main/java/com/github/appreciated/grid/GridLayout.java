@@ -84,6 +84,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * Fixed number of rows:  <br>
      * Pixels: 100px 200px 300px 400px | 4 rows having pixel valued size  <br>
      * Auto: auto auto auto auto | 4 rows having the same size  <br>
+     * Fr: auto 1fr auto | checkout the css grid documentation <br>
      * #Dynamic Number of rows  <br>
      * Other: repeat(auto-fill, minmax(250px, 1fr));  <br>
      *
@@ -91,6 +92,22 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      */
     public void setTemplateColumns(String... templateColumns) {
         getStyle().set("grid-template-columns", Arrays.stream(templateColumns).reduce((s, s2) -> s + " " + s2).orElse(""));
+    }
+
+    /**
+     * Sets the number of rows in your grid-layout.  <br>
+     * #Allowed Values  <br>
+     * Fixed number of rows:  <br>
+     * Pixels: 100px 200px 300px 400px | 4 rows having pixel valued size  <br>
+     * Auto: auto auto auto auto | 4 rows having the same size  <br>
+     * Fr: auto 1fr auto | checkout the css grid documentation <br>
+     * #Dynamic Number of rows  <br>
+     * Other: repeat(auto-fill, minmax(250px, 1fr));  <br>
+     *
+     * @param templateColumns "The row definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
+     */
+    public void setTemplateRows(String... templateColumns) {
+        getStyle().set("grid-template-rows", Arrays.stream(templateColumns).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
     /**
