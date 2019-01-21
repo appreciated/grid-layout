@@ -5,7 +5,7 @@ import com.vaadin.flow.component.Component;
 public class FluentGridLayout extends GridLayout {
 
     /**
-     * Fluent method of {@link FluentGridLayout#setTemplateColumns(String...)}
+     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
      *
      * @param columns
      * @return
@@ -16,7 +16,7 @@ public class FluentGridLayout extends GridLayout {
     }
 
     /**
-     * Fluent method of {@link FluentGridLayout#setTemplateColumns(String...)}
+     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
      *
      * @param rows
      * @return
@@ -104,7 +104,7 @@ public class FluentGridLayout extends GridLayout {
     }
 
     /**
-     * Fluent method of {@link FluentGridLayout#setTemplateAreas(String[][])} (String...)}
+     * Fluent method of {@link GridLayout#setTemplateAreas(String[][])} (String...)}
      *
      * @param templateAreas
      * @return
