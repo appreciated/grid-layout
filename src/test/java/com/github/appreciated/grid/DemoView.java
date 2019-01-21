@@ -1,19 +1,13 @@
 package com.github.appreciated.grid;
 
-import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-
-import java.util.Random;
 
 @Route("")
 public class DemoView extends VerticalLayout {
 
-    private final Random random;
-
     public DemoView() {
-        random = new Random();
-
         FluentGridLayout gridAreaTestLayout = new FluentGridLayout()
                 .withItems(getDiv())
                 .withItemAtArea(getDiv(), "1", "1", "3", "3")
@@ -69,12 +63,9 @@ public class DemoView extends VerticalLayout {
         setSizeFull();
     }
 
-    Div getDiv() {
-        Div d = new Div();
-        d.setClassName("item");
-        int nextInt = random.nextInt(0xffffff + 1);
-        String colorCode = String.format("#%06x", nextInt);
-        d.getStyle().set("background", colorCode);
-        return d;
+    private Component getDiv() {
+        return new TestContent();
     }
+
+
 }
