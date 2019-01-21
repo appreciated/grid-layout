@@ -257,14 +257,14 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
 
     public void setArea(Component component, String area) {
         if (area == null) {
-            getStyle().remove("grid-area");
+            component.getElement().getStyle().remove("grid-area");
         } else {
-            getStyle().set("grid-area", area);
+            component.getElement().getStyle().set("grid-area", area);
         }
     }
 
-    public String getArea() {
-        return getStyle().get("grid-area");
+    public String getArea(Component component) {
+        return component.getElement().getStyle().get("grid-area");
     }
 
     public String getAutoColumns() {
