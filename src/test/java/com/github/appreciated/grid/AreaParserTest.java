@@ -32,24 +32,29 @@ public class AreaParserTest {
                 .withItemAtArea(list.get(2).getKey(), list.get(2).getValue())
                 .withItemAtArea(list.get(3).getKey(), list.get(3).getValue());
 
-        Assert.assertEquals("1", list.get(0).getKey().getElement().getStyle().get("-ms-grid-row"));
-        Assert.assertEquals("1", list.get(0).getKey().getElement().getStyle().get("-ms-grid-column"));
-        Assert.assertEquals("5", list.get(0).getKey().getElement().getStyle().get("-ms-grid-column-span"));
-        Assert.assertEquals("1", list.get(0).getKey().getElement().getStyle().get("-ms-grid-row-span"));
+        assertStyleEquals("1", list, 0, "-ms-grid-row");
+        assertStyleEquals("1", list, 0, "-ms-grid-column");
+        assertStyleEquals("5", list, 0, "-ms-grid-column-span");
+        assertStyleEquals("1", list, 0, "-ms-grid-row-span");
 
-        Assert.assertEquals("2", list.get(1).getKey().getElement().getStyle().get("-ms-grid-row"));
-        Assert.assertEquals("2", list.get(1).getKey().getElement().getStyle().get("-ms-grid-column"));
-        Assert.assertEquals("3", list.get(1).getKey().getElement().getStyle().get("-ms-grid-column-span"));
-        Assert.assertEquals("3", list.get(1).getKey().getElement().getStyle().get("-ms-grid-row-span"));
+        assertStyleEquals("2", list, 1, "-ms-grid-row");
+        assertStyleEquals("2", list, 1, "-ms-grid-column");
+        assertStyleEquals("3", list, 1, "-ms-grid-column-span");
+        assertStyleEquals("3", list, 1, "-ms-grid-row-span");
 
-        Assert.assertEquals("2", list.get(2).getKey().getElement().getStyle().get("-ms-grid-row"));
-        Assert.assertEquals("1", list.get(2).getKey().getElement().getStyle().get("-ms-grid-column"));
-        Assert.assertEquals("1", list.get(2).getKey().getElement().getStyle().get("-ms-grid-column-span"));
-        Assert.assertEquals("3", list.get(2).getKey().getElement().getStyle().get("-ms-grid-row-span"));
+        assertStyleEquals("2", list, 2, "-ms-grid-row");
+        assertStyleEquals("1", list, 2, "-ms-grid-column");
+        assertStyleEquals("1", list, 2, "-ms-grid-column-span");
+        assertStyleEquals("3", list, 2, "-ms-grid-row-span");
 
-        Assert.assertEquals("2", list.get(3).getKey().getElement().getStyle().get("-ms-grid-row"));
-        Assert.assertEquals("5", list.get(3).getKey().getElement().getStyle().get("-ms-grid-column"));
-        Assert.assertEquals("1", list.get(3).getKey().getElement().getStyle().get("-ms-grid-column-span"));
-        Assert.assertEquals("3", list.get(3).getKey().getElement().getStyle().get("-ms-grid-row-span"));
+        assertStyleEquals("2", list, 3, "-ms-grid-row");
+        assertStyleEquals("5", list, 3, "-ms-grid-column");
+        assertStyleEquals("1", list, 3, "-ms-grid-column-span");
+        assertStyleEquals("3", list, 3, "-ms-grid-row-span");
     }
+
+    public void assertStyleEquals(String expectedValue, List<Pair<Component, String>> list, int index, String style) {
+        Assert.assertEquals(expectedValue, list.get(index).getKey().getElement().getStyle().get(style));
+    }
+
 }
