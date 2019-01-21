@@ -5,7 +5,6 @@ import javafx.util.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,12 +18,12 @@ public class AreaParserTest {
                 new String[]{"left", "content", "content", "content", "right"},
         };
 
-        List<Pair<Component, String>> list = new ArrayList<>(Arrays.asList(
+        List<Pair<Component, String>> list = Arrays.asList(
                 new Pair<>(new TestContent(), "header"),
                 new Pair<>(new TestContent(), "content"),
                 new Pair<>(new TestContent(), "left"),
                 new Pair<>(new TestContent(), "right")
-        ));
+        );
 
         FluentGridLayout areaTest = new FluentGridLayout()
                 .withWidth("100%")
