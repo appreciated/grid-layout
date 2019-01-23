@@ -9,8 +9,6 @@ import java.util.Arrays;
 public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent, ThemableLayout {
 
     private static final String spacing = "10px";
-    private String[] rows;
-    private String[] columns;
 
     /**
      * @param components
@@ -38,10 +36,9 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     public void setGridColumns(String... columns) {
         for (String col : columns) {
             if (col.equals("auto")) {
-                throw new IllegalArgumentException("the value 'auto' will cause inconsistent results on Internet Explorer. Which is why the usage is prohibited. Please use instead the minmax() syntax.");
+                throw new IllegalArgumentException("the usage of the column value 'auto' causes inconsistent results on Internet Explorer. To make the Component compatible with Internet explorer the usage is prohibited. Please use instead the minmax() syntax.");
             }
         }
-        this.columns = columns;
         getStyle()
                 .set("grid-template-columns", Arrays.stream(columns).reduce((s, s2) -> s + " " + s2).orElse(""))
                 .set("-ms-grid-columns", Arrays.stream(columns).reduce((s, s2) -> s + " " + spacing + " " + s2).orElse("")); // adding extra rows under ie to support spacing;
@@ -53,10 +50,9 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     public void setGridRows(String... rows) {
         for (String row : rows) {
             if (row.equals("auto")) {
-                throw new IllegalArgumentException("the value 'auto' will cause inconsistent on Internet Explorer. Which is why the usage is prohibited. Please use instead the minmax() syntax.");
+                throw new IllegalArgumentException("the usage of the row value 'auto' causes inconsistent on Internet Explorer. To make the Component compatible with Internet explorer the usage is prohibited. Please use instead the minmax() syntax.");
             }
         }
-        this.rows = rows;
         getStyle()
                 .set("grid-template-rows", Arrays.stream(rows).reduce((s, s2) -> s + " " + s2).orElse(""))
                 .set("-ms-grid-rows", Arrays.stream(rows).reduce((s, s2) -> s + " " + spacing + " " + s2).orElse(""));
