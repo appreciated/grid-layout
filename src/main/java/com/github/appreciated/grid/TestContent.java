@@ -1,6 +1,7 @@
 package com.github.appreciated.grid;
 
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Label;
 
 import java.util.Random;
 
@@ -12,7 +13,8 @@ public class TestContent extends Div {
         setClassName("item");
         int nextInt = random.nextInt(0xffffff + 1);
         String colorCode = String.format("#%06x", nextInt);
-        getStyle().set("background", colorCode);
+        add(new Label(colorCode));
+        getStyle().set("background", colorCode).set("padding", "20px");
     }
 
 }

@@ -2,26 +2,26 @@ package com.github.appreciated.grid;
 
 import com.vaadin.flow.component.Component;
 
-public class FluentGridLayout extends GridLayout {
+public class FluentCssGridLayout extends CssGridLayout {
 
     /**
-     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
+     * Fluent method of {@link CssGridLayout#setTemplateColumns(String...)}
      *
      * @param columns
      * @return
      */
-    public FluentGridLayout withTemplateColumns(String... columns) {
+    public FluentCssGridLayout withTemplateColumns(String... columns) {
         setTemplateColumns(columns);
         return this;
     }
 
     /**
-     * Fluent method of {@link GridLayout#setTemplateColumns(String...)}
+     * Fluent method of {@link CssGridLayout#setTemplateColumns(String...)}
      *
      * @param rows
      * @return
      */
-    public FluentGridLayout withTemplateRows(String... rows) {
+    public FluentCssGridLayout withTemplateRows(String... rows) {
         setTemplateRows(rows);
         return this;
     }
@@ -32,7 +32,7 @@ public class FluentGridLayout extends GridLayout {
      * @param component the component which column width should be set
      * @param width     the number of columns the item should span over
      */
-    public FluentGridLayout withItemWithWidth(Component component, String width) {
+    public FluentCssGridLayout withItemWithWidth(Component component, String width) {
         add(component);
         setItemWidth(component, width);
         return this;
@@ -48,7 +48,7 @@ public class FluentGridLayout extends GridLayout {
         setColumn(component, "span " + width);
     }
 
-    public FluentGridLayout withItemWithSize(Component component, String size, String height) {
+    public FluentCssGridLayout withItemWithSize(Component component, String size, String height) {
         add(component);
         setItemSize(component, size, height);
         return this;
@@ -75,7 +75,7 @@ public class FluentGridLayout extends GridLayout {
      * @param colEnd col in which you want the component span to end
      * @return this
      */
-    public FluentGridLayout withItemAtArea(Component component, String rowStart, String colStart, String rowEnd, String colEnd) {
+    public FluentCssGridLayout withItemAtArea(Component component, String rowStart, String colStart, String rowEnd, String colEnd) {
         add(component);
         setArea(component, rowStart, colStart, rowEnd, colEnd);
         return this;
@@ -88,7 +88,7 @@ public class FluentGridLayout extends GridLayout {
      * @param area      the area the element should be assigned
      * @return this
      */
-    public FluentGridLayout withItemAtArea(Component component, String area) {
+    public FluentCssGridLayout withItemAtArea(Component component, String area) {
         add(component);
         setArea(component, area);
         return this;
@@ -100,7 +100,7 @@ public class FluentGridLayout extends GridLayout {
      * @param component the component to add
      * @return this
      */
-    public FluentGridLayout withItem(Component component) {
+    public FluentCssGridLayout withItem(Component component) {
         add(component);
         return this;
     }
@@ -111,7 +111,7 @@ public class FluentGridLayout extends GridLayout {
      * @param components the components to add
      * @return this
      */
-    public FluentGridLayout withItems(Component... components) {
+    public FluentCssGridLayout withItems(Component... components) {
         add(components);
         return this;
     }
@@ -123,7 +123,7 @@ public class FluentGridLayout extends GridLayout {
      * @param height
      * @return this
      */
-    public FluentGridLayout withItemWithHeight(Component component, String height) {
+    public FluentCssGridLayout withItemWithHeight(Component component, String height) {
         add(component);
         setItemHeight(component, height);
         return this;
@@ -145,18 +145,18 @@ public class FluentGridLayout extends GridLayout {
      * @param width the width that should be assigned
      * @return this
      */
-    public FluentGridLayout withWidth(String width) {
+    public FluentCssGridLayout withWidth(String width) {
         setWidth(width);
         return this;
     }
 
     /**
-     * Fluent method of {@link GridLayout#setTemplateAreas(String[][])} for setting the template areas available
+     * Fluent method of {@link CssGridLayout#setTemplateAreas(String[][])} for setting the template areas available
      *
      * @param templateAreas the template areas you want to be assigned
      * @return this
      */
-    public FluentGridLayout withTemplateAreas(String[][] templateAreas) {
+    public FluentCssGridLayout withTemplateAreas(String[][] templateAreas) {
         setTemplateAreas(templateAreas);
         return this;
     }

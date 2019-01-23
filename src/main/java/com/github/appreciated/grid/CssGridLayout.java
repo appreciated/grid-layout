@@ -1,18 +1,19 @@
 package com.github.appreciated.grid;
 
+import com.github.appreciated.grid.vaadin.GridLayoutComponent;
 import com.vaadin.flow.component.*;
 
 import java.util.Arrays;
 import java.util.Objects;
 
 @Tag("div")
-public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize {
+public class CssGridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent {
     private TemplateAreaParser templateAreaParser;
 
     /**
      * @param components
      */
-    public GridLayout(Component... components) {
+    public CssGridLayout(Component... components) {
         this();
         this.add(components);
     }
@@ -20,8 +21,14 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     /**
      *
      */
-    public GridLayout() {
+    public CssGridLayout() {
         getStyle().set("display", "grid");
+    }
+
+    @Override
+    protected void onAttach(AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
+        getElement().callFunction("setAttribute", "style", "display:-ms-grid; " + getElement().getAttribute("style"));
     }
 
     /**
@@ -162,7 +169,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * 'menu main main main right right'  <br>
      * 'menu footer footer footer footer footer';  <br>
      * <p>
-     * In the second step you set the area for each item which will then span over the above defined area. Use therefor {@link GridLayout#setArea(Component, String)} (Component, int, int, int, int)}
+     * In the second step you set the area for each item which will then span over the above defined area. Use therefor {@link CssGridLayout#setArea(Component, String)} (Component, int, int, int, int)}
      *
      * @param templateAreas
      */
@@ -199,6 +206,18 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     }
 
     /**
+     * This property is specified as one or two <grid-line> values.
+     * <p>
+     * If two <grid-line> values are given they are separated by "/". The grid-column-start longhand is set to the value before the slash, and the grid-column-end longhand is set to the value after the slash.
+     * <p>
+     * Each <grid-line> value can be specified as:
+     * <p>
+     * either the auto keyword
+     * or a <custom-ident> value
+     * or an <integer> value
+     * or both <custom-ident> and <integer>, separated by a space
+     * or the keyword span together with either a <custom-ident> or an <integer> or both.
+     * <p>
      * Sets the 'grid-column' value of an element
      *
      * @param component
@@ -412,92 +431,5 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         }
     }
 
-    /**
-     * @return
-     */
-    public JustifyContentMode getJustifyContentMode() {
-        return JustifyContentMode.toJustifyContentMode(this.getElement().getStyle().get("justify-content"), JustifyContentMode.START);
-    }
-
-    /**
-     * @param justifyContentMode
-     */
-    public void setJustifyContentMode(JustifyContentMode justifyContentMode) {
-        if (justifyContentMode == null) {
-            throw new IllegalArgumentException("The 'justifyContentMode' argument can not be null");
-        } else {
-            this.getElement().getStyle().set("justify-content", justifyContentMode.getFlexValue());
-        }
-    }
-
-    /**
-     * @param alignContentMode
-     */
-    public void setAlignContentMode(AlignContentMode alignContentMode) {
-        if (alignContentMode == null) {
-            throw new IllegalArgumentException("The 'alignContentMode' argument can not be null");
-        } else {
-            this.getElement().getStyle().set("align-content", alignContentMode.getFlexValue());
-        }
-    }
-
-    /**
-     * @return
-     */
-    public AlignContentMode getAlignMode() {
-        return AlignContentMode.toAlignment(this.getElement().getStyle().get("align-content"), AlignContentMode.START);
-    }
-
-    public enum JustifyContentMode {
-        START("flex-start"),
-        END("flex-end"),
-        CENTER("center"),
-        BETWEEN("space-between"),
-        AROUND("space-around"),
-        EVENLY("space-evenly");
-
-        private final String flexValue;
-
-        JustifyContentMode(String flexValue) {
-            this.flexValue = flexValue;
-        }
-
-        static JustifyContentMode toJustifyContentMode(String flexValue, JustifyContentMode defaultValue) {
-            return Arrays.stream(values())
-                    .filter((justifyContent) -> justifyContent.getFlexValue().equals(flexValue))
-                    .findFirst()
-                    .orElse(defaultValue);
-        }
-
-        String getFlexValue() {
-            return this.flexValue;
-        }
-    }
-
-    public enum AlignContentMode {
-        START("flex-start"),
-        END("flex-end"),
-        CENTER("center"),
-        STRETCH("stretch"),
-        BASELINE("baseline"),
-        AUTO("auto");
-
-        private final String flexValue;
-
-        AlignContentMode(String flexValue) {
-            this.flexValue = flexValue;
-        }
-
-        static AlignContentMode toAlignment(String flexValue, AlignContentMode defaultValue) {
-            return Arrays.stream(values())
-                    .filter((alignment) -> alignment.getFlexValue().equals(flexValue))
-                    .findFirst()
-                    .orElse(defaultValue);
-        }
-
-        String getFlexValue() {
-            return this.flexValue;
-        }
-    }
 }
 
