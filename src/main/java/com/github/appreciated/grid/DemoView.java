@@ -12,9 +12,10 @@ public class DemoView extends VerticalLayout {
 
     public DemoView() {
         FluentGridLayout layout = new FluentGridLayout();
+        // create example from here https://codepen.io/rachelandrew/pen/xRrwLj/
         Component alignTestComponent = getDiv();
         layout.withGridColumns("100px", "100px", "100px")
-                .withGridRows("200px", "200px")
+                .withGridRows("minmax(min-content, max-content)", "minmax(min-content, max-content)")
                 .withSpan(alignTestComponent, 1, 1, 1, 3)
                 .withColumnAlign(alignTestComponent, GridLayoutComponent.ColumnAlign.END)
                 .withRowAlign(alignTestComponent, GridLayoutComponent.RowAlign.END)
