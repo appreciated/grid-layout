@@ -8,8 +8,6 @@ import java.util.Arrays;
 @Tag("div")
 public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent, ThemableLayout {
 
-    private static final String spacing = "10px";
-
     /**
      * @param components
      */
@@ -20,8 +18,13 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
 
     public GridLayout() {
         getStyle()
-                .set("display", "grid")
-                .set("grid-gap", spacing);
+                .set("display", "grid");
+    }
+
+    @Override
+    public void add(Component... components) {
+        HasOrderedComponents.super.add(components);
+        //TODO add the elements automatically.
     }
 
     @Override
@@ -37,11 +40,13 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         for (String col : columns) {
             if (col.equals("auto")) {
                 throw new IllegalArgumentException("the usage of the column value 'auto' causes inconsistent results on Internet Explorer. To make the Component compatible with Internet explorer the usage is prohibited. Please use instead the minmax() syntax.");
+            } else if (col.contains("fit-content") || col.contains("auto-fit") || col.contains("auto-fill")) {
+                throw new IllegalArgumentException("The usage of the column value 'fit-content','auto-fit','auto-fill' causes inconsistent results on Internet Explorer. To make the Component compatible with Internet explorer the usage is prohibited.");
             }
         }
         getStyle()
                 .set("grid-template-columns", Arrays.stream(columns).reduce((s, s2) -> s + " " + s2).orElse(""))
-                .set("-ms-grid-columns", Arrays.stream(columns).reduce((s, s2) -> s + " " + spacing + " " + s2).orElse("")); // adding extra rows under ie to support spacing;
+                .set("-ms-grid-columns", Arrays.stream(columns).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
     /**
@@ -51,11 +56,13 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         for (String row : rows) {
             if (row.equals("auto")) {
                 throw new IllegalArgumentException("the usage of the row value 'auto' causes inconsistent on Internet Explorer. To make the Component compatible with Internet explorer the usage is prohibited. Please use instead the minmax() syntax.");
+            } else if (row.contains("fit-content") || row.contains("auto-fit") || row.contains("auto-fill")) {
+                throw new IllegalArgumentException("The usage of the column value 'fit-content','auto-fit','auto-fill' causes inconsistent results on Internet Explorer. To make the Component compatible with Internet explorer the usage is prohibited.");
             }
         }
         getStyle()
                 .set("grid-template-rows", Arrays.stream(rows).reduce((s, s2) -> s + " " + s2).orElse(""))
-                .set("-ms-grid-rows", Arrays.stream(rows).reduce((s, s2) -> s + " " + spacing + " " + s2).orElse(""));
+                .set("-ms-grid-rows", Arrays.stream(rows).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
     @Override
@@ -70,16 +77,12 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
 
     public void setColumnSpan(Component component, int from, int to) {
         component.getElement().getStyle()
-                .set("grid-column", from + "/" + to)
-                .set("-ms-grid-column", String.valueOf(from + (from - 1))) // adding extra columns under IE for spacing
-                .set("-ms-grid-column-span", String.valueOf((to - from) + ((to - from) - 1))); // adding extra columns under IE for spacing
+                .set("grid-column", from + "/" + to);
     }
 
     public void setRowSpan(Component component, int from, int to) {
         component.getElement().getStyle()
-                .set("grid-row", from + "/" + to)
-                .set("-ms-grid-row", String.valueOf(from + (from - 1))) // adding extra rows under IE for spacing
-                .set("-ms-grid-row-span", String.valueOf((to - from) + ((to - from) - 1))); // adding extra rows under IE for spacing
+                .set("grid-row", from + "/" + to);
     }
 
     public void setPosition(Component component, int row, int col) {

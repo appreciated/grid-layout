@@ -47,4 +47,8 @@ public class FluentGridLayout extends GridLayout {
         setRowAlign(component, align);
         return this;
     }
+
+    public void with(Component... div) {
+        add(div);
+    }
 }
