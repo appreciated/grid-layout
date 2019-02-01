@@ -1,7 +1,7 @@
 package com.github.appreciated.grid;
 
-import com.github.appreciated.grid.sizes.sizes.CssGridUnit;
-import com.github.appreciated.grid.sizes.sizes.Size;
+import com.github.appreciated.grid.sizes.CssGridUnit;
+import com.github.appreciated.grid.sizes.Size;
 import com.vaadin.flow.component.*;
 
 import java.util.Arrays;

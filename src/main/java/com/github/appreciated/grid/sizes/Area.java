@@ -1,7 +1,5 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.sizes.sizes.CssGridSize;
-
 public class Area implements CssGridSize {
 
     private String area;
