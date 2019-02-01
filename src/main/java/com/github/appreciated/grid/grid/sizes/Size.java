@@ -2,7 +2,7 @@ package com.github.appreciated.grid.grid.sizes;
 
 import java.util.Arrays;
 
-public class Size implements CssGridUnit {
+public class Size implements CssGridSize {
 
     private int size;
     private CssUnit unit;

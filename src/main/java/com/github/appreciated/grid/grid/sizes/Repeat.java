@@ -25,7 +25,7 @@ public class Repeat implements CssGridFunction {
 
     @Override
     public String getValue() {
-        return Arrays.stream(sizes).map(CssGridUnit::getValue).reduce((unit, unit2) -> unit + " " + unit2).orElse("");
+        return Arrays.stream(sizes).map(CssGridUnit::getCssValue).reduce((unit, unit2) -> unit + " " + unit2).orElse("");
     }
 
     @Override
@@ -45,7 +45,7 @@ public class Repeat implements CssGridFunction {
 
     @Override
     public String getPrefixValue() {
-        return RepeatMode.functionName + "(" + times == null ? mode.getRepeatModeValue() : times.toString() + ",";
+        return RepeatMode.functionName + "(" + (times == null ? mode.getRepeatModeValue() : times.toString()) + ", ";
     }
 
     public enum RepeatMode {

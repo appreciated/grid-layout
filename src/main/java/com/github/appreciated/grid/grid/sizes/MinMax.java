@@ -10,10 +10,9 @@ public class MinMax implements CssGridFunction {
         this.sizes = sizes;
     }
 
-
     @Override
     public String getValue() {
-        return Arrays.stream(sizes).map(CssGridSize::getValue).reduce((unit, unit2) -> unit + " " + unit2).orElse("");
+        return Arrays.stream(sizes).map(CssGridSize::getCssValue).reduce((unit, unit2) -> unit + "," + unit2).orElse("");
     }
 
     @Override
@@ -33,6 +32,6 @@ public class MinMax implements CssGridFunction {
 
     @Override
     public String getPrefixValue() {
-        return "min-max(";
+        return "minmax(";
     }
 }

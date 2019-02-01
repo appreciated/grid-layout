@@ -1,7 +1,7 @@
 package com.github.appreciated.grid.grid.sizes;
 
 public interface CssGridUnit {
-    default String getCssGridValue() {
+    default String getCssValue() {
         return (hasPrefix() ? getPrefixValue() : "") + getValue() + (hasSuffix() ? getSuffixValue() : "");
     }
 
