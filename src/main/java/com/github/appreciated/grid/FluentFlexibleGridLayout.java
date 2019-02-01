@@ -1,6 +1,7 @@
 package com.github.appreciated.grid;
 
 import com.github.appreciated.grid.sizes.CssGridUnit;
+import com.github.appreciated.grid.sizes.Size;
 import com.vaadin.flow.component.Component;
 
 public class FluentFlexibleGridLayout extends FlexibleGridLayout {
@@ -33,7 +34,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param component the component which column width should be set
      * @param width     the number of columns the item should span over
      */
-    public FluentFlexibleGridLayout withItemWithWidth(Component component, String width) {
+    public FluentFlexibleGridLayout withItemWithWidth(Component component, int width) {
         add(component);
         setItemWidth(component, width);
         return this;
@@ -45,11 +46,11 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param component the component which column width should be set
      * @param width     the number of columns the item should span over
      */
-    public void setItemWidth(Component component, String width) {
+    public void setItemWidth(Component component, int width) {
         setColumn(component, "span " + width);
     }
 
-    public FluentFlexibleGridLayout withItemWithSize(Component component, String size, String height) {
+    public FluentFlexibleGridLayout withItemWithSize(Component component, int size, int height) {
         add(component);
         setItemSize(component, size, height);
         return this;
@@ -62,9 +63,19 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param width     the number of columns the item should span over
      * @param height    the number of rows the item should span over
      */
-    public void setItemSize(Component component, String width, String height) {
+    public void setItemSize(Component component, int width, int height) {
         setItemHeight(component, height);
         setItemWidth(component, width);
+    }
+
+    /**
+     * Shorthand fluent style for users which don't want to dive into the css-grid to set the number of row an item should span over
+     *
+     * @param component the component which row height should be set
+     * @param height    the number of rows the item should span over
+     */
+    public void setItemHeight(Component component, int height) {
+        setRow(component, "span " + height);
     }
 
     public FluentFlexibleGridLayout withItemAtArea(Component component, int rowStart, int colStart) {
@@ -133,20 +144,10 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param height
      * @return this
      */
-    public FluentFlexibleGridLayout withItemWithHeight(Component component, String height) {
+    public FluentFlexibleGridLayout withItemWithHeight(Component component, int height) {
         add(component);
         setItemHeight(component, height);
         return this;
-    }
-
-    /**
-     * Shorthand fluent style for users which don't want to dive into the css-grid to set the number of row an item should span over
-     *
-     * @param component the component which row height should be set
-     * @param height    the number of rows the item should span over
-     */
-    public void setItemHeight(Component component, String height) {
-        setRow(component, "span " + height);
     }
 
     /**
@@ -178,6 +179,21 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
 
     public FluentFlexibleGridLayout withRowAlign(Component component, RowAlign end) {
         setRowAlign(component, end);
+        return this;
+    }
+
+    public FluentFlexibleGridLayout withGap(Size size) {
+        setGap(size);
+        return this;
+    }
+
+    public FluentFlexibleGridLayout withAutoRows(Size size) {
+        setAutoRows(size);
+        return this;
+    }
+
+    public FluentFlexibleGridLayout withAutoColmuns(Size size) {
+        setAutoColumns(size);
         return this;
     }
 }

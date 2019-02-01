@@ -1,6 +1,9 @@
 package com.github.appreciated.grid.sizes;
 
-public class Fractional implements CssGridUnit {
+/**
+ *
+ */
+public class Fractional implements CssGridSize {
     private int fraction;
 
     public Fractional(int fraction) {

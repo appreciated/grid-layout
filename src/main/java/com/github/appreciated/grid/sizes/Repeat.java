@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class Repeat implements CssGridFunction {
 
+    public static final String FUNCTION_NAME = "repeat";
+
     private Integer times;
     private RepeatMode mode;
     private CssGridUnit[] sizes;
@@ -45,29 +47,28 @@ public class Repeat implements CssGridFunction {
 
     @Override
     public String getPrefixValue() {
-        return RepeatMode.functionName + "(" + (times == null ? mode.getRepeatModeValue() : times.toString()) + ", ";
+        return FUNCTION_NAME + "(" + (times == null ? mode.getRepeatModeValue() : times.toString()) + ", ";
     }
 
     public enum RepeatMode {
         AUTO_FILL("auto-fill"),
         AUTO_FIT("auto-fit");
 
-        public static final String functionName = "repeat";
-        private final String alignValue;
+        private final String repeatValue;
 
-        RepeatMode(String alignValue) {
-            this.alignValue = alignValue;
+        RepeatMode(String repeatValue) {
+            this.repeatValue = repeatValue;
         }
 
-        static RepeatMode toColumnAlign(String alignValue, RepeatMode defaultValue) {
+        static RepeatMode toRepeatMode(String repeatValue, RepeatMode defaultValue) {
             return Arrays.stream(values())
-                    .filter((repeatMode) -> repeatMode.getRepeatModeValue().equals(alignValue))
+                    .filter((repeatMode) -> repeatMode.getRepeatModeValue().equals(repeatValue))
                     .findFirst()
                     .orElse(defaultValue);
         }
 
         String getRepeatModeValue() {
-            return this.alignValue;
+            return this.repeatValue;
         }
     }
 }

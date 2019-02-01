@@ -377,13 +377,13 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
     }
 
     /**
-     * @param autoColumns
+     * @param size
      */
-    public void setAutoColumns(String autoColumns) {
-        if (autoColumns == null) {
+    public void setAutoColumns(Size size) {
+        if (size == null) {
             getStyle().remove("grid-auto-columns");
         } else {
-            getStyle().set("grid-auto-columns", autoColumns);
+            getStyle().set("grid-auto-columns", size.getCssValue());
         }
     }
 
@@ -413,13 +413,13 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
     }
 
     /**
-     * @param autoRows
+     * @param size
      */
-    public void setAutoRows(String autoRows) {
-        if (autoRows == null) {
+    public void setAutoRows(Size size) {
+        if (size == null) {
             getStyle().remove("grid-auto-rows");
         } else {
-            getStyle().set("grid-auto-rows", autoRows);
+            getStyle().set("grid-auto-rows", size.getCssValue());
         }
     }
 
