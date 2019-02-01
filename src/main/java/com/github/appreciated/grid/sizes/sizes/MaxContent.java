@@ -1,4 +1,4 @@
-package com.github.appreciated.grid.grid.sizes;
+package com.github.appreciated.grid.sizes.sizes;
 
 public class MaxContent implements CssGridSize {
     @Override

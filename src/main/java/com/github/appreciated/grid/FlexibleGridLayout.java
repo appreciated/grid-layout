@@ -1,6 +1,7 @@
 package com.github.appreciated.grid;
 
-import com.github.appreciated.grid.grid.sizes.CssGridUnit;
+import com.github.appreciated.grid.sizes.sizes.CssGridUnit;
+import com.github.appreciated.grid.sizes.sizes.Size;
 import com.vaadin.flow.component.*;
 
 import java.util.Arrays;
@@ -34,11 +35,11 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
     /**
      * @param columnGap
      */
-    public void setColumnGap(String columnGap) {
+    public void setColumnGap(Size columnGap) {
         if (columnGap == null) {
             getStyle().remove("grid-column-gap");
         } else {
-            getStyle().set("grid-column-gap", columnGap);
+            getStyle().set("grid-column-gap", columnGap.getCssValue());
         }
     }
 
@@ -52,11 +53,11 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
     /**
      * @param rowGap
      */
-    public void setRowGap(String rowGap) {
+    public void setRowGap(Size rowGap) {
         if (rowGap == null) {
             getStyle().remove("grid-row-gap");
         } else {
-            getStyle().set("grid-row-gap", rowGap);
+            getStyle().set("grid-row-gap", rowGap.getCssValue());
         }
     }
 
@@ -64,10 +65,10 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param columnGap
      * @param rowGap
      */
-    public void setGap(String columnGap, String rowGap) {
+    public void setGap(Size columnGap, Size rowGap) {
         Objects.requireNonNull(columnGap);
         Objects.requireNonNull(rowGap);
-        getStyle().set("grid-gap", columnGap + " " + rowGap);
+        getStyle().set("grid-gap", columnGap.getCssValue() + " " + rowGap.getCssValue());
     }
 
     /**
@@ -80,11 +81,11 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
     /**
      * @param gap
      */
-    public void setGap(String gap) {
+    public void setGap(Size gap) {
         if (gap == null) {
             getStyle().remove("grid-gap");
         } else {
-            getStyle().set("grid-gap", gap);
+            getStyle().set("grid-gap", gap.getCssValue());
         }
     }
 

@@ -1,4 +1,4 @@
-package com.github.appreciated.grid.grid;
+package com.github.appreciated.grid.sizes;
 
 public class RepeatingColumn {
     public static String AUTO = "auto";

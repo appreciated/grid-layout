@@ -2,10 +2,10 @@ package com.github.appreciated;
 
 import com.github.appreciated.grid.FluentFlexibleGridLayout;
 import com.github.appreciated.grid.GridLayoutComponent;
-import com.github.appreciated.grid.grid.sizes.MaxContent;
-import com.github.appreciated.grid.grid.sizes.MinContent;
-import com.github.appreciated.grid.grid.sizes.MinMax;
-import com.github.appreciated.grid.grid.sizes.Size;
+import com.github.appreciated.grid.sizes.sizes.MaxContent;
+import com.github.appreciated.grid.sizes.sizes.MinContent;
+import com.github.appreciated.grid.sizes.sizes.MinMax;
+import com.github.appreciated.grid.sizes.sizes.Size;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
@@ -14,7 +14,7 @@ import com.vaadin.flow.router.Route;
 
 import java.util.Random;
 
-import static com.github.appreciated.grid.grid.sizes.Size.CssUnit.PX;
+import static com.github.appreciated.grid.sizes.sizes.Size.CssUnit.PX;
 
 @Route("")
 public class DemoView extends VerticalLayout {

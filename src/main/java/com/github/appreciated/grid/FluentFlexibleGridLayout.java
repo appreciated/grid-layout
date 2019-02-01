@@ -1,6 +1,6 @@
 package com.github.appreciated.grid;
 
-import com.github.appreciated.grid.grid.sizes.CssGridUnit;
+import com.github.appreciated.grid.sizes.sizes.CssGridUnit;
 import com.vaadin.flow.component.Component;
 
 public class FluentFlexibleGridLayout extends FlexibleGridLayout {
