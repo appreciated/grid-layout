@@ -1,19 +1,18 @@
 package com.github.appreciated.grid;
 
-import com.github.appreciated.grid.vaadin.GridLayoutComponent;
+import com.github.appreciated.grid.grid.sizes.CssGridUnit;
 import com.vaadin.flow.component.*;
 
 import java.util.Arrays;
 import java.util.Objects;
 
 @Tag("div")
-public class CssGridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent {
-    private TemplateAreaParser templateAreaParser;
+public class FlexibleGridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent {
 
     /**
      * @param components
      */
-    public CssGridLayout(Component... components) {
+    public FlexibleGridLayout(Component... components) {
         this();
         this.add(components);
     }
@@ -21,14 +20,8 @@ public class CssGridLayout extends Component implements HasStyle, HasOrderedComp
     /**
      *
      */
-    public CssGridLayout() {
+    public FlexibleGridLayout() {
         getStyle().set("display", "grid");
-    }
-
-    @Override
-    protected void onAttach(AttachEvent attachEvent) {
-        super.onAttach(attachEvent);
-        getElement().callFunction("setAttribute", "style", "display:-ms-grid; " + getElement().getAttribute("style"));
     }
 
     /**
@@ -105,10 +98,10 @@ public class CssGridLayout extends Component implements HasStyle, HasOrderedComp
      * #Dynamic Number of rows  <br>
      * Other: repeat(auto-fill, minmax(250px, 1fr));  <br>
      *
-     * @param templateColumns "The column definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
+     * @param units "The column definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
      */
-    public void setTemplateColumns(String... templateColumns) {
-        getStyle().set("grid-template-columns", Arrays.stream(templateColumns).reduce((s, s2) -> s + " " + s2).orElse(""));
+    public void setTemplateColumns(CssGridUnit... units) {
+        getStyle().set("grid-template-columns", Arrays.stream(units).map(CssGridUnit::getValue).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
     /**
@@ -121,13 +114,13 @@ public class CssGridLayout extends Component implements HasStyle, HasOrderedComp
      * #Dynamic Number of rows  <br>
      * Other: repeat(auto-fill, minmax(250px, 1fr));  <br>
      *
-     * @param templateRows "The row definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
+     * @param units "The row definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
      */
-    public void setTemplateRows(String... templateRows) {
-        if (templateRows == null) {
+    public void setTemplateRows(CssGridUnit... units) {
+        if (units == null) {
             getStyle().remove("grid-template-rows");
         } else {
-            getStyle().set("grid-template-rows", Arrays.stream(templateRows).reduce((s, s2) -> s + " " + s2).orElse(""));
+            getStyle().set("grid-template-rows", Arrays.stream(units).map(CssGridUnit::getValue).reduce((s, s2) -> s + " " + s2).orElse(""));
         }
     }
 
@@ -169,7 +162,7 @@ public class CssGridLayout extends Component implements HasStyle, HasOrderedComp
      * 'menu main main main right right'  <br>
      * 'menu footer footer footer footer footer';  <br>
      * <p>
-     * In the second step you set the area for each item which will then span over the above defined area. Use therefor {@link CssGridLayout#setArea(Component, String)} (Component, int, int, int, int)}
+     * In the second step you set the area for each item which will then span over the above defined area. Use therefor {@link FlexibleGridLayout#setArea(Component, String)} (Component, int, int, int, int)}
      *
      * @param templateAreas
      */
@@ -177,7 +170,6 @@ public class CssGridLayout extends Component implements HasStyle, HasOrderedComp
         if (templateAreas == null) {
             getStyle().remove("grid-template-areas");
         } else {
-            this.templateAreaParser = new TemplateAreaParser(templateAreas);
             String areas = Arrays.stream(templateAreas)
                     .map(strings -> Arrays.stream(strings).reduce((s, s2) -> s + " " + s2)
                             .orElse("")
@@ -365,7 +357,6 @@ public class CssGridLayout extends Component implements HasStyle, HasOrderedComp
             component.getElement().getStyle().remove("grid-area");
         } else {
             component.getElement().getStyle().set("grid-area", area);
-            templateAreaParser.addIESupportStyles(component, area);
         }
     }
 
@@ -398,18 +389,18 @@ public class CssGridLayout extends Component implements HasStyle, HasOrderedComp
     /**
      * @return
      */
-    public String getAutoFlow() {
-        return getStyle().get("grid-auto-flow");
+    public AutoFlow getAutoFlow() {
+        return AutoFlow.toAutoFlow(getStyle().get(AutoFlow.cssProperty));
     }
 
     /**
      * @param autoFlow
      */
-    public void setAutoFlow(String autoFlow) {
+    public void setAutoFlow(AutoFlow autoFlow) {
         if (autoFlow == null) {
-            getStyle().remove("grid-auto-flow");
+            getStyle().remove(autoFlow.cssProperty);
         } else {
-            getStyle().set("grid-auto-flow", autoFlow);
+            getStyle().set(autoFlow.cssProperty, autoFlow.getAutoFlowValue());
         }
     }
 

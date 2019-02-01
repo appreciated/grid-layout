@@ -1,4 +1,4 @@
-package com.github.appreciated.grid;
+package com.github.appreciated;
 
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
