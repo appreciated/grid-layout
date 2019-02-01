@@ -101,7 +101,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param units "The column definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
      */
     public void setTemplateColumns(CssGridUnit... units) {
-        getStyle().set("grid-template-columns", Arrays.stream(units).map(CssGridUnit::getValue).reduce((s, s2) -> s + " " + s2).orElse(""));
+        getStyle().set("grid-template-columns", Arrays.stream(units).map(CssGridUnit::getCssValue).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
     /**
@@ -120,7 +120,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
         if (units == null) {
             getStyle().remove("grid-template-rows");
         } else {
-            getStyle().set("grid-template-rows", Arrays.stream(units).map(CssGridUnit::getValue).reduce((s, s2) -> s + " " + s2).orElse(""));
+            getStyle().set("grid-template-rows", Arrays.stream(units).map(CssGridUnit::getCssValue).reduce((s, s2) -> s + " " + s2).orElse(""));
         }
     }
 
