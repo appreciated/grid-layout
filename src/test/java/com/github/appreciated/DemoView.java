@@ -2,7 +2,7 @@ package com.github.appreciated;
 
 import com.github.appreciated.grid.FluentFlexibleGridLayout;
 import com.github.appreciated.grid.GridLayoutComponent;
-import com.github.appreciated.grid.sizes.Fractional;
+import com.github.appreciated.grid.sizes.Flex;
 import com.github.appreciated.grid.sizes.MinMax;
 import com.github.appreciated.grid.sizes.Repeat;
 import com.github.appreciated.grid.sizes.Size;
@@ -26,11 +26,11 @@ public class DemoView extends VerticalLayout {
         random = new Random();
         FluentFlexibleGridLayout layout = new FluentFlexibleGridLayout();
         Component alignTestComponent = getDiv();
-        layout.withTemplateRows(new Fractional(1), new Fractional(1), new Fractional(1))
-                .withTemplateColumns(new Fractional(1), new Fractional(1), new Fractional(1))
+        layout.withTemplateRows(new Flex(1), new Flex(1), new Flex(1))
+                .withTemplateColumns(new Flex(1), new Flex(1), new Flex(1))
                 .withColumnAlign(alignTestComponent, GridLayoutComponent.ColumnAlign.END)
                 .withRowAlign(alignTestComponent, GridLayoutComponent.RowAlign.END)
-                .withItemAtArea(alignTestComponent, 1, 1, 1, 3)
+                .withItemAtArea(alignTestComponent, -1, 1, 1, 3)
                 .withItemAtArea(getDiv(), 2, 1)
                 .withItemAtArea(getDiv(), 2, 2)
                 .withItemAtArea(getDiv(), 1, 3, 3, 3);
@@ -38,7 +38,7 @@ public class DemoView extends VerticalLayout {
         layout.setHeight("600px");
 
         FluentFlexibleGridLayout flexibleGridLayout = new FluentFlexibleGridLayout()
-                .withTemplateColumns(new Repeat(AUTO_FIT, new MinMax(new Size("220px"), new Fractional(1))))
+                .withTemplateColumns(new Repeat(AUTO_FIT, new MinMax(new Size("220px"), new Flex(1))))
                 .withTemplateRows(new Repeat(AUTO_FILL, new Size("220px")))
                 .withAutoRows(new Size("220px"))
                 .withGap(new Size("10px"))

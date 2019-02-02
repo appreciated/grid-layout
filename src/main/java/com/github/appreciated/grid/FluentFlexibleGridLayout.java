@@ -1,6 +1,7 @@
 package com.github.appreciated.grid;
 
-import com.github.appreciated.grid.sizes.CssGridUnit;
+import com.github.appreciated.grid.interfaces.CssGridUnit;
+import com.github.appreciated.grid.sizes.NegativeValueException;
 import com.github.appreciated.grid.sizes.Size;
 import com.vaadin.flow.component.Component;
 
@@ -83,6 +84,9 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
     }
 
     public FluentFlexibleGridLayout withItemAtArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
+        if (rowStart < 0 || colStart < 0 || rowEnd < 0 || colEnd < 0) {
+            throw new NegativeValueException(rowStart, colStart, rowEnd, colEnd);
+        }
         return withItemAtArea(component, String.valueOf(rowStart), String.valueOf(colStart), String.valueOf(rowEnd), String.valueOf(colEnd));
     }
 

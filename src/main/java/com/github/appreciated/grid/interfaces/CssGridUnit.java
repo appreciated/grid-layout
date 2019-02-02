@@ -1,6 +1,6 @@
-package com.github.appreciated.grid.sizes;
+package com.github.appreciated.grid.interfaces;
 
-public interface CssGridUnit {
+public interface CssGridUnit extends HasCssValue {
     default String getCssValue() {
         return (hasPrefix() ? getPrefixValue() : "") + getValue() + (hasSuffix() ? getSuffixValue() : "");
     }

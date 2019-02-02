@@ -1,4 +1,4 @@
-package com.github.appreciated.grid.sizes;
+package com.github.appreciated.grid.interfaces;
 
 public interface CssGridSize extends CssGridUnit {
 

@@ -1,5 +1,8 @@
 package com.github.appreciated.grid.sizes;
 
+import com.github.appreciated.grid.interfaces.CssGridFunction;
+import com.github.appreciated.grid.interfaces.CssGridSize;
+
 import java.util.Arrays;
 
 public class MinMax implements CssGridFunction {

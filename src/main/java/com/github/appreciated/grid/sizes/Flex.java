@@ -1,12 +1,18 @@
 package com.github.appreciated.grid.sizes;
 
+import com.github.appreciated.grid.interfaces.CssGridSize;
+
 /**
  *
  */
-public class Fractional implements CssGridSize {
-    private int fraction;
+public class Flex implements CssGridSize {
 
-    public Fractional(int fraction) {
+    private double fraction;
+
+    public Flex(double fraction) {
+        if (fraction < 0) {
+            throw new NegativeValueException(fraction);
+        }
         this.fraction = fraction;
     }
 
