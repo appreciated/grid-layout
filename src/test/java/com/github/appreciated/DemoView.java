@@ -16,7 +16,6 @@ import java.util.Random;
 
 import static com.github.appreciated.grid.sizes.Repeat.RepeatMode.AUTO_FILL;
 import static com.github.appreciated.grid.sizes.Repeat.RepeatMode.AUTO_FIT;
-import static com.github.appreciated.grid.sizes.Size.CssUnit.PX;
 
 @Route("")
 public class DemoView extends VerticalLayout {
@@ -39,10 +38,10 @@ public class DemoView extends VerticalLayout {
         layout.setHeight("600px");
 
         FluentFlexibleGridLayout flexibleGridLayout = new FluentFlexibleGridLayout()
-                .withTemplateColumns(new Repeat(AUTO_FIT, new MinMax(new Size(220, PX), new Fractional(1))))
-                .withTemplateRows(new Repeat(AUTO_FILL, new Size(220, PX)))
-                .withAutoRows(new Size(220, PX))
-                .withGap(new Size(10, PX))
+                .withTemplateColumns(new Repeat(AUTO_FIT, new MinMax(new Size("220px"), new Fractional(1))))
+                .withTemplateRows(new Repeat(AUTO_FILL, new Size("220px")))
+                .withAutoRows(new Size("220px"))
+                .withGap(new Size("10px"))
                 .withItems(
                         getDiv())
                 .withItemWithSize(getDiv(), 2, 2)
