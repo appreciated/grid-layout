@@ -2,7 +2,6 @@ package com.github.appreciated.grid;
 
 import com.github.appreciated.grid.entities.GridTemplates;
 import com.github.appreciated.grid.interfaces.CssGridUnit;
-import com.github.appreciated.grid.sizes.NegativeValueException;
 import com.github.appreciated.grid.sizes.Size;
 import com.vaadin.flow.component.*;
 
@@ -278,9 +277,6 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param colEnd
      */
     public void setArea(Component component, String rowStart, String colStart, String rowEnd, String colEnd) {
-        if (rowStart < 0 || colStart < 0 || rowEnd < 0 || colEnd < 0) {
-            throw new NegativeValueException(rowStart, colStart, rowEnd, colEnd);
-        }
         setRowStartAndEnd(component, rowStart, rowEnd);
         setColumnStartAndEnd(component, colStart, colEnd);
     }
