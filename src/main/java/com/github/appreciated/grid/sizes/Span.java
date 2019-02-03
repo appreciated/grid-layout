@@ -19,9 +19,22 @@ public class Span implements RowOrColUnit, AreaUnit {
         this.area = area;
     }
 
+    public Span(int span, Area area) {
+        Objects.requireNonNull(area);
+        this.span = span;
+        this.area = area;
+    }
+
+
     @Override
     public String getValue() {
-        return span != null ? String.valueOf(span) : area.getCssValue();
+        if (span != null && area != null) {
+            return span + " " + area.getCssValue();
+        } else if (span != null) {
+            return String.valueOf(span);
+        } else {
+            return area.getCssValue();
+        }
     }
 
     @Override
