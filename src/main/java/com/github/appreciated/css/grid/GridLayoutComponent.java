@@ -81,7 +81,7 @@ public interface GridLayoutComponent {
             this.autoFlowValue = autoFlowValue;
         }
 
-        static AutoFlow toAutoFlow(String autoFlowValue) {
+        public static AutoFlow toAutoFlow(String autoFlowValue) {
             return toAutoFlow(autoFlowValue, ROW);
         }
 
@@ -92,7 +92,7 @@ public interface GridLayoutComponent {
                     .orElse(defaultValue);
         }
 
-        String getAutoFlowValue() {
+        public String getAutoFlowValue() {
             return this.autoFlowValue;
         }
     }

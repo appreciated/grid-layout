@@ -1,5 +1,6 @@
-package com.github.appreciated.css.grid;
+package com.github.appreciated.layout;
 
+import com.github.appreciated.css.grid.GridLayoutComponent;
 import com.github.appreciated.css.grid.entities.GridTemplates;
 import com.github.appreciated.css.grid.interfaces.AreaUnit;
 import com.github.appreciated.css.grid.interfaces.CssUnit;

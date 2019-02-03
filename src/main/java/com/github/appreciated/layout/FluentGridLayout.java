@@ -1,4 +1,4 @@
-package com.github.appreciated.css.grid;
+package com.github.appreciated.layout;
 
 import com.github.appreciated.css.grid.exception.NegativeValueException;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
