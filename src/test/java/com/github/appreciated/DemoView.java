@@ -1,11 +1,11 @@
 package com.github.appreciated;
 
-import com.github.appreciated.css.grid.FluentGridLayout;
 import com.github.appreciated.css.grid.GridLayoutComponent;
 import com.github.appreciated.css.grid.sizes.Flex;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.MinMax;
 import com.github.appreciated.css.grid.sizes.Repeat;
+import com.github.appreciated.layout.FluentGridLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
