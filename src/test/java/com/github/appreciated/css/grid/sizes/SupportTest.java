@@ -1,8 +1,8 @@
-package com.github.appreciated.grid.sizes;
+package com.github.appreciated.css.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.MinMaxUnit;
-import com.github.appreciated.grid.interfaces.RowOrColUnit;
-import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
+import com.github.appreciated.css.grid.interfaces.MinMaxUnit;
+import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
+import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import org.junit.Assert;
 import org.junit.Test;
 

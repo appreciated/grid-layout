@@ -1,4 +1,4 @@
-package com.github.appreciated.grid.sizes;
+package com.github.appreciated.css.grid.sizes;
 
 import org.junit.Assert;
 import org.junit.Test;

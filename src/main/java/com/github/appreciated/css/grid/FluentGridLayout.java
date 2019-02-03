@@ -1,11 +1,11 @@
 package com.github.appreciated.css.grid;
 
-import com.github.appreciated.css.grid.sizes.Length;
-import com.github.appreciated.css.grid.sizes.Span;
 import com.github.appreciated.css.grid.exception.NegativeValueException;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.Area;
 import com.github.appreciated.css.grid.sizes.Int;
+import com.github.appreciated.css.grid.sizes.Length;
+import com.github.appreciated.css.grid.sizes.Span;
 import com.vaadin.flow.component.Component;
 
 public class FluentGridLayout extends GridLayout {
@@ -199,7 +199,7 @@ public class FluentGridLayout extends GridLayout {
         return this;
     }
 
-    public FluentGridLayout withAutoColmuns(Length size) {
+    public FluentGridLayout withAutoColumns(Length size) {
         setAutoColumns(size);
         return this;
     }

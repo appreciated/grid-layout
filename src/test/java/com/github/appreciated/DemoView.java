@@ -1,11 +1,11 @@
 package com.github.appreciated;
 
-import com.github.appreciated.grid.FluentFlexibleGridLayout;
-import com.github.appreciated.grid.GridLayoutComponent;
-import com.github.appreciated.grid.sizes.Flex;
-import com.github.appreciated.grid.sizes.Length;
-import com.github.appreciated.grid.sizes.MinMax;
-import com.github.appreciated.grid.sizes.Repeat;
+import com.github.appreciated.css.grid.FluentGridLayout;
+import com.github.appreciated.css.grid.GridLayoutComponent;
+import com.github.appreciated.css.grid.sizes.Flex;
+import com.github.appreciated.css.grid.sizes.Length;
+import com.github.appreciated.css.grid.sizes.MinMax;
+import com.github.appreciated.css.grid.sizes.Repeat;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
@@ -14,8 +14,8 @@ import com.vaadin.flow.router.Route;
 
 import java.util.Random;
 
-import static com.github.appreciated.grid.sizes.Repeat.RepeatMode.AUTO_FILL;
-import static com.github.appreciated.grid.sizes.Repeat.RepeatMode.AUTO_FIT;
+import static com.github.appreciated.css.grid.sizes.Repeat.RepeatMode.AUTO_FILL;
+import static com.github.appreciated.css.grid.sizes.Repeat.RepeatMode.AUTO_FIT;
 
 @Route("")
 public class DemoView extends VerticalLayout {
@@ -24,7 +24,7 @@ public class DemoView extends VerticalLayout {
 
     public DemoView() {
         random = new Random();
-        FluentFlexibleGridLayout layout = new FluentFlexibleGridLayout();
+        FluentGridLayout layout = new FluentGridLayout();
         Component alignTestComponent = getDiv();
         layout.withTemplateRows(new Flex(1), new Flex(1), new Flex(1))
                 .withTemplateColumns(new Flex(1), new Flex(1), new Flex(1))
@@ -37,7 +37,7 @@ public class DemoView extends VerticalLayout {
         layout.setWidth("100%");
         layout.setHeight("600px");
 
-        FluentFlexibleGridLayout flexibleGridLayout = new FluentFlexibleGridLayout()
+        FluentGridLayout flexibleGridLayout = new FluentGridLayout()
                 .withTemplateColumns(new Repeat(AUTO_FIT, new MinMax(new Length("220px"), new Flex(1))))
                 .withTemplateRows(new Repeat(AUTO_FILL, new Length("220px")))
                 .withAutoRows(new Length("220px"))
