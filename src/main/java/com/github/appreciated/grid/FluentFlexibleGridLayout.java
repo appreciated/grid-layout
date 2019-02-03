@@ -1,8 +1,9 @@
 package com.github.appreciated.grid;
 
 import com.github.appreciated.grid.exception.NegativeValueException;
-import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
+import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.grid.sizes.Area;
+import com.github.appreciated.grid.sizes.Int;
 import com.github.appreciated.grid.sizes.Length;
 import com.github.appreciated.grid.sizes.Span;
 import com.vaadin.flow.component.Component;
@@ -10,23 +11,23 @@ import com.vaadin.flow.component.Component;
 public class FluentFlexibleGridLayout extends FlexibleGridLayout {
 
     /**
-     * Fluent method of {@link FlexibleGridLayout#setTemplateColumns(CssGridTemplateUnit...)}
+     * Fluent method of {@link FlexibleGridLayout#setTemplateColumns(TemplateRowsAndColsUnit...)}
      *
      * @param units
      * @return
      */
-    public FluentFlexibleGridLayout withTemplateColumns(CssGridTemplateUnit... units) {
+    public FluentFlexibleGridLayout withTemplateColumns(TemplateRowsAndColsUnit... units) {
         setTemplateColumns(units);
         return this;
     }
 
     /**
-     * Fluent method of {@link FlexibleGridLayout#setTemplateColumns(CssGridTemplateUnit...)}
+     * Fluent method of {@link FlexibleGridLayout#setTemplateColumns(TemplateRowsAndColsUnit...)}
      *
      * @param rows
      * @return
      */
-    public FluentFlexibleGridLayout withTemplateRows(CssGridTemplateUnit... rows) {
+    public FluentFlexibleGridLayout withTemplateRows(TemplateRowsAndColsUnit... rows) {
         setTemplateRows(rows);
         return this;
     }
@@ -89,7 +90,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
         if (rowStart < 0 || colStart < 0 || rowEnd < 0 || colEnd < 0) {
             throw new NegativeValueException(rowStart, colStart, rowEnd, colEnd);
         }
-        return withItemAtArea(component, new Length(rowStart), new Length(colStart), new Length(rowEnd), new Length(colEnd));
+        return withItemAtArea(component, new Int(rowStart), new Int(colStart), new Int(rowEnd), new Int(colEnd));
     }
 
     /**
@@ -102,7 +103,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param colEnd    col in which you want the component span to end
      * @return this
      */
-    public FluentFlexibleGridLayout withItemAtArea(Component component, Length rowStart, Length colStart, Length rowEnd, Length colEnd) {
+    public FluentFlexibleGridLayout withItemAtArea(Component component, Int rowStart, Int colStart, Int rowEnd, Int colEnd) {
         add(component);
         setArea(component, rowStart, colStart, rowEnd, colEnd);
         return this;

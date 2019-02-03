@@ -1,8 +1,9 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridAreaUnit;
+import com.github.appreciated.grid.interfaces.AreaUnit;
+import com.github.appreciated.grid.interfaces.RowOrColUnit;
 
-public class Area implements CssGridAreaUnit {
+public class Area implements AreaUnit, RowOrColUnit {
 
     private String area;
 

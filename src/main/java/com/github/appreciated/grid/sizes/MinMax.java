@@ -1,15 +1,15 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridAutoUnit;
-import com.github.appreciated.grid.interfaces.CssGridMinMaxUnit;
-import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
+import com.github.appreciated.grid.interfaces.AutoRowAndColUnit;
+import com.github.appreciated.grid.interfaces.MinMaxUnit;
+import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
 
-public class MinMax implements CssGridAutoUnit, CssGridTemplateUnit {
+public class MinMax implements AutoRowAndColUnit, TemplateRowsAndColsUnit {
 
-    private final CssGridMinMaxUnit min;
-    private final CssGridMinMaxUnit max;
+    private final MinMaxUnit min;
+    private final MinMaxUnit max;
 
-    public MinMax(CssGridMinMaxUnit min, CssGridMinMaxUnit max) {
+    public MinMax(MinMaxUnit min, MinMaxUnit max) {
         this.min = min;
         this.max = max;
     }

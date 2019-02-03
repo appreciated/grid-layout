@@ -1,11 +1,17 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.*;
+import com.github.appreciated.grid.interfaces.RowOrColUnit;
 
-public class Auto implements AutoRowAndColUnit, RowOrColUnit, TemplateRowsAndColsUnit, MinMaxUnit, AreaUnit {
+public class Int implements RowOrColUnit {
+    private int value;
+
+    public Int(int value) {
+        this.value = value;
+    }
+
     @Override
     public String getValue() {
-        return "auto";
+        return String.valueOf(value);
     }
 
     @Override

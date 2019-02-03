@@ -1,14 +1,14 @@
 package com.github.appreciated.grid.entities;
 
-import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
 import com.github.appreciated.grid.interfaces.CssUnit;
+import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
 
 import java.util.Arrays;
 
 public abstract class AbstractTemplate implements CssUnit {
-    private final CssGridTemplateUnit[] units;
+    private final TemplateRowsAndColsUnit[] units;
 
-    public AbstractTemplate(CssGridTemplateUnit... unit) {
+    public AbstractTemplate(TemplateRowsAndColsUnit... unit) {
         this.units = unit;
     }
 

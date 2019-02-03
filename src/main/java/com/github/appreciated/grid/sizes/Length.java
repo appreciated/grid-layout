@@ -1,10 +1,9 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridAreaUnit;
-import com.github.appreciated.grid.interfaces.CssGridMinMaxUnit;
-import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
+import com.github.appreciated.grid.interfaces.MinMaxUnit;
+import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
 
-public class Length implements CssGridAreaUnit, CssGridTemplateUnit, CssGridMinMaxUnit {
+public class Length implements TemplateRowsAndColsUnit, MinMaxUnit {
 
     private String size;
 

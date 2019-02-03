@@ -1,10 +1,10 @@
 package com.github.appreciated.grid;
 
 import com.github.appreciated.grid.entities.GridTemplates;
-import com.github.appreciated.grid.interfaces.CssGridAreaUnit;
-import com.github.appreciated.grid.interfaces.CssGridRowOrColUnit;
-import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
+import com.github.appreciated.grid.interfaces.AreaUnit;
 import com.github.appreciated.grid.interfaces.CssUnit;
+import com.github.appreciated.grid.interfaces.RowOrColUnit;
+import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.grid.sizes.Area;
 import com.github.appreciated.grid.sizes.Length;
 import com.vaadin.flow.component.*;
@@ -106,7 +106,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      *
      * @param units "The column definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
      */
-    public void setTemplateColumns(CssGridTemplateUnit... units) {
+    public void setTemplateColumns(TemplateRowsAndColsUnit... units) {
         getStyle().set("grid-template-columns", Arrays.stream(units).map(CssUnit::getCssValue).reduce((s, s2) -> s + " " + s2).orElse(""));
     }
 
@@ -122,7 +122,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      *
      * @param units "The row definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
      */
-    public void setTemplateRows(CssGridTemplateUnit... units) {
+    public void setTemplateRows(TemplateRowsAndColsUnit... units) {
         if (units == null) {
             getStyle().remove("grid-template-rows");
         } else {
@@ -198,7 +198,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param column
      * @param row
      */
-    public void setColumnAndRow(Component component, CssGridRowOrColUnit column, CssGridRowOrColUnit row) {
+    public void setColumnAndRow(Component component, RowOrColUnit column, RowOrColUnit row) {
         setColumn(component, column);
         setRow(component, row);
     }
@@ -221,7 +221,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param component
      * @param column
      */
-    public void setColumn(Component component, CssGridRowOrColUnit column) {
+    public void setColumn(Component component, RowOrColUnit column) {
         if (column == null) {
             component.getElement().getStyle().remove("grid-column");
         } else {
@@ -233,7 +233,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param component
      * @param row
      */
-    public void setRow(Component component, CssGridRowOrColUnit row) {
+    public void setRow(Component component, RowOrColUnit row) {
         if (row == null) {
             component.getElement().getStyle().remove("grid-row");
         } else {
@@ -277,8 +277,14 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param component
      * @param area
      */
-    public void setArea(Component component, Area area) {
-        this.setArea(component, area, area, area, area);
+    public void setArea(Component component, AreaUnit... area) {
+        if (area == null) {
+            component.getElement().getStyle().remove("grid-area");
+        } else {
+            component.getElement().getStyle().set("grid-area", Arrays.stream(area).map(CssUnit::getCssValue)
+                    .reduce((s, s2) -> s + " / " + s2)
+                    .orElse(""));
+        }
     }
 
     /**
@@ -288,7 +294,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param rowEnd
      * @param colEnd
      */
-    public void setArea(Component component, CssGridAreaUnit rowStart, CssGridAreaUnit colStart, CssGridAreaUnit rowEnd, CssGridAreaUnit colEnd) {
+    public void setArea(Component component, RowOrColUnit rowStart, RowOrColUnit colStart, RowOrColUnit rowEnd, RowOrColUnit colEnd) {
         setRowStartAndEnd(component, rowStart, rowEnd);
         setColumnStartAndEnd(component, colStart, colEnd);
     }
@@ -298,7 +304,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param start
      * @param end
      */
-    public void setRowStartAndEnd(Component component, CssGridAreaUnit start, CssGridAreaUnit end) {
+    public void setRowStartAndEnd(Component component, RowOrColUnit start, RowOrColUnit end) {
         setRowStart(component, start);
         setRowEnd(component, end);
     }
@@ -308,7 +314,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param start
      * @param end
      */
-    public void setColumnStartAndEnd(Component component, CssGridAreaUnit start, CssGridAreaUnit end) {
+    public void setColumnStartAndEnd(Component component, RowOrColUnit start, RowOrColUnit end) {
         setColumnStart(component, start);
         setColumnEnd(component, end);
     }
@@ -318,7 +324,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param rowStart
      */
 
-    public void setRowStart(Component component, CssGridAreaUnit rowStart) {
+    public void setRowStart(Component component, RowOrColUnit rowStart) {
         if (rowStart == null) {
             component.getElement().getStyle().remove("grid-row-start");
         } else {
@@ -330,7 +336,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param component
      * @param rowEnd
      */
-    public void setRowEnd(Component component, CssGridAreaUnit rowEnd) {
+    public void setRowEnd(Component component, RowOrColUnit rowEnd) {
         if (rowEnd == null) {
             component.getElement().getStyle().remove("grid-row-end");
         } else {
@@ -342,7 +348,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param component
      * @param colStart
      */
-    public void setColumnStart(Component component, CssGridAreaUnit colStart) {
+    public void setColumnStart(Component component, RowOrColUnit colStart) {
         if (colStart == null) {
             component.getElement().getStyle().remove("grid-column-start");
         } else {
@@ -354,7 +360,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param component
      * @param colEnd
      */
-    public void setColumnEnd(Component component, CssGridAreaUnit colEnd) {
+    public void setColumnEnd(Component component, RowOrColUnit colEnd) {
         if (colEnd == null) {
             component.getElement().getStyle().remove("grid-column-end");
         } else {

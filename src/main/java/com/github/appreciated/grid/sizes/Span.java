@@ -1,24 +1,27 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridAreaUnit;
-import com.github.appreciated.grid.interfaces.CssGridRowOrColUnit;
-import com.github.appreciated.grid.interfaces.CssUnit;
+import com.github.appreciated.grid.interfaces.AreaUnit;
+import com.github.appreciated.grid.interfaces.RowOrColUnit;
 
-public class Span implements CssGridAreaUnit, CssGridRowOrColUnit {
+import java.util.Objects;
 
+public class Span implements RowOrColUnit, AreaUnit {
+
+    private Area area;
     private Integer span;
 
     public Span(int span) {
         this.span = span;
     }
 
-    public Span(CssUnit... units) {
-
+    public Span(Area area) {
+        Objects.requireNonNull(area);
+        this.area = area;
     }
 
     @Override
     public String getValue() {
-        return String.valueOf(span);
+        return span == null ? String.valueOf(span) : area.getCssValue();
     }
 
     @Override

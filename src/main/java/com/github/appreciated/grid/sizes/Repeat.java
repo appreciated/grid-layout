@@ -1,11 +1,11 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
 import com.github.appreciated.grid.interfaces.CssUnit;
+import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
 
 import java.util.Arrays;
 
-public class Repeat implements CssGridTemplateUnit {
+public class Repeat implements TemplateRowsAndColsUnit {
 
     public static final String FUNCTION_NAME = "repeat";
 

@@ -1,4 +1,5 @@
 package com.github.appreciated.grid.interfaces;
 
-public interface CssGridAutoUnit extends CssUnit {
+public interface AreaUnit extends CssUnit {
+
 }

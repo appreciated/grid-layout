@@ -1,10 +1,10 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridAutoUnit;
-import com.github.appreciated.grid.interfaces.CssGridMinMaxUnit;
-import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
+import com.github.appreciated.grid.interfaces.AutoRowAndColUnit;
+import com.github.appreciated.grid.interfaces.MinMaxUnit;
+import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
 
-public class MinContent implements CssGridAutoUnit, CssGridTemplateUnit, CssGridMinMaxUnit {
+public class MinContent implements AutoRowAndColUnit, TemplateRowsAndColsUnit, MinMaxUnit {
     @Override
     public String getValue() {
         return "min-content";
