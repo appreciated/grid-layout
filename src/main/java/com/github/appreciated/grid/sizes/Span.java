@@ -21,7 +21,7 @@ public class Span implements RowOrColUnit, AreaUnit {
 
     @Override
     public String getValue() {
-        return span == null ? String.valueOf(span) : area.getCssValue();
+        return span != null ? String.valueOf(span) : area.getCssValue();
     }
 
     @Override

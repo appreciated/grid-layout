@@ -30,7 +30,7 @@ public class DemoView extends VerticalLayout {
                 .withTemplateColumns(new Flex(1), new Flex(1), new Flex(1))
                 .withColumnAlign(alignTestComponent, GridLayoutComponent.ColumnAlign.END)
                 .withRowAlign(alignTestComponent, GridLayoutComponent.RowAlign.END)
-                .withItemAtArea(alignTestComponent, -1, 1, 1, 3)
+                .withItemAtArea(alignTestComponent, 1, 1, 1, 3)
                 .withItemAtArea(getDiv(), 2, 1)
                 .withItemAtArea(getDiv(), 2, 2)
                 .withItemAtArea(getDiv(), 1, 3, 3, 3);
