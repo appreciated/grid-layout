@@ -1,7 +1,7 @@
-package com.github.appreciated.grid.sizes;
+package com.github.appreciated.css.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.AreaUnit;
-import com.github.appreciated.grid.interfaces.RowOrColUnit;
+import com.github.appreciated.css.grid.interfaces.AreaUnit;
+import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
 
 public class Area implements AreaUnit, RowOrColUnit {
 

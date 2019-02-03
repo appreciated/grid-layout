@@ -1,6 +1,6 @@
-package com.github.appreciated.grid.sizes;
+package com.github.appreciated.css.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
+import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 
 public class FitContent implements TemplateRowsAndColsUnit {
     public static String FUNCTION_NAME = "fit-content";

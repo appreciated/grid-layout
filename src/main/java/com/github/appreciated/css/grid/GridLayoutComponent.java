@@ -1,4 +1,4 @@
-package com.github.appreciated.grid;
+package com.github.appreciated.css.grid;
 
 import com.vaadin.flow.component.Component;
 

@@ -1,24 +1,24 @@
-package com.github.appreciated.grid;
+package com.github.appreciated.css.grid;
 
-import com.github.appreciated.grid.entities.GridTemplates;
-import com.github.appreciated.grid.interfaces.AreaUnit;
-import com.github.appreciated.grid.interfaces.CssUnit;
-import com.github.appreciated.grid.interfaces.RowOrColUnit;
-import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
-import com.github.appreciated.grid.sizes.Area;
-import com.github.appreciated.grid.sizes.Length;
+import com.github.appreciated.css.grid.interfaces.AreaUnit;
+import com.github.appreciated.css.grid.interfaces.CssUnit;
+import com.github.appreciated.css.grid.sizes.Area;
+import com.github.appreciated.css.grid.sizes.Length;
+import com.github.appreciated.css.grid.entities.GridTemplates;
+import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
+import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.vaadin.flow.component.*;
 
 import java.util.Arrays;
 import java.util.Objects;
 
 @Tag("div")
-public class FlexibleGridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent {
+public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent {
 
     /**
      * @param components
      */
-    public FlexibleGridLayout(Component... components) {
+    public GridLayout(Component... components) {
         this();
         this.add(components);
     }
@@ -26,7 +26,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
     /**
      *
      */
-    public FlexibleGridLayout() {
+    public GridLayout() {
         getStyle().set("display", "grid");
     }
 
@@ -168,7 +168,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * 'menu main main main right right'  <br>
      * 'menu footer footer footer footer footer';  <br>
      * <p>
-     * In the second step you set the area for each item which will then span over the above defined area. Use therefore {@link FlexibleGridLayout#setArea(Component, Area)}
+     * In the second step you set the area for each item which will then span over the above defined area. Use therefore {@link GridLayout#setArea(Component, Area)}
      *
      * @param templateAreas
      */

@@ -1,6 +1,6 @@
-package com.github.appreciated.grid.sizes;
+package com.github.appreciated.css.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.RowOrColUnit;
+import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
 
 public class Int implements RowOrColUnit {
     private int value;

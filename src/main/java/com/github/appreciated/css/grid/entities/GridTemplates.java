@@ -1,4 +1,4 @@
-package com.github.appreciated.grid.entities;
+package com.github.appreciated.css.grid.entities;
 
 public class GridTemplates {
     private final ColumnTemplate columnTemplate;

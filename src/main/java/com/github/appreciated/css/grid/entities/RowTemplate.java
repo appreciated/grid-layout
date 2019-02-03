@@ -1,6 +1,6 @@
-package com.github.appreciated.grid.entities;
+package com.github.appreciated.css.grid.entities;
 
-import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
+import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 
 public class RowTemplate extends AbstractTemplate {
     public RowTemplate(TemplateRowsAndColsUnit... unit) {

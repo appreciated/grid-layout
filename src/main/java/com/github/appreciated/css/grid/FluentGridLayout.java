@@ -1,33 +1,33 @@
-package com.github.appreciated.grid;
+package com.github.appreciated.css.grid;
 
-import com.github.appreciated.grid.exception.NegativeValueException;
-import com.github.appreciated.grid.interfaces.TemplateRowsAndColsUnit;
-import com.github.appreciated.grid.sizes.Area;
-import com.github.appreciated.grid.sizes.Int;
-import com.github.appreciated.grid.sizes.Length;
-import com.github.appreciated.grid.sizes.Span;
+import com.github.appreciated.css.grid.sizes.Length;
+import com.github.appreciated.css.grid.sizes.Span;
+import com.github.appreciated.css.grid.exception.NegativeValueException;
+import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
+import com.github.appreciated.css.grid.sizes.Area;
+import com.github.appreciated.css.grid.sizes.Int;
 import com.vaadin.flow.component.Component;
 
-public class FluentFlexibleGridLayout extends FlexibleGridLayout {
+public class FluentGridLayout extends GridLayout {
 
     /**
-     * Fluent method of {@link FlexibleGridLayout#setTemplateColumns(TemplateRowsAndColsUnit...)}
+     * Fluent method of {@link GridLayout#setTemplateColumns(TemplateRowsAndColsUnit...)}
      *
      * @param units
      * @return
      */
-    public FluentFlexibleGridLayout withTemplateColumns(TemplateRowsAndColsUnit... units) {
+    public FluentGridLayout withTemplateColumns(TemplateRowsAndColsUnit... units) {
         setTemplateColumns(units);
         return this;
     }
 
     /**
-     * Fluent method of {@link FlexibleGridLayout#setTemplateColumns(TemplateRowsAndColsUnit...)}
+     * Fluent method of {@link GridLayout#setTemplateColumns(TemplateRowsAndColsUnit...)}
      *
      * @param rows
      * @return
      */
-    public FluentFlexibleGridLayout withTemplateRows(TemplateRowsAndColsUnit... rows) {
+    public FluentGridLayout withTemplateRows(TemplateRowsAndColsUnit... rows) {
         setTemplateRows(rows);
         return this;
     }
@@ -38,7 +38,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param component the component which column width should be set
      * @param width     the number of columns the item should span over
      */
-    public FluentFlexibleGridLayout withItemWithWidth(Component component, int width) {
+    public FluentGridLayout withItemWithWidth(Component component, int width) {
         add(component);
         setItemWidth(component, width);
         return this;
@@ -54,7 +54,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
         setColumn(component, new Span(width));
     }
 
-    public FluentFlexibleGridLayout withItemWithSize(Component component, int size, int height) {
+    public FluentGridLayout withItemWithSize(Component component, int size, int height) {
         add(component);
         setItemSize(component, size, height);
         return this;
@@ -82,11 +82,11 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
         setRow(component, new Span(height));
     }
 
-    public FluentFlexibleGridLayout withItemAtArea(Component component, int rowStart, int colStart) {
+    public FluentGridLayout withItemAtArea(Component component, int rowStart, int colStart) {
         return withItemAtArea(component, rowStart, colStart, rowStart, colStart);
     }
 
-    public FluentFlexibleGridLayout withItemAtArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
+    public FluentGridLayout withItemAtArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
         if (rowStart < 0 || colStart < 0 || rowEnd < 0 || colEnd < 0) {
             throw new NegativeValueException(rowStart, colStart, rowEnd, colEnd);
         }
@@ -103,7 +103,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param colEnd    col in which you want the component span to end
      * @return this
      */
-    public FluentFlexibleGridLayout withItemAtArea(Component component, Int rowStart, Int colStart, Int rowEnd, Int colEnd) {
+    public FluentGridLayout withItemAtArea(Component component, Int rowStart, Int colStart, Int rowEnd, Int colEnd) {
         add(component);
         setArea(component, rowStart, colStart, rowEnd, colEnd);
         return this;
@@ -116,7 +116,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param area      the area the element should be assigned
      * @return this
      */
-    public FluentFlexibleGridLayout withItemAtArea(Component component, Area area) {
+    public FluentGridLayout withItemAtArea(Component component, Area area) {
         add(component);
         setArea(component, area);
         return this;
@@ -128,7 +128,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param component the component to add
      * @return this
      */
-    public FluentFlexibleGridLayout withItem(Component component) {
+    public FluentGridLayout withItem(Component component) {
         add(component);
         return this;
     }
@@ -139,7 +139,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param components the components to add
      * @return this
      */
-    public FluentFlexibleGridLayout withItems(Component... components) {
+    public FluentGridLayout withItems(Component... components) {
         add(components);
         return this;
     }
@@ -151,7 +151,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param height
      * @return this
      */
-    public FluentFlexibleGridLayout withItemWithHeight(Component component, int height) {
+    public FluentGridLayout withItemWithHeight(Component component, int height) {
         add(component);
         setItemHeight(component, height);
         return this;
@@ -163,43 +163,43 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param width the width that should be assigned
      * @return this
      */
-    public FluentFlexibleGridLayout withWidth(String width) {
+    public FluentGridLayout withWidth(String width) {
         setWidth(width);
         return this;
     }
 
     /**
-     * Fluent method of {@link FlexibleGridLayout#setTemplateAreas(Area[][])} for setting the template areas available
+     * Fluent method of {@link GridLayout#setTemplateAreas(Area[][])} for setting the template areas available
      *
      * @param templateAreas the template areas you want to be assigned
      * @return this
      */
-    public FluentFlexibleGridLayout withTemplateAreas(Area[][] templateAreas) {
+    public FluentGridLayout withTemplateAreas(Area[][] templateAreas) {
         setTemplateAreas(templateAreas);
         return this;
     }
 
-    public FluentFlexibleGridLayout withColumnAlign(Component component, ColumnAlign columnAlign) {
+    public FluentGridLayout withColumnAlign(Component component, ColumnAlign columnAlign) {
         setColumnAlign(component, columnAlign);
         return this;
     }
 
-    public FluentFlexibleGridLayout withRowAlign(Component component, RowAlign end) {
+    public FluentGridLayout withRowAlign(Component component, RowAlign end) {
         setRowAlign(component, end);
         return this;
     }
 
-    public FluentFlexibleGridLayout withGap(Length size) {
+    public FluentGridLayout withGap(Length size) {
         setGap(size);
         return this;
     }
 
-    public FluentFlexibleGridLayout withAutoRows(Length size) {
+    public FluentGridLayout withAutoRows(Length size) {
         setAutoRows(size);
         return this;
     }
 
-    public FluentFlexibleGridLayout withAutoColmuns(Length size) {
+    public FluentGridLayout withAutoColmuns(Length size) {
         setAutoColumns(size);
         return this;
     }

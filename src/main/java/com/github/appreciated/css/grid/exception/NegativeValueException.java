@@ -1,4 +1,4 @@
-package com.github.appreciated.grid.exception;
+package com.github.appreciated.css.grid.exception;
 
 import java.util.Arrays;
 
