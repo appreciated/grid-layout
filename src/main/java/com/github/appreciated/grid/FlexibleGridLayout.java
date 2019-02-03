@@ -1,7 +1,9 @@
 package com.github.appreciated.grid;
 
 import com.github.appreciated.grid.entities.GridTemplates;
+import com.github.appreciated.grid.interfaces.CssGridSize;
 import com.github.appreciated.grid.interfaces.CssGridUnit;
+import com.github.appreciated.grid.sizes.Area;
 import com.github.appreciated.grid.sizes.Size;
 import com.vaadin.flow.component.*;
 
@@ -271,12 +273,20 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
 
     /**
      * @param component
+     * @param area
+     */
+    public void setArea(Component component, Area area) {
+        this.setArea(component, area, area, area, area);
+    }
+
+    /**
+     * @param component
      * @param rowStart
      * @param colStart
      * @param rowEnd
      * @param colEnd
      */
-    public void setArea(Component component, String rowStart, String colStart, String rowEnd, String colEnd) {
+    public void setArea(Component component, CssGridSize rowStart, CssGridSize colStart, CssGridSize rowEnd, CssGridSize colEnd) {
         setRowStartAndEnd(component, rowStart, rowEnd);
         setColumnStartAndEnd(component, colStart, colEnd);
     }
@@ -286,7 +296,7 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param start
      * @param end
      */
-    public void setRowStartAndEnd(Component component, String start, String end) {
+    public void setRowStartAndEnd(Component component, CssGridSize start, CssGridSize end) {
         setRowStart(component, start);
         setRowEnd(component, end);
     }
@@ -296,69 +306,57 @@ public class FlexibleGridLayout extends Component implements HasStyle, HasOrdere
      * @param start
      * @param end
      */
-    public void setColumnStartAndEnd(Component component, String start, String end) {
+    public void setColumnStartAndEnd(Component component, CssGridSize start, CssGridSize end) {
         setColumnStart(component, start);
         setColumnEnd(component, end);
     }
 
     /**
      * @param component
-     * @param start
+     * @param rowStart
      */
 
-    public void setRowStart(Component component, String start) {
-        if (start == null) {
+    public void setRowStart(Component component, CssGridSize rowStart) {
+        if (rowStart == null) {
             component.getElement().getStyle().remove("grid-row-start");
         } else {
-            component.getElement().getStyle().set("grid-row-start", start);
+            component.getElement().getStyle().set("grid-row-start", rowStart.getCssValue());
         }
     }
 
     /**
      * @param component
-     * @param end
+     * @param rowEnd
      */
-    public void setRowEnd(Component component, String end) {
-        if (end == null) {
+    public void setRowEnd(Component component, CssGridSize rowEnd) {
+        if (rowEnd == null) {
             component.getElement().getStyle().remove("grid-row-end");
         } else {
-            component.getElement().getStyle().set("grid-row-end", end);
+            component.getElement().getStyle().set("grid-row-end", rowEnd.getCssValue());
         }
     }
 
     /**
      * @param component
-     * @param start
+     * @param colStart
      */
-    public void setColumnStart(Component component, String start) {
-        if (start == null) {
+    public void setColumnStart(Component component, CssGridSize colStart) {
+        if (colStart == null) {
             component.getElement().getStyle().remove("grid-column-start");
         } else {
-            component.getElement().getStyle().set("grid-column-start", start);
+            component.getElement().getStyle().set("grid-column-start", colStart.getCssValue());
         }
     }
 
     /**
      * @param component
-     * @param end
+     * @param colEnd
      */
-    public void setColumnEnd(Component component, String end) {
-        if (end == null) {
+    public void setColumnEnd(Component component, CssGridSize colEnd) {
+        if (colEnd == null) {
             component.getElement().getStyle().remove("grid-column-end");
         } else {
-            component.getElement().getStyle().set("grid-column-end", end);
-        }
-    }
-
-    /**
-     * @param component
-     * @param area
-     */
-    public void setArea(Component component, String area) {
-        if (area == null) {
-            component.getElement().getStyle().remove("grid-area");
-        } else {
-            component.getElement().getStyle().set("grid-area", area);
+            component.getElement().getStyle().set("grid-column-end", colEnd.getCssValue());
         }
     }
 

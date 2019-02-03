@@ -1,8 +1,8 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridUnit;
+import com.github.appreciated.grid.interfaces.CssGridSize;
 
-public class Auto implements CssGridUnit {
+public class Auto implements CssGridSize {
     @Override
     public String getValue() {
         return "auto";

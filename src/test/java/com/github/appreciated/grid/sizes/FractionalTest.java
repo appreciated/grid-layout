@@ -1,5 +1,6 @@
 package com.github.appreciated.grid.sizes;
 
+import com.github.appreciated.grid.exception.NegativeValueException;
 import org.junit.Assert;
 import org.junit.Test;
 

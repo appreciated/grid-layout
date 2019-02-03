@@ -10,6 +10,10 @@ public class Size implements CssGridSize {
         this.size = size;
     }
 
+    public Size(int size) {
+        this.size = String.valueOf(size);
+    }
+
     @Override
     public String getValue() {
         return size;

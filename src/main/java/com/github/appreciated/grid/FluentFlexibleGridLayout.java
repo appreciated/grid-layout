@@ -1,7 +1,8 @@
 package com.github.appreciated.grid;
 
+import com.github.appreciated.grid.exception.NegativeValueException;
 import com.github.appreciated.grid.interfaces.CssGridUnit;
-import com.github.appreciated.grid.sizes.NegativeValueException;
+import com.github.appreciated.grid.sizes.Area;
 import com.github.appreciated.grid.sizes.Size;
 import com.vaadin.flow.component.Component;
 
@@ -87,7 +88,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
         if (rowStart < 0 || colStart < 0 || rowEnd < 0 || colEnd < 0) {
             throw new NegativeValueException(rowStart, colStart, rowEnd, colEnd);
         }
-        return withItemAtArea(component, String.valueOf(rowStart), String.valueOf(colStart), String.valueOf(rowEnd), String.valueOf(colEnd));
+        return withItemAtArea(component, new Size(rowStart), new Size(colStart), new Size(rowEnd), new Size(colEnd));
     }
 
     /**
@@ -100,7 +101,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param colEnd    col in which you want the component span to end
      * @return this
      */
-    public FluentFlexibleGridLayout withItemAtArea(Component component, String rowStart, String colStart, String rowEnd, String colEnd) {
+    public FluentFlexibleGridLayout withItemAtArea(Component component, Size rowStart, Size colStart, Size rowEnd, Size colEnd) {
         add(component);
         setArea(component, rowStart, colStart, rowEnd, colEnd);
         return this;
@@ -113,7 +114,7 @@ public class FluentFlexibleGridLayout extends FlexibleGridLayout {
      * @param area      the area the element should be assigned
      * @return this
      */
-    public FluentFlexibleGridLayout withItemAtArea(Component component, String area) {
+    public FluentFlexibleGridLayout withItemAtArea(Component component, Area area) {
         add(component);
         setArea(component, area);
         return this;
