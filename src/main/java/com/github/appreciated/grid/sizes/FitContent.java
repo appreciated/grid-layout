@@ -1,12 +1,12 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridUnit;
+import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
 
-public class FitContent implements CssGridUnit {
+public class FitContent implements CssGridTemplateUnit {
     public static String FUNCTION_NAME = "fit-content";
-    private Size size;
+    private Length size;
 
-    public FitContent(Size size) {
+    public FitContent(Length size) {
         this.size = size;
     }
 

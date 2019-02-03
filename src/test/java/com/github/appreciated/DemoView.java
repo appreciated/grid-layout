@@ -3,9 +3,9 @@ package com.github.appreciated;
 import com.github.appreciated.grid.FluentFlexibleGridLayout;
 import com.github.appreciated.grid.GridLayoutComponent;
 import com.github.appreciated.grid.sizes.Flex;
+import com.github.appreciated.grid.sizes.Length;
 import com.github.appreciated.grid.sizes.MinMax;
 import com.github.appreciated.grid.sizes.Repeat;
-import com.github.appreciated.grid.sizes.Size;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
@@ -38,10 +38,10 @@ public class DemoView extends VerticalLayout {
         layout.setHeight("600px");
 
         FluentFlexibleGridLayout flexibleGridLayout = new FluentFlexibleGridLayout()
-                .withTemplateColumns(new Repeat(AUTO_FIT, new MinMax(new Size("220px"), new Flex(1))))
-                .withTemplateRows(new Repeat(AUTO_FILL, new Size("220px")))
-                .withAutoRows(new Size("220px"))
-                .withGap(new Size("10px"))
+                .withTemplateColumns(new Repeat(AUTO_FIT, new MinMax(new Length("220px"), new Flex(1))))
+                .withTemplateRows(new Repeat(AUTO_FILL, new Length("220px")))
+                .withAutoRows(new Length("220px"))
+                .withGap(new Length("10px"))
                 .withItems(
                         getDiv())
                 .withItemWithSize(getDiv(), 2, 2)

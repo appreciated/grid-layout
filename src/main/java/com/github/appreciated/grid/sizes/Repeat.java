@@ -1,36 +1,36 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridFunction;
-import com.github.appreciated.grid.interfaces.CssGridUnit;
+import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
+import com.github.appreciated.grid.interfaces.CssUnit;
 
 import java.util.Arrays;
 
-public class Repeat implements CssGridFunction {
+public class Repeat implements CssGridTemplateUnit {
 
     public static final String FUNCTION_NAME = "repeat";
 
     private Integer times;
     private RepeatMode mode;
-    private CssGridUnit[] sizes;
+    private CssUnit[] sizes;
 
-    public Repeat(int times, CssGridUnit... sizes) {
+    public Repeat(int times, CssUnit... sizes) {
         this(sizes);
         this.times = times;
     }
 
 
-    private Repeat(CssGridUnit... sizes) {
+    private Repeat(CssUnit... sizes) {
         this.sizes = sizes;
     }
 
-    public Repeat(RepeatMode mode, CssGridUnit... sizes) {
+    public Repeat(RepeatMode mode, CssUnit... sizes) {
         this(sizes);
         this.mode = mode;
     }
 
     @Override
     public String getValue() {
-        return Arrays.stream(sizes).map(CssGridUnit::getCssValue).reduce((unit, unit2) -> unit + " " + unit2).orElse("");
+        return Arrays.stream(sizes).map(CssUnit::getCssValue).reduce((unit, unit2) -> unit + " " + unit2).orElse("");
     }
 
     @Override

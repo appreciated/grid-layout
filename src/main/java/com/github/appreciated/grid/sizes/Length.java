@@ -1,16 +1,18 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridSize;
+import com.github.appreciated.grid.interfaces.CssGridAreaUnit;
+import com.github.appreciated.grid.interfaces.CssGridMinMaxUnit;
+import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
 
-public class Size implements CssGridSize {
+public class Length implements CssGridAreaUnit, CssGridTemplateUnit, CssGridMinMaxUnit {
 
     private String size;
 
-    public Size(String size) {
+    public Length(String size) {
         this.size = size;
     }
 
-    public Size(int size) {
+    public Length(int size) {
         this.size = String.valueOf(size);
     }
 

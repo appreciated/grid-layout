@@ -1,21 +1,22 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridFunction;
-import com.github.appreciated.grid.interfaces.CssGridSize;
+import com.github.appreciated.grid.interfaces.CssGridAutoUnit;
+import com.github.appreciated.grid.interfaces.CssGridMinMaxUnit;
+import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
 
-import java.util.Arrays;
+public class MinMax implements CssGridAutoUnit, CssGridTemplateUnit {
 
-public class MinMax implements CssGridFunction {
+    private final CssGridMinMaxUnit min;
+    private final CssGridMinMaxUnit max;
 
-    private CssGridSize[] sizes;
-
-    public MinMax(CssGridSize... sizes) {
-        this.sizes = sizes;
+    public MinMax(CssGridMinMaxUnit min, CssGridMinMaxUnit max) {
+        this.min = min;
+        this.max = max;
     }
 
     @Override
     public String getValue() {
-        return Arrays.stream(sizes).map(CssGridSize::getCssValue).reduce((unit, unit2) -> unit + "," + unit2).orElse("");
+        return min.getCssValue() + "," + max.getCssValue();
     }
 
     @Override

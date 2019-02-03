@@ -1,12 +1,14 @@
 package com.github.appreciated.grid.sizes;
 
 import com.github.appreciated.grid.exception.NegativeValueException;
-import com.github.appreciated.grid.interfaces.CssGridSize;
+import com.github.appreciated.grid.interfaces.CssGridAutoUnit;
+import com.github.appreciated.grid.interfaces.CssGridMinMaxUnit;
+import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
 
 /**
  *
  */
-public class Flex implements CssGridSize {
+public class Flex implements CssGridAutoUnit, CssGridTemplateUnit, CssGridMinMaxUnit {
 
     private double fraction;
 

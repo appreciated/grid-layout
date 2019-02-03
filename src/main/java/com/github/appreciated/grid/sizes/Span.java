@@ -1,9 +1,10 @@
 package com.github.appreciated.grid.sizes;
 
-import com.github.appreciated.grid.interfaces.CssGridSize;
-import com.github.appreciated.grid.interfaces.CssGridUnit;
+import com.github.appreciated.grid.interfaces.CssGridAreaUnit;
+import com.github.appreciated.grid.interfaces.CssGridRowOrColUnit;
+import com.github.appreciated.grid.interfaces.CssUnit;
 
-public class Span implements CssGridSize {
+public class Span implements CssGridAreaUnit, CssGridRowOrColUnit {
 
     private Integer span;
 
@@ -11,7 +12,7 @@ public class Span implements CssGridSize {
         this.span = span;
     }
 
-    public Span(CssGridUnit... units) {
+    public Span(CssUnit... units) {
 
     }
 

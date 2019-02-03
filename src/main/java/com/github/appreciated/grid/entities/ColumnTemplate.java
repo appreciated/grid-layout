@@ -1,9 +1,9 @@
 package com.github.appreciated.grid.entities;
 
-import com.github.appreciated.grid.interfaces.CssGridUnit;
+import com.github.appreciated.grid.interfaces.CssGridTemplateUnit;
 
 public class ColumnTemplate extends AbstractTemplate {
-    public ColumnTemplate(CssGridUnit... unit) {
+    public ColumnTemplate(CssGridTemplateUnit... unit) {
         super(unit);
     }
 }
