@@ -1,5 +1,6 @@
 package com.github.appreciated.grid.sizes;
 
+import com.github.appreciated.grid.exception.NegativeOrZeroValueException;
 import com.github.appreciated.grid.interfaces.AreaUnit;
 import com.github.appreciated.grid.interfaces.RowOrColUnit;
 
@@ -11,6 +12,9 @@ public class Span implements RowOrColUnit, AreaUnit {
     private Integer span;
 
     public Span(int span) {
+        if (span < 1) {
+            throw new NegativeOrZeroValueException(span);
+        }
         this.span = span;
     }
 
@@ -21,10 +25,12 @@ public class Span implements RowOrColUnit, AreaUnit {
 
     public Span(int span, Area area) {
         Objects.requireNonNull(area);
+        if (span < 1) {
+            throw new NegativeOrZeroValueException(span);
+        }
         this.span = span;
         this.area = area;
     }
-
 
     @Override
     public String getValue() {
