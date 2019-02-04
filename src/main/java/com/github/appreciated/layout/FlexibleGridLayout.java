@@ -1,10 +1,16 @@
 package com.github.appreciated.layout;
 
+import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
+import com.github.appreciated.css.grid.sizes.Length;
+import com.github.appreciated.css.grid.sizes.MinMax;
+import com.github.appreciated.css.grid.sizes.Repeat;
 import com.github.appreciated.css.grid.sizes.Span;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.HasSize;
+import com.vaadin.flow.component.HasStyle;
 
-public class FlexibleGridLayout extends Composite<GridLayout> {
+public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize, HasStyle {
     public FlexibleGridLayout() {
 
     }
@@ -49,7 +55,6 @@ public class FlexibleGridLayout extends Composite<GridLayout> {
         setItemWidth(component, width);
     }
 
-
     /**
      * Shorthand fluent style for users which don't want to dive into the css-grid to set the number of row an item should span over
      *
@@ -73,4 +78,28 @@ public class FlexibleGridLayout extends Composite<GridLayout> {
         return this;
     }
 
+    public FlexibleGridLayout withColumns(MinMax units) {
+        getContent().setTemplateColumns(new Repeat(Repeat.RepeatMode.AUTO_FILL, units));
+        return this;
+    }
+
+    public FlexibleGridLayout withRows(TemplateRowsAndColsUnit... units) {
+        getContent().setTemplateRows(units);
+        return this;
+    }
+
+    public FlexibleGridLayout withAutoRows(Length length) {
+        getContent().setAutoRows(length);
+        return this;
+    }
+
+    public FlexibleGridLayout withGap(Length gap) {
+        getContent().setGap(gap);
+        return this;
+    }
+
+    public FlexibleGridLayout withItems(Component... div) {
+        getContent().add(div);
+        return this;
+    }
 }

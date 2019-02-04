@@ -99,7 +99,7 @@ public class FluentGridLayout extends GridLayout {
      * @param width the width that should be assigned
      * @return this
      */
-    public FluentGridLayout withWidth(String width) {
+    public FluentGridLayout withWidth(java.lang.String width) {
         setWidth(width);
         return this;
     }

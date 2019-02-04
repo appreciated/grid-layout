@@ -34,7 +34,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     /**
      * @return
      */
-    public String getColumnGap() {
+    public java.lang.String getColumnGap() {
         return getStyle().get("grid-column-gap");
     }
 
@@ -52,7 +52,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     /**
      * @return
      */
-    public String getRowGap() {
+    public java.lang.String getRowGap() {
         return getStyle().get("grid-row-gap");
     }
 
@@ -80,7 +80,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     /**
      * @return
      */
-    public String getGap() {
+    public java.lang.String getGap() {
         return getStyle().get("grid-gap");
     }
 
@@ -145,14 +145,14 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     /**
      * @return
      */
-    public String getGrid() {
+    public java.lang.String getGrid() {
         return getStyle().get("grid");
     }
 
     /**
      * @param grid
      */
-    public void setGrid(String grid) {
+    public void setGrid(java.lang.String grid) {
         if (grid == null) {
             getStyle().remove("grid");
         } else {
@@ -177,7 +177,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         if (templateAreas == null) {
             getStyle().remove("grid-template-areas");
         } else {
-            String areas = Arrays.stream(templateAreas)
+            java.lang.String areas = Arrays.stream(templateAreas)
                     .map(strings -> Arrays.stream(strings).map(CssUnit::getCssValue).reduce((s, s2) -> s + " " + s2)
                             .orElse("")
                     ).map(s -> "'" + s + "'")
@@ -246,7 +246,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param component
      * @return
      */
-    public String getColumnEnd(Component component) {
+    public java.lang.String getColumnEnd(Component component) {
         return component.getElement().getStyle().get("grid-column-end");
     }
 
@@ -254,7 +254,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param component
      * @return
      */
-    public String getColumnStart(Component component) {
+    public java.lang.String getColumnStart(Component component) {
         return component.getElement().getStyle().get("grid-column-start");
     }
 
@@ -262,7 +262,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param component
      * @return
      */
-    public String getRowEnd(Component component) {
+    public java.lang.String getRowEnd(Component component) {
         return component.getElement().getStyle().get("grid-row-end");
     }
 
@@ -270,7 +270,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param component
      * @return
      */
-    public String getRowStart(Component component) {
+    public java.lang.String getRowStart(Component component) {
         return component.getElement().getStyle().get("grid-row-start");
     }
 
@@ -373,14 +373,14 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param component
      * @return
      */
-    public String getArea(Component component) {
+    public java.lang.String getArea(Component component) {
         return component.getElement().getStyle().get("grid-area");
     }
 
     /**
      * @return
      */
-    public String getAutoColumns() {
+    public java.lang.String getAutoColumns() {
         return getStyle().get("grid-auto-columns");
     }
 
@@ -416,7 +416,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     /**
      * @return
      */
-    public String getAutoRows() {
+    public java.lang.String getAutoRows() {
         return getStyle().get("grid-auto-rows");
     }
 
