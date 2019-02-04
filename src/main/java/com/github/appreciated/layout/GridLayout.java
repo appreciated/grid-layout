@@ -2,17 +2,20 @@ package com.github.appreciated.layout;
 
 import com.github.appreciated.css.grid.GridLayoutComponent;
 import com.github.appreciated.css.grid.entities.GridTemplates;
-import com.github.appreciated.css.grid.interfaces.AreaUnit;
 import com.github.appreciated.css.grid.interfaces.CssUnit;
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
+import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
-import com.github.appreciated.css.grid.sizes.Area;
 import com.github.appreciated.css.grid.sizes.Length;
+import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.*;
 
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * A Layout which allows to access most of the css grid api.
+ */
 @Tag("div")
 public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent {
 
@@ -169,11 +172,11 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * 'menu main main main right right'  <br>
      * 'menu footer footer footer footer footer';  <br>
      * <p>
-     * In the second step you set the area for each item which will then span over the above defined area. Use therefore {@link GridLayout#setArea(Component, AreaUnit...)}}
+     * In the second step you set the area for each item which will then span over the above defined area. Use therefore {@link GridLayout#setArea(Component, TemplateAreaUnit...)}}
      *
      * @param templateAreas
      */
-    public void setTemplateAreas(Area[][] templateAreas) {
+    public void setTemplateAreas(TemplateArea[][] templateAreas) {
         if (templateAreas == null) {
             getStyle().remove("grid-template-areas");
         } else {
@@ -278,7 +281,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param component
      * @param area
      */
-    public void setArea(Component component, AreaUnit... area) {
+    public void setArea(Component component, TemplateAreaUnit... area) {
         if (area == null) {
             component.getElement().getStyle().remove("grid-area");
         } else {

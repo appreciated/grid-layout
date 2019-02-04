@@ -2,9 +2,9 @@ package com.github.appreciated.layout;
 
 import com.github.appreciated.css.grid.exception.NegativeValueException;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
-import com.github.appreciated.css.grid.sizes.Area;
 import com.github.appreciated.css.grid.sizes.Int;
 import com.github.appreciated.css.grid.sizes.Length;
+import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.Component;
 
 public class FluentGridLayout extends GridLayout {
@@ -65,7 +65,7 @@ public class FluentGridLayout extends GridLayout {
      * @param area      the area the element should be assigned
      * @return this
      */
-    public FluentGridLayout withItemAtArea(Component component, Area area) {
+    public FluentGridLayout withItemAtArea(Component component, TemplateArea area) {
         add(component);
         setArea(component, area);
         return this;
@@ -105,12 +105,12 @@ public class FluentGridLayout extends GridLayout {
     }
 
     /**
-     * Fluent method of {@link GridLayout#setTemplateAreas(Area[][])} for setting the template areas available
+     * Fluent method of {@link GridLayout#setTemplateAreas(TemplateArea[][])} for setting the template areas available
      *
      * @param templateAreas the template areas you want to be assigned
      * @return this
      */
-    public FluentGridLayout withTemplateAreas(Area[][] templateAreas) {
+    public FluentGridLayout withTemplateAreas(TemplateArea[][] templateAreas) {
         setTemplateAreas(templateAreas);
         return this;
     }

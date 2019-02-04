@@ -10,6 +10,9 @@ import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.HasStyle;
 
+/**
+ * A Layout which makes it easy for the user to create flexible grids.
+ */
 public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize, HasStyle {
     public FlexibleGridLayout() {
 

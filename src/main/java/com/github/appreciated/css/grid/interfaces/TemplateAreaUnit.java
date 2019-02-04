@@ -1,5 +1,5 @@
 package com.github.appreciated.css.grid.interfaces;
 
-public interface AreaUnit extends CssUnit {
+public interface TemplateAreaUnit extends CssUnit {
 
 }

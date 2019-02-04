@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.appreciated</groupId>
-    <artifactId>grid-layout</artifactId>
+    <artifactId>vaadin-css-grid</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Grid Layout</name>
-    <description>Integration of the CSS grid layout for Vaadin platform</description>
+    <name>Css Grid</name>
+    <description>Integration of the css grid for the Vaadin platform</description>
 
     <properties>
         <vaadin.version>12.0.5</vaadin.version>

@@ -1,13 +1,16 @@
 package com.github.appreciated.css.grid.sizes;
 
-import com.github.appreciated.css.grid.interfaces.AreaUnit;
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
+import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
 
-public class Area implements AreaUnit, RowOrColUnit {
+/**
+ *
+ */
+public class TemplateArea implements TemplateAreaUnit, RowOrColUnit {
 
     private String area;
 
-    public Area(String area) {
+    public TemplateArea(String area) {
         this.area = area;
     }
 

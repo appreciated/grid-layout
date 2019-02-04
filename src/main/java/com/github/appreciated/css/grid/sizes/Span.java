@@ -1,14 +1,14 @@
 package com.github.appreciated.css.grid.sizes;
 
 import com.github.appreciated.css.grid.exception.NegativeOrZeroValueException;
-import com.github.appreciated.css.grid.interfaces.AreaUnit;
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
+import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
 
 import java.util.Objects;
 
-public class Span implements RowOrColUnit, AreaUnit {
+public class Span implements RowOrColUnit, TemplateAreaUnit {
 
-    private Area area;
+    private TemplateArea area;
     private Integer span;
 
     public Span(int span) {
@@ -18,12 +18,12 @@ public class Span implements RowOrColUnit, AreaUnit {
         this.span = span;
     }
 
-    public Span(Area area) {
+    public Span(TemplateArea area) {
         Objects.requireNonNull(area);
         this.area = area;
     }
 
-    public Span(int span, Area area) {
+    public Span(int span, TemplateArea area) {
         Objects.requireNonNull(area);
         if (span < 1) {
             throw new NegativeOrZeroValueException(span);
