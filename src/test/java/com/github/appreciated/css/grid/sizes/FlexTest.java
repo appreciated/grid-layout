@@ -4,7 +4,7 @@ import com.github.appreciated.css.grid.exception.NegativeValueException;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FractionalTest {
+public class FlexTest {
     @Test
     public void constructorTest() {
         // minmax(100px, max-content)
