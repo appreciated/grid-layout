@@ -67,6 +67,11 @@ public class DemoView extends VerticalLayout {
         areaLayout.setHeight("600px");
 
         add(layout, flexibleGridLayout, areaLayout);
+        getStyle().set("overflow", "auto");
+        layout.getStyle().set("flex-shrink", "0");
+        flexibleGridLayout.getStyle().set("flex-shrink", "0");
+        areaLayout.getStyle().set("flex-shrink", "0");
+        setSizeFull();
     }
 
 
