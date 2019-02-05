@@ -23,7 +23,7 @@ public class SupportTest {
     @Test
     public void testGridTemplateRowAndColSupport() {
         Assert.assertTrue(new Auto() instanceof TemplateRowsAndColsUnit);
-        Assert.assertFalse(new TemplateArea("test") instanceof TemplateRowsAndColsUnit);
+        Assert.assertFalse(new CustomIdent("test") instanceof TemplateRowsAndColsUnit);
         Assert.assertTrue(new Length(1) instanceof TemplateRowsAndColsUnit);
         Assert.assertTrue(new Length("1%") instanceof TemplateRowsAndColsUnit);
         Assert.assertTrue(new Flex(1) instanceof TemplateRowsAndColsUnit);
@@ -47,7 +47,7 @@ public class SupportTest {
     @Test
     public void testMinMaxSupport() {
         Assert.assertTrue(new Auto() instanceof MinMaxUnit);
-        Assert.assertFalse(new TemplateArea("test") instanceof MinMaxUnit);
+        Assert.assertFalse(new CustomIdent("test") instanceof MinMaxUnit);
         Assert.assertTrue(new Length(1) instanceof MinMaxUnit);
         Assert.assertTrue(new Length("1%") instanceof MinMaxUnit);
         Assert.assertTrue(new Flex(1) instanceof MinMaxUnit);
@@ -68,7 +68,7 @@ public class SupportTest {
     @Test
     public void testRowOrColSupport() {
         Assert.assertTrue(new Auto() instanceof RowOrColUnit);
-        Assert.assertTrue(new TemplateArea("test") instanceof RowOrColUnit);
+        Assert.assertTrue(new CustomIdent("test") instanceof RowOrColUnit);
         Assert.assertFalse(new Length(1) instanceof RowOrColUnit);
         Assert.assertFalse(new Length("1%") instanceof RowOrColUnit);
         Assert.assertFalse(new Flex(1) instanceof RowOrColUnit);

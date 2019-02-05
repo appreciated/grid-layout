@@ -6,8 +6,8 @@ import com.github.appreciated.css.grid.interfaces.CssUnit;
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
+import com.github.appreciated.css.grid.sizes.CustomIdent;
 import com.github.appreciated.css.grid.sizes.Length;
-import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.*;
 
 import java.util.Arrays;
@@ -176,7 +176,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      *
      * @param templateAreas
      */
-    public void setTemplateAreas(TemplateArea[][] templateAreas) {
+    public void setTemplateAreas(CustomIdent[][] templateAreas) {
         if (templateAreas == null) {
             getStyle().remove("grid-template-areas");
         } else {

@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Span implements RowOrColUnit, TemplateAreaUnit {
 
-    private TemplateArea area;
+    private CustomIdent area;
     private Integer span;
 
     public Span(int span) {
@@ -18,17 +18,8 @@ public class Span implements RowOrColUnit, TemplateAreaUnit {
         this.span = span;
     }
 
-    public Span(TemplateArea area) {
+    public Span(CustomIdent area) {
         Objects.requireNonNull(area);
-        this.area = area;
-    }
-
-    public Span(int span, TemplateArea area) {
-        Objects.requireNonNull(area);
-        if (span < 1) {
-            throw new NegativeOrZeroValueException(span);
-        }
-        this.span = span;
         this.area = area;
     }
 

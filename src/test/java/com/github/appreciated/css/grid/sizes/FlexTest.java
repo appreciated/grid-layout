@@ -7,7 +7,6 @@ import org.junit.Test;
 public class FlexTest {
     @Test
     public void constructorTest() {
-        // minmax(100px, max-content)
         Assert.assertEquals("1.0fr", new Flex(1).getCssValue());
         Assert.assertEquals("2.0fr", new Flex(2).getCssValue());
         Assert.assertEquals("3.0fr", new Flex(3).getCssValue());

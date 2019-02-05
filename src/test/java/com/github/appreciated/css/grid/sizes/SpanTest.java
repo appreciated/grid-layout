@@ -8,8 +8,8 @@ public class SpanTest {
     @Test
     public void constructorTest() {
         Assert.assertEquals("span 1", new Span(1).getCssValue());
-        Assert.assertEquals("span 1 test", new Span(1, new TemplateArea("test")).getCssValue());
-        Assert.assertEquals("span test", new Span(new TemplateArea("test")).getCssValue());
+        Assert.assertEquals("span 1 test", new Span(new CustomIdent(1, "test")).getCssValue());
+        Assert.assertEquals("span test", new Span(new CustomIdent("test")).getCssValue());
     }
 
     @Test(expected = NegativeOrZeroValueException.class)

@@ -1,6 +1,6 @@
 package com.github.appreciated.layout;
 
-import com.github.appreciated.css.grid.sizes.TemplateArea;
+import com.github.appreciated.css.grid.sizes.CustomIdent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasSize;
@@ -14,13 +14,13 @@ import java.util.Arrays;
 public class AreaLayout extends Composite<GridLayout> implements HasSize, HasStyle {
     public AreaLayout(String[][] areas) {
         getContent().setTemplateAreas(Arrays.stream(areas).map(strings ->
-                Arrays.stream(strings).map(TemplateArea::new).toArray(TemplateArea[]::new)
-        ).toArray(TemplateArea[][]::new));
+                Arrays.stream(strings).map(CustomIdent::new).toArray(CustomIdent[]::new)
+        ).toArray(CustomIdent[][]::new));
     }
 
     public AreaLayout withItemAtArea(Component component, String area) {
         getContent().add(component);
-        getContent().setArea(component, new TemplateArea(area));
+        getContent().setArea(component, new CustomIdent(area));
         return this;
     }
 }

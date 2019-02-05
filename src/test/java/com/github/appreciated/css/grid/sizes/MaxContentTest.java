@@ -7,7 +7,6 @@ public class MaxContentTest {
 
     @Test
     public void constructorTest() {
-        // minmax(100px, max-content)
         Assert.assertEquals("max-content", new MaxContent().getCssValue());
     }
 }
