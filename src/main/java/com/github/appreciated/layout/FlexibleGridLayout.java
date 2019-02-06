@@ -89,9 +89,9 @@ public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize
     }
 
     /**
-     * Shorthand to set the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns">grid-template-columns</a> with flexible columns by using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat"repeat</a> function with an auto-repeat mode.
+     * Shorthand to set the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns">grid-template-columns</a> with flexible columns by using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat">repeat</a> function with an auto-repeat mode.
      *
-     * @param mode  the auto-repeat mode. (See under auto-fill and auto-repeat of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat"repeat</a> function)
+     * @param mode  the auto-repeat mode. (See under auto-fill and auto-repeat of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat">repeat</a> function)
      * @param units the width the columns.
      * @return
      */
