@@ -1,6 +1,7 @@
 package com.github.appreciated.layout;
 
 import com.github.appreciated.css.grid.sizes.CustomIdent;
+import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasSize;
@@ -20,7 +21,7 @@ public class AreaLayout extends Composite<GridLayout> implements HasSize, HasSty
 
     public AreaLayout withItemAtArea(Component component, String area) {
         getContent().add(component);
-        getContent().setArea(component, new CustomIdent(area));
+        getContent().setArea(component, new TemplateArea(area));
         return this;
     }
 }

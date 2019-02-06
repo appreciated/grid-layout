@@ -1,12 +1,11 @@
 package com.github.appreciated.css.grid.sizes;
 
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
-import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
 
 /**
  * The implementation of <a href="https://developer.mozilla.org/de/docs/Web/CSS/custom-ident">custom-ident</a>
  */
-public class CustomIdent implements TemplateAreaUnit, RowOrColUnit {
+public class CustomIdent implements RowOrColUnit {
 
     private Integer length;
     private String identifier;

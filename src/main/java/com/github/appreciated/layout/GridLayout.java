@@ -8,6 +8,7 @@ import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.CustomIdent;
 import com.github.appreciated.css.grid.sizes.Length;
+import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.*;
 
 import java.util.Arrays;
@@ -173,7 +174,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * 'menu main main main right right'  <br>
      * 'menu footer footer footer footer footer';  <br>
      * <p>
-     * In the second step you set the area for each item which will then span over the above defined area. Use therefore {@link GridLayout#setArea(Component, TemplateAreaUnit...)}}
+     * In the second step you set the area for each item which will then span over the above defined area. Use therefore {@link GridLayout#setArea(Component, TemplateArea...)}}
      *
      * @param templateAreas
      */
@@ -283,6 +284,9 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param area
      */
     public void setArea(Component component, TemplateAreaUnit... area) {
+        if (area.length > 4) {
+            throw new IllegalArgumentException("A maximum of four area can be passed");
+        }
         if (area == null) {
             component.getElement().getStyle().remove("grid-area");
         } else {

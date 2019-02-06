@@ -6,6 +6,7 @@ import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.CustomIdent;
 import com.github.appreciated.css.grid.sizes.Int;
 import com.github.appreciated.css.grid.sizes.Length;
+import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.Component;
 
 public class FluentGridLayout extends GridLayout {
@@ -66,7 +67,7 @@ public class FluentGridLayout extends GridLayout {
      * @param area      the area the element should be assigned
      * @return this
      */
-    public FluentGridLayout withRowAndColumn(Component component, CustomIdent area) {
+    public FluentGridLayout withRowAndColumn(Component component, TemplateArea area) {
         add(component);
         setArea(component, area);
         return this;
