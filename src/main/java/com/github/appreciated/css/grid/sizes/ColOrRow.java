@@ -14,14 +14,4 @@ public class ColOrRow implements RowOrColUnit {
     public String getValue() {
         return colOrRowName;
     }
-
-    @Override
-    public boolean hasSuffix() {
-        return false;
-    }
-
-    @Override
-    public String getSuffixValue() {
-        return null;
-    }
 }

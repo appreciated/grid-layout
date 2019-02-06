@@ -13,9 +13,15 @@ public interface CssUnit {
         return null;
     }
 
-    String getValue();
+    default String getValue() {
+        return null;
+    }
 
-    boolean hasSuffix();
+    default boolean hasSuffix() {
+        return false;
+    }
 
-    String getSuffixValue();
+    default String getSuffixValue() {
+        return null;
+    }
 }

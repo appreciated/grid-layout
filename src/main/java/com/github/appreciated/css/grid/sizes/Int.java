@@ -13,14 +13,4 @@ public class Int implements RowOrColUnit {
     public String getValue() {
         return String.valueOf(value);
     }
-
-    @Override
-    public boolean hasSuffix() {
-        return false;
-    }
-
-    @Override
-    public String getSuffixValue() {
-        return null;
-    }
 }

@@ -23,14 +23,4 @@ public class TemplateColOrRow implements TemplateRowsAndColsUnit {
     public String getValue() {
         return "[" + colOrRowName + "]" + (flex != null ? " " + flex.getCssValue() : "");
     }
-
-    @Override
-    public boolean hasSuffix() {
-        return false;
-    }
-
-    @Override
-    public String getSuffixValue() {
-        return null;
-    }
 }

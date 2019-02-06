@@ -9,14 +9,4 @@ public class MinContent implements AutoRowAndColUnit, TemplateRowsAndColsUnit, M
     public String getValue() {
         return "min-content";
     }
-
-    @Override
-    public boolean hasSuffix() {
-        return false;
-    }
-
-    @Override
-    public String getSuffixValue() {
-        return null;
-    }
 }

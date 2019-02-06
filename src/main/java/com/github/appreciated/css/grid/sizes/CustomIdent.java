@@ -25,14 +25,4 @@ public class CustomIdent implements TemplateAreaUnit, RowOrColUnit {
     public String getValue() {
         return length == null ? identifier : length + " " + identifier;
     }
-
-    @Override
-    public boolean hasSuffix() {
-        return false;
-    }
-
-    @Override
-    public String getSuffixValue() {
-        return null;
-    }
 }

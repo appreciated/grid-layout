@@ -35,16 +35,6 @@ public class Span implements RowOrColUnit, TemplateAreaUnit {
     }
 
     @Override
-    public boolean hasSuffix() {
-        return false;
-    }
-
-    @Override
-    public String getSuffixValue() {
-        return null;
-    }
-
-    @Override
     public boolean hasPrefix() {
         return true;
     }

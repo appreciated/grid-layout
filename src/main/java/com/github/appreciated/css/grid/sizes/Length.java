@@ -23,14 +23,4 @@ public class Length implements TemplateRowsAndColsUnit, AutoRowAndColUnit, MinMa
     public String getValue() {
         return size;
     }
-
-    @Override
-    public boolean hasSuffix() {
-        return false;
-    }
-
-    @Override
-    public String getSuffixValue() {
-        return null;
-    }
 }

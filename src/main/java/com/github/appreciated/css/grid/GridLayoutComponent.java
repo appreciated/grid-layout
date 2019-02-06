@@ -18,7 +18,7 @@ public interface GridLayoutComponent {
         }
     }
 
-    public enum ColumnAlign {
+    enum ColumnAlign {
         START("start"),
         END("end"),
         CENTER("center"),
@@ -43,7 +43,7 @@ public interface GridLayoutComponent {
         }
     }
 
-    public enum RowAlign {
+    enum RowAlign {
         START("start"),
         END("end"),
         CENTER("center"),
@@ -68,7 +68,7 @@ public interface GridLayoutComponent {
         }
     }
 
-    public enum AutoFlow {
+    enum AutoFlow {
         ROW("row"),
         COLUMN("column"),
         ROW_DENSE("row dense"),
@@ -85,7 +85,7 @@ public interface GridLayoutComponent {
             return toAutoFlow(autoFlowValue, ROW);
         }
 
-        static AutoFlow toAutoFlow(String autoFlowValue, AutoFlow defaultValue) {
+        public static AutoFlow toAutoFlow(String autoFlowValue, AutoFlow defaultValue) {
             return Arrays.stream(values())
                     .filter((alignment) -> alignment.getAutoFlowValue().equals(autoFlowValue))
                     .findFirst()

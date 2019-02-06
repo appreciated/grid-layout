@@ -10,14 +10,4 @@ public class Auto implements AutoRowAndColUnit, RowOrColUnit, TemplateRowsAndCol
     public String getValue() {
         return "auto";
     }
-
-    @Override
-    public boolean hasSuffix() {
-        return false;
-    }
-
-    @Override
-    public String getSuffixValue() {
-        return null;
-    }
 }

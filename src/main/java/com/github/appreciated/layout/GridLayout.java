@@ -411,9 +411,9 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      */
     public void setAutoFlow(AutoFlow autoFlow) {
         if (autoFlow == null) {
-            getStyle().remove(autoFlow.cssProperty);
+            getStyle().remove(AutoFlow.cssProperty);
         } else {
-            getStyle().set(autoFlow.cssProperty, autoFlow.getAutoFlowValue());
+            getStyle().set(AutoFlow.cssProperty, autoFlow.getAutoFlowValue());
         }
     }
 

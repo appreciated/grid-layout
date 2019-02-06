@@ -9,14 +9,4 @@ public class MaxContent implements AutoRowAndColUnit, TemplateRowsAndColsUnit, M
     public String getValue() {
         return "max-content";
     }
-
-    @Override
-    public boolean hasSuffix() {
-        return false;
-    }
-
-    @Override
-    public String getSuffixValue() {
-        return null;
-    }
 }
