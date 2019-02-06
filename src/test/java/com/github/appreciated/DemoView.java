@@ -53,7 +53,7 @@ public class DemoView extends VerticalLayout {
         layout2.setHeight("600px");
 
         FlexibleGridLayout flexibleGridLayout = new FlexibleGridLayout()
-                .withColumns(new MinMax(new Length("220px"), new Flex(1)))
+                .withColumns(Repeat.RepeatMode.AUTO_FILL, new MinMax(new Length("220px"), new Flex(1)))
                 .withAutoRows(new Length("220px"))
                 .withGap(new Length("10px"))
                 .withItems(
