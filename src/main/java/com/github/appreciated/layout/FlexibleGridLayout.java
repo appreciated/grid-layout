@@ -40,31 +40,39 @@ public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize
         getContent().setColumn(component, new Span(width));
     }
 
-    public FlexibleGridLayout withItemWithSize(Component component, int size, int height) {
+    /**
+     * Adds an item to the layout and also sets the width and height of the passed item
+     *
+     * @param component the component which column width should be set
+     * @param width     the number of columns the item should span over
+     * @param height    the number of rows the item should span over
+     * @return
+     */
+    public FlexibleGridLayout withItemWithSize(Component component, int width, int height) {
         getContent().add(component);
-        setItemSize(component, size, height);
+        setItemSize(component, width, height);
         return this;
     }
 
     /**
-     * Convenience method, for users which don't want to dive into the css-grid to set the number of rows and columns an item should span over
+     * Sets the width and height of the passed item.
      *
      * @param component the component which column width should be set
      * @param width     the number of columns the item should span over
      * @param height    the number of rows the item should span over
      */
     public void setItemSize(Component component, int width, int height) {
-        setItemHeight(component, height);
+        setItemRowHeight(component, height);
         setItemWidth(component, width);
     }
 
     /**
-     * Shorthand fluent style for users which don't want to dive into the css-grid to set the number of row an item should span over
+     * Sets the height of the passed item.
      *
      * @param component the component which row height should be set
      * @param height    the number of rows the item should span over
      */
-    public void setItemHeight(Component component, int height) {
+    public void setItemRowHeight(Component component, int height) {
         getContent().setRow(component, new Span(height));
     }
 
@@ -72,12 +80,12 @@ public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize
      * Shorthand fluent style method for adding a component and setting its height
      *
      * @param component the components to add
-     * @param height
+     * @param height the number of rows the item should span over
      * @return this
      */
-    public FlexibleGridLayout withItemWithHeight(Component component, int height) {
+    public FlexibleGridLayout withItemWithRowHeight(Component component, int height) {
         getContent().add(component);
-        setItemHeight(component, height);
+        setItemRowHeight(component, height);
         return this;
     }
 
