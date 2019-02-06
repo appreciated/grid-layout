@@ -1,8 +1,9 @@
 package com.github.appreciated.css.grid.sizes;
 
+import com.github.appreciated.css.grid.interfaces.AutoRowAndColUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 
-public class FitContent implements TemplateRowsAndColsUnit {
+public class FitContent implements TemplateRowsAndColsUnit, AutoRowAndColUnit {
     public static String FUNCTION_NAME = "fit-content";
     private Length size;
 
