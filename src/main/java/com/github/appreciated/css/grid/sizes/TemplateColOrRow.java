@@ -6,21 +6,21 @@ import java.util.Objects;
 
 public class TemplateColOrRow implements TemplateRowsAndColsUnit {
 
-    private TemplateRowsAndColsUnit flex;
+    private TemplateRowsAndColsUnit size;
     private String colOrRowName;
 
     public TemplateColOrRow(String colOrRowName) {
         this(colOrRowName, null);
     }
 
-    public TemplateColOrRow(String colOrRowName, TemplateRowsAndColsUnit flex) {
+    public TemplateColOrRow(String colOrRowName, TemplateRowsAndColsUnit size) {
         Objects.requireNonNull(colOrRowName);
         this.colOrRowName = colOrRowName;
-        this.flex = flex;
+        this.size = size;
     }
 
     @Override
     public String getValue() {
-        return "[" + colOrRowName + "]" + (flex != null ? " " + flex.getCssValue() : "");
+        return "[" + colOrRowName + "]" + (size != null ? " " + size.getCssValue() : "");
     }
 }

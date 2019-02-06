@@ -13,8 +13,6 @@ import com.vaadin.flow.router.Route;
 
 import java.util.Random;
 
-import static com.github.appreciated.css.grid.sizes.Repeat.RepeatMode.AUTO_FILL;
-
 @Route("")
 public class DemoView extends VerticalLayout {
 
@@ -56,7 +54,6 @@ public class DemoView extends VerticalLayout {
 
         FlexibleGridLayout flexibleGridLayout = new FlexibleGridLayout()
                 .withColumns(new MinMax(new Length("220px"), new Flex(1)))
-                .withRows(new Repeat(AUTO_FILL, new Length("220px")))
                 .withAutoRows(new Length("220px"))
                 .withGap(new Length("10px"))
                 .withItems(

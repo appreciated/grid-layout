@@ -5,15 +5,20 @@ import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 
 public class FitContent implements TemplateRowsAndColsUnit, AutoRowAndColUnit {
     public static String FUNCTION_NAME = "fit-content";
+    private Int intSize;
     private Length size;
 
     public FitContent(Length size) {
         this.size = size;
     }
 
+    public FitContent(Int size) {
+        this.intSize = size;
+    }
+
     @Override
     public String getValue() {
-        return size.getCssValue();
+        return size != null ? size.getCssValue() : intSize.getCssValue();
     }
 
     @Override

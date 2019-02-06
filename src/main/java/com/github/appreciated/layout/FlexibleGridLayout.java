@@ -99,6 +99,12 @@ public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize
         return this;
     }
 
+    /**
+     * Sets the height of the rows with the height {@link com.github.appreciated.css.grid.sizes.Auto}. By default all rows receive that height.
+     *
+     * @param length the size that will be set
+     * @return
+     */
     public FlexibleGridLayout withAutoRows(Length length) {
         getContent().setAutoRows(length);
         return this;
