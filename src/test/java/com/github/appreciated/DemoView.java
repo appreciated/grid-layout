@@ -1,10 +1,7 @@
 package com.github.appreciated;
 
 import com.github.appreciated.css.grid.GridLayoutComponent;
-import com.github.appreciated.css.grid.sizes.Flex;
-import com.github.appreciated.css.grid.sizes.Length;
-import com.github.appreciated.css.grid.sizes.MinMax;
-import com.github.appreciated.css.grid.sizes.Repeat;
+import com.github.appreciated.css.grid.sizes.*;
 import com.github.appreciated.layout.AreaLayout;
 import com.github.appreciated.layout.FlexibleGridLayout;
 import com.github.appreciated.layout.FluentGridLayout;
@@ -37,6 +34,26 @@ public class DemoView extends VerticalLayout {
                 .withItemAtArea(getDiv(), 1, 3, 3, 3);
         layout.setWidth("100%");
         layout.setHeight("600px");
+
+
+        FluentGridLayout layout2 = new FluentGridLayout();
+        Component customColTest = getDiv();
+        layout2.withTemplateColumns(
+                new TemplateColOrRow("col1-start", new Flex(1)),
+                new TemplateColOrRow("col2-start", new Flex(1)),
+                new TemplateColOrRow("col3-start", new Flex(1)),
+                new TemplateColOrRow("col-end"))
+                .withTemplateRows(
+                        new TemplateColOrRow("row1-start", new Flex(1)),
+                        new TemplateColOrRow("row2-start", new Flex(1)),
+                        new TemplateColOrRow("row-end"))
+                .withItems(customColTest)
+                .withColumnStart(customColTest, new ColOrRow("col1-start"))
+                .withColumnEnd(customColTest, new ColOrRow("col3-start"))
+                .withRowStart(customColTest, new ColOrRow("row1-start"))
+                .withRowEnd(customColTest, new ColOrRow("rows-end"));
+        layout2.setWidth("100%");
+        layout2.setHeight("600px");
 
         /**
          *   grid-template-columns: [col1-start] 1fr [col2-start] 1fr [col3-start] 1fr [cols-end];
@@ -78,7 +95,7 @@ public class DemoView extends VerticalLayout {
         areaLayout.setWidth("100%");
         areaLayout.setHeight("600px");
 
-        add(layout, flexibleGridLayout, areaLayout);
+        add(layout, layout2, flexibleGridLayout, areaLayout);
         getStyle().set("overflow", "auto");
         layout.getStyle().set("flex-shrink", "0");
         flexibleGridLayout.getStyle().set("flex-shrink", "0");

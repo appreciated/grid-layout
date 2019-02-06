@@ -13,17 +13,17 @@ public class Repeat implements TemplateRowsAndColsUnit {
     private RepeatMode mode;
     private CssUnit[] sizes;
 
-    public Repeat(int times, CssUnit... sizes) {
+    public Repeat(int times, TemplateRowsAndColsUnit... sizes) {
         this(sizes);
         this.times = times;
     }
 
 
-    private Repeat(CssUnit... sizes) {
+    private Repeat(TemplateRowsAndColsUnit... sizes) {
         this.sizes = sizes;
     }
 
-    public Repeat(RepeatMode mode, CssUnit... sizes) {
+    public Repeat(RepeatMode mode, TemplateRowsAndColsUnit... sizes) {
         this(sizes);
         this.mode = mode;
     }

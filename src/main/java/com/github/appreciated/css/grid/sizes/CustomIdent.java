@@ -10,25 +10,15 @@ public class CustomIdent implements TemplateAreaUnit, RowOrColUnit {
 
     private Integer length;
     private String identifier;
-    private CustomIdentSuffix suffix;
 
 
     public CustomIdent(String identifier) {
-        this(null, identifier, CustomIdentSuffix.NONE);
-    }
-
-    public CustomIdent(Integer length, String identifier, CustomIdentSuffix suffix) {
-        this.length = length;
-        this.identifier = identifier;
-        this.suffix = suffix;
-    }
-
-    public CustomIdent(String identifier, CustomIdentSuffix suffix) {
-        this(null, identifier, suffix);
+        this(null, identifier);
     }
 
     public CustomIdent(Integer length, String identifier) {
-        this(length, identifier, CustomIdentSuffix.NONE);
+        this.length = length;
+        this.identifier = identifier;
     }
 
     @Override
@@ -38,26 +28,11 @@ public class CustomIdent implements TemplateAreaUnit, RowOrColUnit {
 
     @Override
     public boolean hasSuffix() {
-        return suffix != CustomIdentSuffix.NONE;
+        return false;
     }
 
     @Override
     public String getSuffixValue() {
-        return suffix.getSuffix();
+        return null;
     }
-
-    enum CustomIdentSuffix {
-        NONE(""), START("-start"), END("-end");
-
-        private String suffix;
-
-        CustomIdentSuffix(String suffix) {
-            this.suffix = suffix;
-        }
-
-        public String getSuffix() {
-            return suffix;
-        }
-    }
-
 }

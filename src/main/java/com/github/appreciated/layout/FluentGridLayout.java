@@ -1,6 +1,7 @@
 package com.github.appreciated.layout;
 
 import com.github.appreciated.css.grid.exception.NegativeValueException;
+import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.CustomIdent;
 import com.github.appreciated.css.grid.sizes.Int;
@@ -139,4 +140,25 @@ public class FluentGridLayout extends GridLayout {
         setAutoColumns(size);
         return this;
     }
+
+    public FluentGridLayout withColumnStart(Component component, RowOrColUnit unit) {
+        setColumnStart(component, unit);
+        return this;
+    }
+
+    public FluentGridLayout withColumnEnd(Component component, RowOrColUnit unit) {
+        setColumnEnd(component, unit);
+        return this;
+    }
+
+    public FluentGridLayout withRowStart(Component component, RowOrColUnit unit) {
+        setRowStart(component, unit);
+        return this;
+    }
+
+    public FluentGridLayout withRowEnd(Component component, RowOrColUnit unit) {
+        setRowEnd(component, unit);
+        return this;
+    }
+
 }

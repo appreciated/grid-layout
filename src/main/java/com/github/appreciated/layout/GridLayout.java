@@ -111,7 +111,8 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param units "The column definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
      */
     public void setTemplateColumns(TemplateRowsAndColsUnit... units) {
-        getStyle().set("grid-template-columns", Arrays.stream(units).map(CssUnit::getCssValue).reduce((s, s2) -> s + " " + s2).orElse(""));
+        String value = Arrays.stream(units).map(CssUnit::getCssValue).reduce((s, s2) -> s + " " + s2).orElse("");
+        getStyle().set("grid-template-columns", value);
     }
 
     /**
