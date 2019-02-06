@@ -6,11 +6,11 @@
     <groupId>com.github.appreciated</groupId>
     <artifactId>vaadin-css-grid</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Css Grid</name>
+    <name>Css Grid Layout</name>
     <description>Integration of the css grid for the Vaadin platform</description>
 
     <properties>
-        <vaadin.version>12.0.5</vaadin.version>
+        <vaadin.version>10.0.10</vaadin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
