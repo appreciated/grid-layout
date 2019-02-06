@@ -3,7 +3,6 @@ package com.github.appreciated.layout;
 import com.github.appreciated.css.grid.exception.NegativeValueException;
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
-import com.github.appreciated.css.grid.sizes.CustomIdent;
 import com.github.appreciated.css.grid.sizes.Int;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
@@ -33,10 +32,24 @@ public class FluentGridLayout extends GridLayout {
         return this;
     }
 
+    /**
+     * @param component
+     * @param rowStart
+     * @param colStart
+     * @return
+     */
     public FluentGridLayout withRowAndColumn(Component component, int rowStart, int colStart) {
         return withRowAndColumn(component, rowStart, colStart, rowStart, colStart);
     }
 
+    /**
+     * @param component
+     * @param rowStart
+     * @param colStart
+     * @param rowEnd
+     * @param colEnd
+     * @return
+     */
     public FluentGridLayout withRowAndColumn(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
         if (rowStart < 0 || colStart < 0 || rowEnd < 0 || colEnd < 0) {
             throw new NegativeValueException(rowStart, colStart, rowEnd, colEnd);
@@ -107,56 +120,98 @@ public class FluentGridLayout extends GridLayout {
     }
 
     /**
-     * Fluent method of {@link GridLayout#setTemplateAreas(CustomIdent[][])} for setting the template areas available
+     * Fluent method of {@link GridLayout#setTemplateAreas(TemplateArea[][])} for setting the template areas available
      *
      * @param templateAreas the template areas you want to be assigned
      * @return this
      */
-    public FluentGridLayout withTemplateAreas(CustomIdent[][] templateAreas) {
+    public FluentGridLayout withTemplateAreas(TemplateArea[][] templateAreas) {
         setTemplateAreas(templateAreas);
         return this;
     }
 
+    /**
+     * @param component
+     * @param columnAlign
+     * @return
+     */
     public FluentGridLayout withColumnAlign(Component component, ColumnAlign columnAlign) {
         setColumnAlign(component, columnAlign);
         return this;
     }
 
+    /**
+     * @param component
+     * @param end
+     * @return
+     */
     public FluentGridLayout withRowAlign(Component component, RowAlign end) {
         setRowAlign(component, end);
         return this;
     }
 
+    /**
+     * @param size
+     * @return
+     */
     public FluentGridLayout withGap(Length size) {
         setGap(size);
         return this;
     }
 
+    /**
+     * @param size
+     * @return
+     */
     public FluentGridLayout withAutoRows(Length size) {
         setAutoRows(size);
         return this;
     }
 
+    /**
+     * @param size
+     * @return
+     */
     public FluentGridLayout withAutoColumns(Length size) {
         setAutoColumns(size);
         return this;
     }
 
+    /**
+     * @param component
+     * @param unit
+     * @return
+     */
     public FluentGridLayout withColumnStart(Component component, RowOrColUnit unit) {
         setColumnStart(component, unit);
         return this;
     }
 
+    /**
+     * @param component
+     * @param unit
+     * @return
+     */
     public FluentGridLayout withColumnEnd(Component component, RowOrColUnit unit) {
         setColumnEnd(component, unit);
         return this;
     }
 
+    /**
+     * @param component
+     * @param unit
+     * @return
+     */
     public FluentGridLayout withRowStart(Component component, RowOrColUnit unit) {
         setRowStart(component, unit);
         return this;
     }
 
+    /**
+     * @param component
+     * @param unit
+     * @return
+     */
     public FluentGridLayout withRowEnd(Component component, RowOrColUnit unit) {
         setRowEnd(component, unit);
         return this;

@@ -2,7 +2,6 @@ package com.github.appreciated.layout;
 
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.Length;
-import com.github.appreciated.css.grid.sizes.MinMax;
 import com.github.appreciated.css.grid.sizes.Repeat;
 import com.github.appreciated.css.grid.sizes.Span;
 import com.vaadin.flow.component.Component;
@@ -80,7 +79,7 @@ public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize
      * Shorthand fluent style method for adding a component and setting its height
      *
      * @param component the components to add
-     * @param height the number of rows the item should span over
+     * @param height    the number of rows the item should span over
      * @return this
      */
     public FlexibleGridLayout withItemWithRowHeight(Component component, int height) {
@@ -89,11 +88,22 @@ public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize
         return this;
     }
 
-    public FlexibleGridLayout withColumns(MinMax units) {
-        getContent().setTemplateColumns(new Repeat(Repeat.RepeatMode.AUTO_FILL, units));
+    /**
+     * Shorthand to set the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns">grid-template-columns</a> with flexible columns by using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat"repeat</a> function with an auto-repeat mode.
+     *
+     * @param mode  the auto-repeat mode. (See under auto-fill and auto-repeat of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat"repeat</a> function)
+     * @param units the width the columns.
+     * @return
+     */
+    public FlexibleGridLayout withColumns(Repeat.RepeatMode mode, TemplateRowsAndColsUnit units) {
+        getContent().setTemplateColumns(new Repeat(mode, units));
         return this;
     }
 
+    /**
+     * @param units
+     * @return
+     */
     public FlexibleGridLayout withRows(TemplateRowsAndColsUnit... units) {
         getContent().setTemplateRows(units);
         return this;
@@ -103,20 +113,32 @@ public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize
      * Sets the height of the rows with the height {@link com.github.appreciated.css.grid.sizes.Auto}. By default all rows receive that height.
      *
      * @param length the size that will be set
-     * @return
+     * @return this
      */
     public FlexibleGridLayout withAutoRows(Length length) {
         getContent().setAutoRows(length);
         return this;
     }
 
+    /**
+     * Sets the row and column gap between the items
+     *
+     * @param gap the size that will be set
+     * @return this
+     */
     public FlexibleGridLayout withGap(Length gap) {
         getContent().setGap(gap);
         return this;
     }
 
-    public FlexibleGridLayout withItems(Component... div) {
-        getContent().add(div);
+    /**
+     * Adds components to the layout
+     *
+     * @param components the components that are supposed to be added
+     * @return this
+     */
+    public FlexibleGridLayout withItems(Component... components) {
+        getContent().add(components);
         return this;
     }
 }

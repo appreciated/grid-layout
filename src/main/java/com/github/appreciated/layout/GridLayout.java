@@ -6,8 +6,8 @@ import com.github.appreciated.css.grid.interfaces.CssUnit;
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
-import com.github.appreciated.css.grid.sizes.CustomIdent;
 import com.github.appreciated.css.grid.sizes.Length;
+import com.github.appreciated.css.grid.sizes.Repeat;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.*;
 
@@ -15,7 +15,10 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
- * A Layout which allows to access most of the css grid api.
+ * GridLayout is a component container, which shows the subcomponents in
+ * the order of their addition. The {@link GridLayout} does not have a predefined size - its size is either defined
+ * by the components inside it, or can be set by using the <a href="https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout">css grid api</a>
+ * Different to the {@link com.vaadin.flow.component.orderedlayout.VerticalLayout} and {@link com.vaadin.flow.component.orderedlayout.HorizontalLayout} a {@link GridLayout} can span its elements over multiple rows.
  */
 @Tag("div")
 public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent {
@@ -28,9 +31,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
         this.add(components);
     }
 
-    /**
-     *
-     */
     public GridLayout() {
         getStyle().set("display", "grid");
     }
@@ -102,14 +102,15 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     /**
      * Sets the number of columns in your grid-layout.  <br>
      * #Allowed Values  <br>
-     * Fixed number of rows:  <br>
-     * Pixels: 100px 200px 300px 400px | 4 rows having pixel valued size  <br>
-     * Auto: auto auto auto auto | 4 rows having the same size  <br>
-     * Fr: auto 1fr auto | checkout the css grid documentation <br>
+     * Fixed number of rows can be combined with the following Classes:  <br>
+     * Pixels / Percentage: {@link Length} ... | multiple rows having pixel valued size  <br>
+     * Auto: {@link com.github.appreciated.css.grid.sizes.Auto} ... | 4 rows having the same size  <br>
+     * Flexible row width: {@link com.github.appreciated.css.grid.sizes.Flex} | checkout the css grid documentation <br>
+     * {@link Repeat#Repeat(int, TemplateRowsAndColsUnit...)} | checkout the css grid documentation <br>
      * #Dynamic Number of rows  <br>
-     * Other: repeat(auto-fill, minmax(250px, 1fr));  <br>
+     * {@link com.github.appreciated.css.grid.sizes.Repeat#Repeat(Repeat.RepeatMode, TemplateRowsAndColsUnit...)}
      *
-     * @param units "The column definition in your grid layout, can either be fixed or dynamic checkout the official css grid documentation for further details"
+     * @param units "The column definition in your grid layout, can either be fixed or dynamic"
      */
     public void setTemplateColumns(TemplateRowsAndColsUnit... units) {
         String value = Arrays.stream(units).map(CssUnit::getCssValue).reduce((s, s2) -> s + " " + s2).orElse("");
@@ -174,11 +175,11 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * 'menu main main main right right'  <br>
      * 'menu footer footer footer footer footer';  <br>
      * <p>
-     * In the second step you set the area for each item which will then span over the above defined area. Use therefore {@link GridLayout#setArea(Component, TemplateArea...)}}
+     * In the second step you set the area for each item which will then span over the above defined area. Use therefore {@link GridLayout#setArea(Component, TemplateAreaUnit...)}
      *
      * @param templateAreas
      */
-    public void setTemplateAreas(CustomIdent[][] templateAreas) {
+    public void setTemplateAreas(TemplateArea[][] templateAreas) {
         if (templateAreas == null) {
             getStyle().remove("grid-template-areas");
         } else {
@@ -210,18 +211,6 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
     }
 
     /**
-     * This property is specified as one or two <grid-line> values.
-     * <p>
-     * If two <grid-line> values are given they are separated by "/". The grid-column-start longhand is set to the value before the slash, and the grid-column-end longhand is set to the value after the slash.
-     * <p>
-     * Each <grid-line> value can be specified as:
-     * <p>
-     * either the auto keyword
-     * or a <custom-ident> value
-     * or an <integer> value
-     * or both <custom-ident> and <integer>, separated by a space
-     * or the keyword span together with either a <custom-ident> or an <integer> or both.
-     * <p>
      * Sets the 'grid-column' value of an element
      *
      * @param component
