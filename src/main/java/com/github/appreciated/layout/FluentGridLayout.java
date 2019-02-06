@@ -32,15 +32,15 @@ public class FluentGridLayout extends GridLayout {
         return this;
     }
 
-    public FluentGridLayout withItemAtArea(Component component, int rowStart, int colStart) {
-        return withItemAtArea(component, rowStart, colStart, rowStart, colStart);
+    public FluentGridLayout withRowAndColumn(Component component, int rowStart, int colStart) {
+        return withRowAndColumn(component, rowStart, colStart, rowStart, colStart);
     }
 
-    public FluentGridLayout withItemAtArea(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
+    public FluentGridLayout withRowAndColumn(Component component, int rowStart, int colStart, int rowEnd, int colEnd) {
         if (rowStart < 0 || colStart < 0 || rowEnd < 0 || colEnd < 0) {
             throw new NegativeValueException(rowStart, colStart, rowEnd, colEnd);
         }
-        return withItemAtArea(component, new Int(rowStart), new Int(colStart), new Int(rowEnd), new Int(colEnd));
+        return withRowAndColumn(component, new Int(rowStart), new Int(colStart), new Int(rowEnd), new Int(colEnd));
     }
 
     /**
@@ -53,9 +53,9 @@ public class FluentGridLayout extends GridLayout {
      * @param colEnd    col in which you want the component span to end
      * @return this
      */
-    public FluentGridLayout withItemAtArea(Component component, Int rowStart, Int colStart, Int rowEnd, Int colEnd) {
+    public FluentGridLayout withRowAndColumn(Component component, RowOrColUnit rowStart, RowOrColUnit colStart, RowOrColUnit rowEnd, RowOrColUnit colEnd) {
         add(component);
-        setArea(component, rowStart, colStart, rowEnd, colEnd);
+        setRowAndColumn(component, rowStart, colStart, rowEnd, colEnd);
         return this;
     }
 
@@ -66,7 +66,7 @@ public class FluentGridLayout extends GridLayout {
      * @param area      the area the element should be assigned
      * @return this
      */
-    public FluentGridLayout withItemAtArea(Component component, CustomIdent area) {
+    public FluentGridLayout withRowAndColumn(Component component, CustomIdent area) {
         add(component);
         setArea(component, area);
         return this;

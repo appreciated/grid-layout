@@ -28,13 +28,12 @@ public class DemoView extends VerticalLayout {
                 .withTemplateColumns(new Flex(1), new Flex(1), new Flex(1))
                 .withColumnAlign(alignTestComponent, GridLayoutComponent.ColumnAlign.END)
                 .withRowAlign(alignTestComponent, GridLayoutComponent.RowAlign.END)
-                .withItemAtArea(alignTestComponent, 1, 1, 1, 3)
-                .withItemAtArea(getDiv(), 2, 1)
-                .withItemAtArea(getDiv(), 2, 2)
-                .withItemAtArea(getDiv(), 1, 3, 3, 3);
+                .withRowAndColumn(alignTestComponent, 1, 1, 1, 3)
+                .withRowAndColumn(getDiv(), 2, 1)
+                .withRowAndColumn(getDiv(), 2, 2)
+                .withRowAndColumn(getDiv(), 1, 3, 3, 3);
         layout.setWidth("100%");
         layout.setHeight("600px");
-
 
         FluentGridLayout layout2 = new FluentGridLayout();
         Component customColTest = getDiv();
@@ -54,18 +53,6 @@ public class DemoView extends VerticalLayout {
                 .withRowEnd(customColTest, new ColOrRow("rows-end"));
         layout2.setWidth("100%");
         layout2.setHeight("600px");
-
-        /**
-         *   grid-template-columns: [col1-start] 1fr [col2-start] 1fr [col3-start] 1fr [cols-end];
-         *   grid-template-rows: [row1-start] 100px [row2-start] 100px [rows-end];
-         * }
-         * .item {
-         *   grid-column-start: col1-start;
-         *   grid-column-end: col3-start;
-         *   grid-row-start: row1-start;
-         *   grid-row-end: rows-end;
-         * }
-         */
 
         FlexibleGridLayout flexibleGridLayout = new FlexibleGridLayout()
                 .withColumns(new MinMax(new Length("220px"), new Flex(1)))

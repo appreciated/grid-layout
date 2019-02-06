@@ -299,7 +299,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
      * @param rowEnd
      * @param colEnd
      */
-    public void setArea(Component component, RowOrColUnit rowStart, RowOrColUnit colStart, RowOrColUnit rowEnd, RowOrColUnit colEnd) {
+    public void setRowAndColumn(Component component, RowOrColUnit rowStart, RowOrColUnit colStart, RowOrColUnit rowEnd, RowOrColUnit colEnd) {
         setRowStartAndEnd(component, rowStart, rowEnd);
         setColumnStartAndEnd(component, colStart, colEnd);
     }
