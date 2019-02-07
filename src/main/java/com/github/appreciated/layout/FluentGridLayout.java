@@ -1,5 +1,6 @@
 package com.github.appreciated.layout;
 
+import com.github.appreciated.css.grid.GridLayoutComponent;
 import com.github.appreciated.css.grid.exception.NegativeValueException;
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
@@ -7,8 +8,9 @@ import com.github.appreciated.css.grid.sizes.Int;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 
-public class FluentGridLayout extends GridLayout {
+public class FluentGridLayout extends GridLayout implements ThemableLayout, GridLayoutComponent {
 
     /**
      * Fluent method of {@link GridLayout#setTemplateColumns(TemplateRowsAndColsUnit...)}

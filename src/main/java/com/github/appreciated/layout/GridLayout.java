@@ -10,6 +10,8 @@ import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.Repeat;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.*;
+import com.vaadin.flow.component.orderedlayout.BoxSizing;
+import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -21,7 +23,7 @@ import java.util.Objects;
  * Different to the {@link com.vaadin.flow.component.orderedlayout.VerticalLayout} and {@link com.vaadin.flow.component.orderedlayout.HorizontalLayout} a {@link GridLayout} can span its elements over multiple rows.
  */
 @Tag("div")
-public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent {
+public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent, ThemableLayout {
 
     /**
      * @param components
@@ -33,6 +35,7 @@ public class GridLayout extends Component implements HasStyle, HasOrderedCompone
 
     public GridLayout() {
         getStyle().set("display", "grid");
+        setBoxSizing(BoxSizing.BORDER_BOX);
     }
 
     /**

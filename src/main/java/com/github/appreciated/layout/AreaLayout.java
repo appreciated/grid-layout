@@ -1,17 +1,19 @@
 package com.github.appreciated.layout;
 
+import com.github.appreciated.css.grid.GridLayoutComponent;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.HasStyle;
+import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 
 import java.util.Arrays;
 
 /**
  * A Layout which makes it easy for the user to create area based grids.
  */
-public class AreaLayout extends Composite<GridLayout> implements HasSize, HasStyle {
+public class AreaLayout extends Composite<GridLayout> implements HasSize, HasStyle, ThemableLayout, GridLayoutComponent {
 
     /**
      * Shorthand to allow setting the <a href="https://developer.mozilla.org/de/docs/Web/CSS/grid-template-areas">grid-template-areas</a>
@@ -26,6 +28,7 @@ public class AreaLayout extends Composite<GridLayout> implements HasSize, HasSty
 
     /**
      * Short hand to add an item and set its <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area">grid-area</a>
+     *
      * @param component
      * @param area
      * @return

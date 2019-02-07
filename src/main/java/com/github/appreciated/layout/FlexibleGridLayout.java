@@ -1,5 +1,6 @@
 package com.github.appreciated.layout;
 
+import com.github.appreciated.css.grid.GridLayoutComponent;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.Repeat;
@@ -8,11 +9,12 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.HasStyle;
+import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 
 /**
  * A Layout which makes it easy for the user to create flexible grids.
  */
-public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize, HasStyle {
+public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize, HasStyle, ThemableLayout, GridLayoutComponent {
     public FlexibleGridLayout() {
 
     }

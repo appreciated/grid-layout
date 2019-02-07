@@ -1,10 +1,11 @@
 package com.github.appreciated.css.grid;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasElement;
 
 import java.util.Arrays;
 
-public interface GridLayoutComponent {
+public interface GridLayoutComponent extends HasElement {
 
     default void setColumnAlign(Component component, ColumnAlign align) {
         for (String cssProperty : ColumnAlign.cssProperties) {
@@ -15,6 +16,14 @@ public interface GridLayoutComponent {
     default void setRowAlign(Component component, RowAlign align) {
         for (String cssProperty : RowAlign.cssProperties) {
             component.getElement().getStyle().set(cssProperty, align.getAlignValue());
+        }
+    }
+
+    default void setOverflow(Overflow overflow) {
+        if (overflow == null) {
+            getElement().getStyle().remove(Overflow.cssProperty);
+        } else {
+            getElement().getStyle().set(Overflow.cssProperty, overflow.getOverflowValue());
         }
     }
 
@@ -68,6 +77,7 @@ public interface GridLayoutComponent {
         }
     }
 
+
     enum AutoFlow {
         ROW("row"),
         COLUMN("column"),
@@ -96,5 +106,35 @@ public interface GridLayoutComponent {
             return this.autoFlowValue;
         }
     }
+
+    enum Overflow {
+        VISIBLE("visible"),
+        HIDDEN("hidden"),
+        SCROLL("scroll"),
+        AUTO("auto");
+
+        public static final String cssProperty = "overflow";
+        private final String overflowValue;
+
+        Overflow(String overflowValue) {
+            this.overflowValue = overflowValue;
+        }
+
+        public static Overflow toOverflow(String autoFlowValue) {
+            return toOverflow(autoFlowValue, VISIBLE);
+        }
+
+        public static Overflow toOverflow(String overFlowValue, Overflow defaultValue) {
+            return Arrays.stream(values())
+                    .filter((alignment) -> alignment.getOverflowValue().equals(overFlowValue))
+                    .findFirst()
+                    .orElse(defaultValue);
+        }
+
+        public String getOverflowValue() {
+            return this.overflowValue;
+        }
+    }
+
 
 }

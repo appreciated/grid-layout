@@ -1,6 +1,5 @@
 package com.github.appreciated;
 
-import com.github.appreciated.css.grid.GridLayoutComponent;
 import com.github.appreciated.css.grid.sizes.*;
 import com.github.appreciated.layout.AreaLayout;
 import com.github.appreciated.layout.FlexibleGridLayout;
@@ -13,6 +12,8 @@ import com.vaadin.flow.router.Route;
 
 import java.util.Random;
 
+import static com.github.appreciated.css.grid.GridLayoutComponent.*;
+
 @Route("")
 public class DemoView extends VerticalLayout {
 
@@ -24,8 +25,8 @@ public class DemoView extends VerticalLayout {
         Component alignTestComponent = getDiv();
         layout.withTemplateRows(new Flex(1), new Flex(1), new Flex(1))
                 .withTemplateColumns(new Flex(1), new Flex(1), new Flex(1))
-                .withColumnAlign(alignTestComponent, GridLayoutComponent.ColumnAlign.END)
-                .withRowAlign(alignTestComponent, GridLayoutComponent.RowAlign.END)
+                .withColumnAlign(alignTestComponent, ColumnAlign.END)
+                .withRowAlign(alignTestComponent, RowAlign.END)
                 .withRowAndColumn(alignTestComponent, 1, 1, 1, 3)
                 .withRowAndColumn(getDiv(), 2, 1)
                 .withRowAndColumn(getDiv(), 2, 2)
@@ -61,9 +62,13 @@ public class DemoView extends VerticalLayout {
                 .withItemWithSize(getDiv(), 2, 2)
                 .withItems(
                         getDiv(), getDiv(), getDiv(), getDiv(), getDiv(), getDiv(),
+                        getDiv(), getDiv(), getDiv(), getDiv(), getDiv(), getDiv(),
                         getDiv(), getDiv()
                 );
         flexibleGridLayout.setWidth("100%");
+        flexibleGridLayout.setHeight("600px");
+        flexibleGridLayout.setOverflow(Overflow.AUTO);
+        flexibleGridLayout.setPadding(true);
 
         AreaLayout areaLayout = new AreaLayout(new String[][]{
                 new String[]{"header", "header", "header", "header", "header"},
