@@ -56,19 +56,18 @@ public class DemoView extends VerticalLayout {
         FlexibleGridLayout flexibleGridLayout = new FlexibleGridLayout()
                 .withColumns(Repeat.RepeatMode.AUTO_FILL, new MinMax(new Length("220px"), new Flex(1)))
                 .withAutoRows(new Length("220px"))
-                .withGap(new Length("10px"))
                 .withItems(
                         getDiv())
                 .withItemWithSize(getDiv(), 2, 2)
                 .withItems(
                         getDiv(), getDiv(), getDiv(), getDiv(), getDiv(), getDiv(),
                         getDiv(), getDiv(), getDiv(), getDiv(), getDiv(), getDiv(),
-                        getDiv(), getDiv()
-                );
+                        getDiv(), getDiv())
+                .withOverflow(Overflow.AUTO)
+                .withPadding(true)
+                .withSpacing(true);
         flexibleGridLayout.setWidth("100%");
         flexibleGridLayout.setHeight("600px");
-        flexibleGridLayout.setOverflow(Overflow.AUTO);
-        flexibleGridLayout.setPadding(true);
 
         AreaLayout areaLayout = new AreaLayout(new String[][]{
                 new String[]{"header", "header", "header", "header", "header"},

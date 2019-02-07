@@ -10,7 +10,7 @@ import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.Repeat;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.*;
-import com.vaadin.flow.component.orderedlayout.BoxSizing;
+import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 
 import java.util.Arrays;
@@ -22,20 +22,18 @@ import java.util.Objects;
  * by the components inside it, or can be set by using the <a href="https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout">css grid api</a>
  * Different to the {@link com.vaadin.flow.component.orderedlayout.VerticalLayout} and {@link com.vaadin.flow.component.orderedlayout.HorizontalLayout} a {@link GridLayout} can span its elements over multiple rows.
  */
-@Tag("div")
+@Tag("grid-layout")
+@HtmlImport("frontend://com/github/appreciated/grid-layout/grid-layout.html")
 public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent, ThemableLayout {
 
     /**
      * @param components
      */
     public GridLayout(Component... components) {
-        this();
         this.add(components);
     }
 
     public GridLayout() {
-        getStyle().set("display", "grid");
-        setBoxSizing(BoxSizing.BORDER_BOX);
     }
 
     /**

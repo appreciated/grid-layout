@@ -8,9 +8,8 @@ import com.github.appreciated.css.grid.sizes.Int;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 
-public class FluentGridLayout extends GridLayout implements ThemableLayout, GridLayoutComponent {
+public class FluentGridLayout extends GridLayout implements GridLayoutComponent {
 
     /**
      * Fluent method of {@link GridLayout#setTemplateColumns(TemplateRowsAndColsUnit...)}

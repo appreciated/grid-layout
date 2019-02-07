@@ -14,7 +14,7 @@ import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 /**
  * A Layout which makes it easy for the user to create flexible grids.
  */
-public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize, HasStyle, ThemableLayout, GridLayoutComponent {
+public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize, HasStyle, GridLayoutComponent, ThemableLayout {
     public FlexibleGridLayout() {
 
     }
@@ -141,6 +141,26 @@ public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize
      */
     public FlexibleGridLayout withItems(Component... components) {
         getContent().add(components);
+        return this;
+    }
+
+    public FlexibleGridLayout withSpacing(boolean spacing) {
+        setSpacing(spacing);
+        return this;
+    }
+
+    public FlexibleGridLayout withPadding(boolean padding) {
+        setPadding(padding);
+        return this;
+    }
+
+    public FlexibleGridLayout withMargin(boolean margin) {
+        setMargin(margin);
+        return this;
+    }
+
+    public FlexibleGridLayout withOverflow(Overflow overflow) {
+        setOverflow(overflow);
         return this;
     }
 }
