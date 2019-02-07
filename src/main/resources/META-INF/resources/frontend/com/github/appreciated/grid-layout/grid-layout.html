@@ -1,0 +1,79 @@
+<link href="../../../../bower_components/polymer/polymer-element.html" rel="import">
+<link rel="import" href="../../../../bower_components/vaadin-themable-mixin/vaadin-themable-mixin.html">
+<link rel="import" href="../../../../bower_components/vaadin-element-mixin/vaadin-element-mixin.html">
+
+<dom-module id="grid-layout">
+    <template>
+        <style>
+            :host {
+                display: grid;
+                box-sizing: border-box;
+            }
+
+            :host([hidden]) {
+                display: none !important;
+            }
+
+            :host([theme~="margin"]) {
+                margin: 1em;
+            }
+
+            :host([theme~="padding"]) {
+                padding: 1em;
+            }
+
+            :host([theme~="margin"]) {
+                margin: var(--lumo-space-m);
+            }
+
+            :host([theme~="padding"]) {
+                padding: var(--lumo-space-m);
+            }
+
+            :host([theme~="spacing"]) {
+                grid-gap: 1em;
+            }
+
+            :host([theme~="spacing-xs"]) {
+                grid-gap: var(--lumo-space-xs);
+            }
+
+            :host([theme~="spacing-s"]) {
+                grid-gap: var(--lumo-space-s);
+            }
+
+            :host([theme~="spacing"]) {
+                grid-gap: var(--lumo-space-m);
+            }
+
+            :host([theme~="spacing-l"]) {
+                grid-gap: var(--lumo-space-l);
+            }
+
+            :host([theme~="spacing-xl"]) {
+                grid-gap: var(--lumo-space-xl);
+            }
+        </style>
+
+        <slot></slot>
+
+    </template>
+
+    <script>
+        (function () {
+            class GridLayoutElement extends Vaadin.ElementMixin
+
+            (Vaadin.ThemableMixin(Polymer.Element))
+            {
+                static
+                get
+                is()
+                {
+                    return 'grid-layout';
+                }
+            }
+            customElements.define(GridLayoutElement.is, GridLayoutElement);
+            Vaadin.GridLayoutElement = GridLayoutElement;
+        })();
+    </script>
+</dom-module>
