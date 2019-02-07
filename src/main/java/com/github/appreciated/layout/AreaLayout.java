@@ -1,18 +1,16 @@
 package com.github.appreciated.layout;
 
-import com.github.appreciated.css.grid.GridLayoutComponent;
+import com.github.appreciated.css.grid.FluentGridLayoutComponent;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.HasSize;
-import com.vaadin.flow.component.HasStyle;
 
 import java.util.Arrays;
 
 /**
  * A Layout which makes it easy for the user to create area based grids.
  */
-public class AreaLayout extends Composite<GridLayout> implements HasSize, HasStyle, GridLayoutComponent {
+public class AreaLayout extends Composite<GridLayout> implements FluentGridLayoutComponent<AreaLayout> {
 
     /**
      * Shorthand to allow setting the <a href="https://developer.mozilla.org/de/docs/Web/CSS/grid-template-areas">grid-template-areas</a>

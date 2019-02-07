@@ -1,6 +1,7 @@
 package com.github.appreciated.layout;
 
-import com.github.appreciated.css.grid.GridLayoutComponent;
+import com.github.appreciated.css.grid.FluentGridLayoutComponent;
+import com.github.appreciated.css.grid.HasOverflow;
 import com.github.appreciated.css.grid.exception.NegativeValueException;
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
@@ -9,7 +10,7 @@ import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.Component;
 
-public class FluentGridLayout extends GridLayout implements GridLayoutComponent {
+public class FluentGridLayout extends GridLayout implements FluentGridLayoutComponent<FluentGridLayout>, HasOverflow<FluentGridLayout> {
 
     /**
      * Fluent method of {@link GridLayout#setTemplateColumns(TemplateRowsAndColsUnit...)}

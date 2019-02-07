@@ -9,9 +9,9 @@ import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.Repeat;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
-import com.vaadin.flow.component.*;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
-import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -24,7 +24,7 @@ import java.util.Objects;
  */
 @Tag("grid-layout")
 @HtmlImport("frontend://com/github/appreciated/grid-layout/grid-layout.html")
-public class GridLayout extends Component implements HasStyle, HasOrderedComponents<Component>, HasSize, GridLayoutComponent, ThemableLayout {
+public class GridLayout extends Component implements GridLayoutComponent {
 
     /**
      * @param components

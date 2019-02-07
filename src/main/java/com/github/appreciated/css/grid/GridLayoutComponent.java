@@ -1,11 +1,11 @@
 package com.github.appreciated.css.grid;
 
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasElement;
+import com.vaadin.flow.component.*;
+import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 
 import java.util.Arrays;
 
-public interface GridLayoutComponent extends HasElement {
+public interface GridLayoutComponent extends HasElement, ThemableLayout, HasSize, HasStyle, HasOrderedComponents<Component> {
 
     default void setColumnAlign(Component component, ColumnAlign align) {
         for (String cssProperty : ColumnAlign.cssProperties) {

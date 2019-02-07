@@ -1,20 +1,18 @@
 package com.github.appreciated.layout;
 
-import com.github.appreciated.css.grid.GridLayoutComponent;
+import com.github.appreciated.css.grid.FluentGridLayoutComponent;
+import com.github.appreciated.css.grid.HasOverflow;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.Repeat;
 import com.github.appreciated.css.grid.sizes.Span;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.HasSize;
-import com.vaadin.flow.component.HasStyle;
-import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 
 /**
  * A Layout which makes it easy for the user to create flexible grids.
  */
-public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize, HasStyle, GridLayoutComponent, ThemableLayout {
+public class FlexibleGridLayout extends Composite<GridLayout> implements FluentGridLayoutComponent<FlexibleGridLayout>, HasOverflow<FlexibleGridLayout> {
     public FlexibleGridLayout() {
 
     }
@@ -144,23 +142,5 @@ public class FlexibleGridLayout extends Composite<GridLayout> implements HasSize
         return this;
     }
 
-    public FlexibleGridLayout withSpacing(boolean spacing) {
-        setSpacing(spacing);
-        return this;
-    }
 
-    public FlexibleGridLayout withPadding(boolean padding) {
-        setPadding(padding);
-        return this;
-    }
-
-    public FlexibleGridLayout withMargin(boolean margin) {
-        setMargin(margin);
-        return this;
-    }
-
-    public FlexibleGridLayout withOverflow(Overflow overflow) {
-        setOverflow(overflow);
-        return this;
-    }
 }

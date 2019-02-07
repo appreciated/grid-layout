@@ -49,7 +49,10 @@ public class DemoView extends VerticalLayout {
                 .withColumnStart(customColTest, new ColOrRow("col1-start"))
                 .withColumnEnd(customColTest, new ColOrRow("col3-start"))
                 .withRowStart(customColTest, new ColOrRow("row1-start"))
-                .withRowEnd(customColTest, new ColOrRow("rows-end"));
+                .withRowEnd(customColTest, new ColOrRow("rows-end"))
+                .withOverflow(Overflow.AUTO)
+                .withPadding(true)
+                .withSpacing(true);
         layout2.setWidth("100%");
         layout2.setHeight("600px");
 
