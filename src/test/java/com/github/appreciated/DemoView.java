@@ -67,6 +67,7 @@ public class DemoView extends VerticalLayout {
                         getDiv(), getDiv(), getDiv(), getDiv(), getDiv(), getDiv(),
                         getDiv(), getDiv())
                 .withOverflow(Overflow.AUTO)
+                .withAutoFlow(AutoFlow.ROW_DENSE)
                 .withPadding(true)
                 .withSpacing(true);
         flexibleGridLayout.setWidth("100%");
@@ -87,10 +88,8 @@ public class DemoView extends VerticalLayout {
         areaLayout.setHeight("600px");
 
         add(layout, layout2, flexibleGridLayout, areaLayout);
+        getChildren().forEach(component -> component.getElement().getStyle().set("flex-shrink", "0"));
         getStyle().set("overflow", "auto");
-        layout.getStyle().set("flex-shrink", "0");
-        flexibleGridLayout.getStyle().set("flex-shrink", "0");
-        areaLayout.getStyle().set("flex-shrink", "0");
         setSizeFull();
     }
 

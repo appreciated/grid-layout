@@ -19,7 +19,7 @@
             }
 
             :host([theme~="padding"]) {
-                padding: 1em;
+                padding: 1em 1em 0 1em;
             }
 
             :host([theme~="margin"]) {
@@ -27,7 +27,7 @@
             }
 
             :host([theme~="padding"]) {
-                padding: var(--lumo-space-m);
+                padding: var(--lumo-space-m) var(--lumo-space-m) 0 var(--lumo-space-m);
             }
 
             :host([theme~="spacing"]) {
@@ -54,9 +54,7 @@
                 grid-gap: var(--lumo-space-xl);
             }
         </style>
-
         <slot></slot>
-
     </template>
 
     <script>
