@@ -401,6 +401,8 @@ public class GridLayout extends Component implements GridLayoutComponent {
     }
 
     /**
+     *
+     * Sets how the grid should behave weather keeping the order or filling up unused space with smaller elements using this makes sense when adding differently sized elements <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow">grid-auto-flow</a>
      * @param autoFlow
      */
     public void setAutoFlow(AutoFlow autoFlow) {

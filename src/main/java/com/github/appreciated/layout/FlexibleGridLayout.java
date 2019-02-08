@@ -121,6 +121,17 @@ public class FlexibleGridLayout extends Composite<GridLayout> implements FluentG
     }
 
     /**
+     * Sets how the grid should behave weather keeping the order or filling up unused space with smaller elements using this makes sense when adding differently sized elements <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow">grid-auto-flow</a>.
+     *
+     * @param flow
+     * @return
+     */
+    public FlexibleGridLayout withAutoFlow(AutoFlow flow) {
+        getContent().setAutoFlow(flow);
+        return this;
+    }
+
+    /**
      * Sets the row and column gap between the items
      *
      * @param gap the size that will be set
