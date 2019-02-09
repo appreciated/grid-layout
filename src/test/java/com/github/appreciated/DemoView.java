@@ -23,8 +23,8 @@ public class DemoView extends VerticalLayout {
         random = new Random();
         FluentGridLayout layout = new FluentGridLayout();
         Component alignTestComponent = getDiv();
-        layout.withTemplateRows(new Flex(1), new Flex(1), new Flex(1))
-                .withTemplateColumns(new Flex(1), new Flex(1), new Flex(1))
+        layout.withTemplateRows(new Flex(), new Flex(), new Flex())
+                .withTemplateColumns(new Flex(), new Flex(), new Flex())
                 .withColumnAlign(alignTestComponent, ColumnAlign.END)
                 .withRowAlign(alignTestComponent, RowAlign.END)
                 .withRowAndColumn(alignTestComponent, 1, 1, 1, 3)
@@ -37,13 +37,13 @@ public class DemoView extends VerticalLayout {
         FluentGridLayout layout2 = new FluentGridLayout();
         Component customColTest = getDiv();
         layout2.withTemplateColumns(
-                new TemplateColOrRow("col1-start", new Flex(1)),
-                new TemplateColOrRow("col2-start", new Flex(1)),
-                new TemplateColOrRow("col3-start", new Flex(1)),
+                new TemplateColOrRow("col1-start", new Flex()),
+                new TemplateColOrRow("col2-start", new Flex()),
+                new TemplateColOrRow("col3-start", new Flex()),
                 new TemplateColOrRow("col-end"))
                 .withTemplateRows(
-                        new TemplateColOrRow("row1-start", new Flex(1)),
-                        new TemplateColOrRow("row2-start", new Flex(1)),
+                        new TemplateColOrRow("row1-start", new Flex()),
+                        new TemplateColOrRow("row2-start", new Flex()),
                         new TemplateColOrRow("row-end"))
                 .withItems(customColTest)
                 .withColumnStart(customColTest, new ColOrRow("col1-start"))
@@ -57,7 +57,7 @@ public class DemoView extends VerticalLayout {
         layout2.setHeight("600px");
 
         FlexibleGridLayout flexibleGridLayout = new FlexibleGridLayout()
-                .withColumns(Repeat.RepeatMode.AUTO_FILL, new MinMax(new Length("220px"), new Flex(1)))
+                .withColumns(Repeat.RepeatMode.AUTO_FILL, new MinMax(new Length("220px"), new Flex()))
                 .withAutoRows(new Length("220px"))
                 .withItems(
                         getDiv())
