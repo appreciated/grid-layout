@@ -12,6 +12,10 @@ import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.polymertemplate.Id;
+import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
+import com.vaadin.flow.templatemodel.TemplateModel;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -24,7 +28,9 @@ import java.util.Objects;
  */
 @Tag("grid-layout")
 @HtmlImport("frontend://com/github/appreciated/grid-layout/grid-layout.html")
-public class GridLayout extends Component implements GridLayoutComponent {
+public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLayoutComponent {
+    @Id("grid-layout-element")
+    Div gridLayout;
 
     /**
      * @param components
@@ -40,7 +46,7 @@ public class GridLayout extends Component implements GridLayoutComponent {
      * @return
      */
     public String getColumnGap() {
-        return getStyle().get("grid-column-gap");
+        return gridLayout.getStyle().get("grid-column-gap");
     }
 
     /**
@@ -48,9 +54,9 @@ public class GridLayout extends Component implements GridLayoutComponent {
      */
     public void setColumnGap(Length columnGap) {
         if (columnGap == null) {
-            getStyle().remove("grid-column-gap");
+            gridLayout.getStyle().remove("grid-column-gap");
         } else {
-            getStyle().set("grid-column-gap", columnGap.getCssValue());
+            gridLayout.getStyle().set("grid-column-gap", columnGap.getCssValue());
         }
     }
 
@@ -58,7 +64,7 @@ public class GridLayout extends Component implements GridLayoutComponent {
      * @return
      */
     public String getRowGap() {
-        return getStyle().get("grid-row-gap");
+        return gridLayout.getStyle().get("grid-row-gap");
     }
 
     /**
@@ -66,9 +72,9 @@ public class GridLayout extends Component implements GridLayoutComponent {
      */
     public void setRowGap(Length rowGap) {
         if (rowGap == null) {
-            getStyle().remove("grid-row-gap");
+            gridLayout.getStyle().remove("grid-row-gap");
         } else {
-            getStyle().set("grid-row-gap", rowGap.getCssValue());
+            gridLayout.getStyle().set("grid-row-gap", rowGap.getCssValue());
         }
     }
 
@@ -79,14 +85,14 @@ public class GridLayout extends Component implements GridLayoutComponent {
     public void setGap(Length columnGap, Length rowGap) {
         Objects.requireNonNull(columnGap);
         Objects.requireNonNull(rowGap);
-        getStyle().set("grid-gap", columnGap.getCssValue() + " " + rowGap.getCssValue());
+        gridLayout.getStyle().set("grid-gap", columnGap.getCssValue() + " " + rowGap.getCssValue());
     }
 
     /**
      * @return
      */
     public String getGap() {
-        return getStyle().get("grid-gap");
+        return gridLayout.getStyle().get("grid-gap");
     }
 
     /**
@@ -94,9 +100,9 @@ public class GridLayout extends Component implements GridLayoutComponent {
      */
     public void setGap(Length gap) {
         if (gap == null) {
-            getStyle().remove("grid-gap");
+            gridLayout.getStyle().remove("grid-gap");
         } else {
-            getStyle().set("grid-gap", gap.getCssValue());
+            gridLayout.getStyle().set("grid-gap", gap.getCssValue());
         }
     }
 
@@ -115,7 +121,7 @@ public class GridLayout extends Component implements GridLayoutComponent {
      */
     public void setTemplateColumns(TemplateRowsAndColsUnit... units) {
         String value = Arrays.stream(units).map(CssUnit::getCssValue).reduce((s, s2) -> s + " " + s2).orElse("");
-        getStyle().set("grid-template-columns", value);
+        gridLayout.getStyle().set("grid-template-columns", value);
     }
 
     /**
@@ -132,9 +138,9 @@ public class GridLayout extends Component implements GridLayoutComponent {
      */
     public void setTemplateRows(TemplateRowsAndColsUnit... units) {
         if (units == null) {
-            getStyle().remove("grid-template-rows");
+            gridLayout.getStyle().remove("grid-template-rows");
         } else {
-            getStyle().set("grid-template-rows", Arrays.stream(units).map(CssUnit::getCssValue).reduce((s, s2) -> s + " " + s2).orElse(""));
+            gridLayout.getStyle().set("grid-template-rows", Arrays.stream(units).map(CssUnit::getCssValue).reduce((s, s2) -> s + " " + s2).orElse(""));
         }
     }
 
@@ -143,9 +149,9 @@ public class GridLayout extends Component implements GridLayoutComponent {
      */
     public void setTemplate(GridTemplates template) {
         if (template == null) {
-            getStyle().remove("grid-template");
+            gridLayout.getStyle().remove("grid-template");
         } else {
-            getStyle().set("grid-template", template.getTemplateRows().getCssValue() + " / " + template.getTemplateColumns().getCssValue());
+            gridLayout.getStyle().set("grid-template", template.getTemplateRows().getCssValue() + " / " + template.getTemplateColumns().getCssValue());
         }
     }
 
@@ -153,7 +159,7 @@ public class GridLayout extends Component implements GridLayoutComponent {
      * @return
      */
     public String getGrid() {
-        return getStyle().get("grid");
+        return gridLayout.getStyle().get("grid");
     }
 
     /**
@@ -161,9 +167,9 @@ public class GridLayout extends Component implements GridLayoutComponent {
      */
     public void setGrid(String grid) {
         if (grid == null) {
-            getStyle().remove("grid");
+            gridLayout.getStyle().remove("grid");
         } else {
-            getStyle().set("grid", grid);
+            gridLayout.getStyle().set("grid", grid);
         }
     }
 
@@ -182,7 +188,7 @@ public class GridLayout extends Component implements GridLayoutComponent {
      */
     public void setTemplateAreas(TemplateArea[][] templateAreas) {
         if (templateAreas == null) {
-            getStyle().remove("grid-template-areas");
+            gridLayout.getStyle().remove("grid-template-areas");
         } else {
             String areas = Arrays.stream(templateAreas)
                     .map(strings -> Arrays.stream(strings).map(CssUnit::getCssValue).reduce((s, s2) -> s + " " + s2)
@@ -190,7 +196,7 @@ public class GridLayout extends Component implements GridLayoutComponent {
                     ).map(s -> "'" + s + "'")
                     .reduce((s, s2) -> s + " " + s2)
                     .orElse("");
-            getStyle().set("grid-template-areas", areas);
+            gridLayout.getStyle().set("grid-template-areas", areas);
         }
     }
 
@@ -379,7 +385,7 @@ public class GridLayout extends Component implements GridLayoutComponent {
      * @return
      */
     public String getAutoColumns() {
-        return getStyle().get("grid-auto-columns");
+        return gridLayout.getStyle().get("grid-auto-columns");
     }
 
     /**
@@ -387,9 +393,9 @@ public class GridLayout extends Component implements GridLayoutComponent {
      */
     public void setAutoColumns(Length size) {
         if (size == null) {
-            getStyle().remove("grid-auto-columns");
+            gridLayout.getStyle().remove("grid-auto-columns");
         } else {
-            getStyle().set("grid-auto-columns", size.getCssValue());
+            gridLayout.getStyle().set("grid-auto-columns", size.getCssValue());
         }
     }
 
@@ -397,19 +403,19 @@ public class GridLayout extends Component implements GridLayoutComponent {
      * @return
      */
     public AutoFlow getAutoFlow() {
-        return AutoFlow.toAutoFlow(getStyle().get(AutoFlow.cssProperty));
+        return AutoFlow.toAutoFlow(gridLayout.getStyle().get(AutoFlow.cssProperty));
     }
 
     /**
-     *
      * Sets how the grid should behave weather keeping the order or filling up unused space with smaller elements using this makes sense when adding differently sized elements <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow">grid-auto-flow</a>
+     *
      * @param autoFlow
      */
     public void setAutoFlow(AutoFlow autoFlow) {
         if (autoFlow == null) {
-            getStyle().remove(AutoFlow.cssProperty);
+            gridLayout.getStyle().remove(AutoFlow.cssProperty);
         } else {
-            getStyle().set(AutoFlow.cssProperty, autoFlow.getAutoFlowValue());
+            gridLayout.getStyle().set(AutoFlow.cssProperty, autoFlow.getAutoFlowValue());
         }
     }
 
@@ -417,7 +423,7 @@ public class GridLayout extends Component implements GridLayoutComponent {
      * @return
      */
     public String getAutoRows() {
-        return getStyle().get("grid-auto-rows");
+        return gridLayout.getStyle().get("grid-auto-rows");
     }
 
     /**
@@ -425,9 +431,9 @@ public class GridLayout extends Component implements GridLayoutComponent {
      */
     public void setAutoRows(Length size) {
         if (size == null) {
-            getStyle().remove("grid-auto-rows");
+            gridLayout.getStyle().remove("grid-auto-rows");
         } else {
-            getStyle().set("grid-auto-rows", size.getCssValue());
+            gridLayout.getStyle().set("grid-auto-rows", size.getCssValue());
         }
     }
 

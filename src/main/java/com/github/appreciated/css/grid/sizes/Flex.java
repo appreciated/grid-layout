@@ -12,6 +12,10 @@ public class Flex implements AutoRowAndColUnit, TemplateRowsAndColsUnit, MinMaxU
 
     private double fraction;
 
+    public Flex() {
+        this(1);
+    }
+
     public Flex(double fraction) {
         if (fraction < 0) {
             throw new NegativeValueException(fraction);
