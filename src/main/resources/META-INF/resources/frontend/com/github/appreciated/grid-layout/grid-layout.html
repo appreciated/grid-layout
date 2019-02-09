@@ -73,14 +73,8 @@
 
     <script>
         (function () {
-            class GridLayoutElement extends Vaadin.ElementMixin
-
-            (Vaadin.ThemableMixin(Polymer.Element))
-            {
-                static
-                get
-                is()
-                {
+            class GridLayoutElement extends Vaadin.ElementMixin(Vaadin.ThemableMixin(Polymer.Element)){
+                static get is() {
                     return 'grid-layout';
                 }
             }
