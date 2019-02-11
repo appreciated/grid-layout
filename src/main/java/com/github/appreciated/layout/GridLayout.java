@@ -8,7 +8,7 @@ import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.Repeat;
-import com.github.appreciated.css.grid.sizes.TemplateArea;
+import com.github.appreciated.css.grid.sizes.TemplateAreas;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
@@ -186,14 +186,12 @@ public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLa
      *
      * @param templateAreas
      */
-    public void setTemplateAreas(TemplateArea[][] templateAreas) {
+    public void setTemplateAreas(TemplateAreas[] templateAreas) {
         if (templateAreas == null) {
             gridLayout.getStyle().remove("grid-template-areas");
         } else {
             String areas = Arrays.stream(templateAreas)
-                    .map(strings -> Arrays.stream(strings).map(CssUnit::getCssValue).reduce((s, s2) -> s + " " + s2)
-                            .orElse("")
-                    ).map(s -> "'" + s + "'")
+                    .map(s -> "'" + s.getCssValue() + "'")
                     .reduce((s, s2) -> s + " " + s2)
                     .orElse("");
             gridLayout.getStyle().set("grid-template-areas", areas);

@@ -2,6 +2,7 @@ package com.github.appreciated.layout;
 
 import com.github.appreciated.css.grid.FluentGridLayoutComponent;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
+import com.github.appreciated.css.grid.sizes.TemplateAreas;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 
@@ -19,8 +20,8 @@ public class AreaLayout extends Composite<GridLayout> implements FluentGridLayou
      */
     public AreaLayout(String[][] areas) {
         getContent().setTemplateAreas(Arrays.stream(areas).map(strings ->
-                Arrays.stream(strings).map(TemplateArea::new).toArray(TemplateArea[]::new)
-        ).toArray(TemplateArea[][]::new));
+                new TemplateAreas(strings)
+        ).toArray(TemplateAreas[]::new));
     }
 
     /**

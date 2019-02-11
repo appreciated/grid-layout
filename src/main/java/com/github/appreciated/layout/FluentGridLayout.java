@@ -4,10 +4,12 @@ import com.github.appreciated.css.grid.FluentGridLayoutComponent;
 import com.github.appreciated.css.grid.HasOverflow;
 import com.github.appreciated.css.grid.exception.NegativeValueException;
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
+import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.Int;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
+import com.github.appreciated.css.grid.sizes.TemplateAreas;
 import com.vaadin.flow.component.Component;
 
 public class FluentGridLayout extends GridLayout implements FluentGridLayoutComponent<FluentGridLayout>, HasOverflow<FluentGridLayout> {
@@ -122,12 +124,12 @@ public class FluentGridLayout extends GridLayout implements FluentGridLayoutComp
     }
 
     /**
-     * Fluent method of {@link GridLayout#setTemplateAreas(TemplateArea[][])} for setting the template areas available
+     * Fluent method of {@link GridLayout#setTemplateAreas(TemplateAreas[])} for setting the template areas available
      *
      * @param templateAreas the template areas you want to be assigned
      * @return this
      */
-    public FluentGridLayout withTemplateAreas(TemplateArea[][] templateAreas) {
+    public FluentGridLayout withTemplateAreas(TemplateAreas[] templateAreas) {
         setTemplateAreas(templateAreas);
         return this;
     }
@@ -219,4 +221,8 @@ public class FluentGridLayout extends GridLayout implements FluentGridLayoutComp
         return this;
     }
 
+    public FluentGridLayout withArea(Component component, TemplateAreaUnit unit) {
+        setArea(component, unit);
+        return this;
+    }
 }
