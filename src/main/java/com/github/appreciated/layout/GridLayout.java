@@ -284,11 +284,10 @@ public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLa
      * @param area
      */
     public void setArea(Component component, TemplateAreaUnit... area) {
-        if (area.length > 4) {
-            throw new IllegalArgumentException("A maximum of four area can be passed");
-        }
         if (area == null) {
             component.getElement().getStyle().remove("grid-area");
+        } else if (area.length > 4) {
+            throw new IllegalArgumentException("A maximum of 4 arguments for row/columns can be passed");
         } else {
             component.getElement().getStyle().set("grid-area", Arrays.stream(area).map(CssUnit::getCssValue)
                     .reduce((s, s2) -> s + " / " + s2)
