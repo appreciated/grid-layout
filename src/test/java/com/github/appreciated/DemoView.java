@@ -1,6 +1,7 @@
 package com.github.appreciated;
 
 import com.github.appreciated.css.grid.sizes.*;
+import com.github.appreciated.css.query.MediaQuery;
 import com.github.appreciated.layout.AreaLayout;
 import com.github.appreciated.layout.FlexibleGridLayout;
 import com.github.appreciated.layout.FluentGridLayout;
@@ -13,6 +14,8 @@ import com.vaadin.flow.router.Route;
 import java.util.Random;
 
 import static com.github.appreciated.css.grid.GridLayoutComponent.*;
+import static com.github.appreciated.css.query.values.WidthAttributes.MaxWidth;
+import static com.github.appreciated.css.query.values.WidthAttributes.MinWidth;
 
 @Route("")
 public class DemoView extends VerticalLayout {
@@ -94,18 +97,16 @@ public class DemoView extends VerticalLayout {
         Component content = getDiv();
 
         FluentGridLayout mediaGridLayout = new FluentGridLayout()
-                .withTemplateAreas(new TemplateAreas[]{
+                .withTemplateAreas(new MediaQuery(new MaxWidth("800px")),
                         new TemplateAreas("header"),
                         new TemplateAreas("left"),
                         new TemplateAreas("content"),
-                        new TemplateAreas("right")
-                }, "(max-width: 800px)")
-                .withTemplateAreas(new TemplateAreas[]{
+                        new TemplateAreas("right"))
+                .withTemplateAreas(new MediaQuery(new MinWidth("800px")),
                         new TemplateAreas("header", "header", "header", "header", "header"),
                         new TemplateAreas("left", "content", "content", "content", "right"),
                         new TemplateAreas("left", "content", "content", "content", "right"),
-                        new TemplateAreas("left", "content", "content", "content", "right")
-                }, "(min-width: 800px)")
+                        new TemplateAreas("left", "content", "content", "content", "right"))
                 .withItem(header).withArea(header, new TemplateArea("header"))
                 .withItem(left).withArea(left, new TemplateArea("left"))
                 .withItem(right).withArea(right, new TemplateArea("right"))

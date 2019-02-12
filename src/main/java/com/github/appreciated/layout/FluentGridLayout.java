@@ -10,6 +10,7 @@ import com.github.appreciated.css.grid.sizes.Int;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.github.appreciated.css.grid.sizes.TemplateAreas;
+import com.github.appreciated.css.query.MediaQuery;
 import com.vaadin.flow.component.Component;
 
 public class FluentGridLayout extends GridLayout implements FluentGridLayoutComponent<FluentGridLayout>, HasOverflow<FluentGridLayout> {
@@ -140,8 +141,8 @@ public class FluentGridLayout extends GridLayout implements FluentGridLayoutComp
      * @param templateAreas the template areas you want to be assigned
      * @return this
      */
-    public FluentGridLayout withTemplateAreas(TemplateAreas[] templateAreas, String query) {
-        setTemplateAreas(templateAreas, query);
+    public FluentGridLayout withTemplateAreas(MediaQuery query, TemplateAreas... templateAreas) {
+        setTemplateAreas(query, templateAreas);
         return this;
     }
 

@@ -9,6 +9,7 @@ import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.Repeat;
 import com.github.appreciated.css.grid.sizes.TemplateAreas;
 import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQuery;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
@@ -16,6 +17,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.templatemodel.TemplateModel;
+import org.vaddon.CustomMediaQuery;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -174,37 +176,6 @@ public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLa
     }
 
     /**
-     * Sets the column and row definition of your grid-layout. Instead of setting the sizes for rows and columns you
-     * define areas by using custom keywords. <br>
-     * <p>
-     * Example:   <br>
-     * 'header header header header header header' <br>
-     * 'menu main main main right right'  <br>
-     * 'menu footer footer footer footer footer';  <br>
-     * <p>
-     * In the second step you set the area for each item which will then span over the above defined area. Use therefore {@link GridLayout#setArea(Component, TemplateAreaUnit...)}
-     *
-     * @param templateAreas
-     */
-    public void setTemplateAreas(TemplateAreas[] templateAreas) {
-        if (templateAreas == null) {
-            gridLayout.getStyle().remove("grid-template-areas");
-        } else {
-            String areas = Arrays.stream(templateAreas)
-                    .map(s -> "'" + s.getCssValue() + "'")
-                    .reduce((s, s2) -> s + " " + s2)
-                    .orElse("");
-            gridLayout.getStyle().set("grid-template-areas", areas);
-        }
-    }
-
-    public void setTemplateAreas(TemplateAreas[] templateAreas, String query) {
-        setTemplateAreas(templateAreas);
-
-    }
-
-
-    /**
      * @param component
      */
     public void getRow(Component component) {
@@ -292,6 +263,40 @@ public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLa
             component.getElement().getStyle().set("grid-area", Arrays.stream(area).map(CssUnit::getCssValue)
                     .reduce((s, s2) -> s + " / " + s2)
                     .orElse(""));
+        }
+    }
+
+    public void setTemplateAreas(MediaQuery queries, TemplateAreas... areas) {
+        CustomMediaQuery mediaQuery = new CustomMediaQuery(visible -> {
+            if (visible) {
+                setTemplateAreas(areas);
+            }
+        }, queries.getCssValue());
+        getElement().appendChild(mediaQuery.getElement());
+    }
+
+    /**
+     * Sets the column and row definition of your grid-layout. Instead of setting the sizes for rows and columns you
+     * define areas by using custom keywords. <br>
+     * <p>
+     * Example:   <br>
+     * 'header header header header header header' <br>
+     * 'menu main main main right right'  <br>
+     * 'menu footer footer footer footer footer';  <br>
+     * <p>
+     * In the second step you set the area for each item which will then span over the above defined area. Use therefore {@link GridLayout#setArea(Component, TemplateAreaUnit...)}
+     *
+     * @param templateAreas
+     */
+    public void setTemplateAreas(TemplateAreas[] templateAreas) {
+        if (templateAreas == null) {
+            gridLayout.getStyle().remove("grid-template-areas");
+        } else {
+            String areas = Arrays.stream(templateAreas)
+                    .map(s -> "'" + s.getCssValue() + "'")
+                    .reduce((s, s2) -> s + " " + s2)
+                    .orElse("");
+            gridLayout.getStyle().set("grid-template-areas", areas);
         }
     }
 
