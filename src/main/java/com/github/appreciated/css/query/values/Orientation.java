@@ -1,8 +1,8 @@
 package com.github.appreciated.css.query.values;
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
-public class Orientation implements CssUnit {
+public class Orientation implements MediaQueryUnit {
 
     private OrientationType orientationType;
 

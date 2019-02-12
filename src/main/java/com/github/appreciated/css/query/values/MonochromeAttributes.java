@@ -1,9 +1,9 @@
 package com.github.appreciated.css.query.values;
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
 public interface MonochromeAttributes {
-    class Monochrome implements CssUnit {
+    class Monochrome implements MediaQueryUnit {
         private int monochrome;
 
         public Monochrome(int monochrome) {

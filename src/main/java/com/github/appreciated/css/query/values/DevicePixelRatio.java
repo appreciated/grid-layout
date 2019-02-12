@@ -1,8 +1,8 @@
 package com.github.appreciated.css.query.values;
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
-public class DevicePixelRatio implements CssUnit {
+public class DevicePixelRatio implements MediaQueryUnit {
     private String devicePixelRatio;
 
     public DevicePixelRatio(String devicePixelRatio) {

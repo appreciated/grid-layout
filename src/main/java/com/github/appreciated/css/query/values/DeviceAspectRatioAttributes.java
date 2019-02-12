@@ -1,9 +1,9 @@
 package com.github.appreciated.css.query.values;
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
 public interface DeviceAspectRatioAttributes {
-    class DeviceAspectRatio implements CssUnit {
+    class DeviceAspectRatio implements MediaQueryUnit {
 
         private final int width;
         private final int height;

@@ -1,9 +1,9 @@
 package com.github.appreciated.css.query.values;
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
 public interface AspectRatioAttributes {
-    class AspectRatio implements CssUnit {
+    class AspectRatio implements MediaQueryUnit {
         private final int width;
         private final int height;
 

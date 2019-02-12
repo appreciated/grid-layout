@@ -1,11 +1,11 @@
 package com.github.appreciated.css.query.values;
 
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
-interface WidthAttributes {
+public interface WidthAttributes {
 
-    class Width implements CssUnit {
+    class Width implements MediaQueryUnit {
         private String width;
 
         public Width(String width) {

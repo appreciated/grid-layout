@@ -1,9 +1,9 @@
 package com.github.appreciated.css.query.values;
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
 public interface ColorIndexAttributes {
-    class ColorIndex implements CssUnit {
+    class ColorIndex implements MediaQueryUnit {
         private int colorIndex;
 
         public ColorIndex(int colorIndex) {

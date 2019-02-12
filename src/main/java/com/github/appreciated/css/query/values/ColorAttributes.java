@@ -1,9 +1,9 @@
 package com.github.appreciated.css.query.values;
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
 public interface ColorAttributes {
-    class Color implements CssUnit {
+    class Color implements MediaQueryUnit {
         private int color;
 
         public Color(int color) {

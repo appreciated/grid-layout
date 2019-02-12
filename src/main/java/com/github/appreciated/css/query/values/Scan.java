@@ -1,8 +1,8 @@
 package com.github.appreciated.css.query.values;
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
-public class Scan implements CssUnit {
+public class Scan implements MediaQueryUnit {
 
     private ScanType scanType;
 

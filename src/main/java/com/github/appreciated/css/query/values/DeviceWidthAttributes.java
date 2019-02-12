@@ -1,9 +1,9 @@
 package com.github.appreciated.css.query.values;
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
 public interface DeviceWidthAttributes {
-    class DeviceWidth implements CssUnit {
+    class DeviceWidth implements MediaQueryUnit {
         private String deviceWidth;
 
         public DeviceWidth(String deviceWidth) {

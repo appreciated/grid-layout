@@ -1,9 +1,9 @@
 package com.github.appreciated.css.query.values;
 
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.query.MediaQueryUnit;
 
 public interface DeviceHeightAttributes {
-    class DeviceHeight implements CssUnit {
+    class DeviceHeight implements MediaQueryUnit {
         private String deviceHeight;
 
         public DeviceHeight(String deviceHeight) {
