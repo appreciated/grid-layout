@@ -1,5 +1,6 @@
 package com.github.appreciated.css.grid.interfaces;
 
+import com.github.appreciated.css.inteface.CssUnit;
 import org.junit.Assert;
 import org.junit.Test;
 

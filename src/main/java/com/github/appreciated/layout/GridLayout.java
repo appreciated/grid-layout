@@ -2,13 +2,13 @@ package com.github.appreciated.layout;
 
 import com.github.appreciated.css.grid.GridLayoutComponent;
 import com.github.appreciated.css.grid.entities.GridTemplates;
-import com.github.appreciated.css.grid.interfaces.CssUnit;
 import com.github.appreciated.css.grid.interfaces.RowOrColUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.Repeat;
 import com.github.appreciated.css.grid.sizes.TemplateAreas;
+import com.github.appreciated.css.inteface.CssUnit;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
@@ -197,6 +197,12 @@ public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLa
             gridLayout.getStyle().set("grid-template-areas", areas);
         }
     }
+
+    public void setTemplateAreas(TemplateAreas[] templateAreas, String query) {
+        setTemplateAreas(templateAreas);
+
+    }
+
 
     /**
      * @param component

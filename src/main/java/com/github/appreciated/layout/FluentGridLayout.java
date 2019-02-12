@@ -135,6 +135,17 @@ public class FluentGridLayout extends GridLayout implements FluentGridLayoutComp
     }
 
     /**
+     * Fluent method of {@link GridLayout#setTemplateAreas(TemplateAreas[])} for setting the template areas available
+     *
+     * @param templateAreas the template areas you want to be assigned
+     * @return this
+     */
+    public FluentGridLayout withTemplateAreas(TemplateAreas[] templateAreas, String query) {
+        setTemplateAreas(templateAreas, query);
+        return this;
+    }
+
+    /**
      * @param component
      * @param columnAlign
      * @return

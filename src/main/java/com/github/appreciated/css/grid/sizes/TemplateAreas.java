@@ -1,7 +1,7 @@
 package com.github.appreciated.css.grid.sizes;
 
-import com.github.appreciated.css.grid.interfaces.CssUnit;
 import com.github.appreciated.css.grid.interfaces.TemplateAreaUnit;
+import com.github.appreciated.css.inteface.CssUnit;
 
 import java.util.Arrays;
 import java.util.Objects;

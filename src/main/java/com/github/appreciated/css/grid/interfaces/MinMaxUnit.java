@@ -1,5 +1,7 @@
 package com.github.appreciated.css.grid.interfaces;
 
+import com.github.appreciated.css.inteface.CssUnit;
+
 /**
  * This interface is implemented by the following classes to match the following <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax">min-max</a> standard <br>
  * {@link com.github.appreciated.css.grid.sizes.Auto} <br>

@@ -9,7 +9,6 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-import org.vaddon.CustomMediaQuery;
 
 import java.util.Random;
 
@@ -96,11 +95,17 @@ public class DemoView extends VerticalLayout {
 
         FluentGridLayout mediaGridLayout = new FluentGridLayout()
                 .withTemplateAreas(new TemplateAreas[]{
+                        new TemplateAreas("header"),
+                        new TemplateAreas("left"),
+                        new TemplateAreas("content"),
+                        new TemplateAreas("right")
+                }, "(max-width: 800px)")
+                .withTemplateAreas(new TemplateAreas[]{
                         new TemplateAreas("header", "header", "header", "header", "header"),
                         new TemplateAreas("left", "content", "content", "content", "right"),
                         new TemplateAreas("left", "content", "content", "content", "right"),
                         new TemplateAreas("left", "content", "content", "content", "right")
-                })
+                }, "(min-width: 800px)")
                 .withItem(header).withArea(header, new TemplateArea("header"))
                 .withItem(left).withArea(left, new TemplateArea("left"))
                 .withItem(right).withArea(right, new TemplateArea("right"))
@@ -108,28 +113,8 @@ public class DemoView extends VerticalLayout {
         mediaGridLayout.setWidth("100%");
         mediaGridLayout.setHeight("600px");
 
-        CustomMediaQuery customMediaQuery800 = new CustomMediaQuery(visible -> {
-            if (visible) {
-                mediaGridLayout.setTemplateAreas(new TemplateAreas[]{
-                        new TemplateAreas("header", "header", "header", "header", "header"),
-                        new TemplateAreas("left", "content", "content", "content", "right"),
-                        new TemplateAreas("left", "content", "content", "content", "right"),
-                        new TemplateAreas("left", "content", "content", "content", "right")
-                });
-            }
-        }, "(min-width: 800px)");
-        CustomMediaQuery customMediaQuerySmaller = new CustomMediaQuery(visible -> {
-            if (visible) {
-                mediaGridLayout.setTemplateAreas(new TemplateAreas[]{
-                        new TemplateAreas("header"),
-                        new TemplateAreas("left"),
-                        new TemplateAreas("content"),
-                        new TemplateAreas("right")
-                });
-            }
-        }, "(max-width: 800px)");
 
-        add(layout, layout2, flexibleGridLayout, areaLayout, mediaGridLayout, customMediaQuery800, customMediaQuerySmaller);
+        add(layout, layout2, flexibleGridLayout, areaLayout, mediaGridLayout);
         getChildren().forEach(component -> component.getElement().getStyle().set("flex-shrink", "0"));
         getStyle().set("overflow", "auto");
 

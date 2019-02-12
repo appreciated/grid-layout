@@ -1,4 +1,4 @@
-package com.github.appreciated.css.grid.interfaces;
+package com.github.appreciated.css.inteface;
 
 public interface CssUnit {
     default String getCssValue() {
