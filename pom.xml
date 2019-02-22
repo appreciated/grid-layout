@@ -5,7 +5,7 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>vaadin-css-grid</artifactId>
-    <version>0.8.2</version>
+    <version>0.8.3</version>
     <name>Css Grid Layout</name>
     <description>Integration of the css grid for the Vaadin platform</description>
 

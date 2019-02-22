@@ -445,5 +445,8 @@ public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLa
         }
     }
 
+    public Div getGridLayout() {
+        return gridLayout;
+    }
 }
 
