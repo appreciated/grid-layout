@@ -10,8 +10,8 @@ import com.github.appreciated.css.grid.sizes.Int;
 import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.TemplateArea;
 import com.github.appreciated.css.grid.sizes.TemplateAreas;
-import com.github.appreciated.css.query.MediaQuery;
 import com.vaadin.flow.component.Component;
+import org.vaddon.css.query.MediaQuery;
 
 public class FluentGridLayout extends GridLayout implements FluentGridLayoutComponent<FluentGridLayout>, HasOverflow<FluentGridLayout> {
 

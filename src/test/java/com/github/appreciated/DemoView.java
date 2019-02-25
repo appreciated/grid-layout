@@ -1,7 +1,6 @@
 package com.github.appreciated;
 
 import com.github.appreciated.css.grid.sizes.*;
-import com.github.appreciated.css.query.MediaQuery;
 import com.github.appreciated.layout.AreaLayout;
 import com.github.appreciated.layout.FlexibleGridLayout;
 import com.github.appreciated.layout.FluentGridLayout;
@@ -10,12 +9,13 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+import org.vaddon.css.query.MediaQuery;
 
 import java.util.Random;
 
 import static com.github.appreciated.css.grid.GridLayoutComponent.*;
-import static com.github.appreciated.css.query.values.WidthAttributes.MaxWidth;
-import static com.github.appreciated.css.query.values.WidthAttributes.MinWidth;
+import static org.vaddon.css.query.values.WidthAttributes.MaxWidth;
+import static org.vaddon.css.query.values.WidthAttributes.MinWidth;
 
 @Route("")
 public class DemoView extends VerticalLayout {

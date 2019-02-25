@@ -5,7 +5,7 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>vaadin-css-grid</artifactId>
-    <version>0.8.3</version>
+    <version>0.8.4</version>
     <name>Css Grid Layout</name>
     <description>Integration of the css grid for the Vaadin platform</description>
 
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>org.vaddon</groupId>
             <artifactId>mediaquery</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

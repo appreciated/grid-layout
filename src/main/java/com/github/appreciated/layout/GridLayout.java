@@ -9,15 +9,16 @@ import com.github.appreciated.css.grid.sizes.Length;
 import com.github.appreciated.css.grid.sizes.Repeat;
 import com.github.appreciated.css.grid.sizes.TemplateAreas;
 import com.github.appreciated.css.inteface.CssUnit;
-import com.github.appreciated.css.query.MediaQuery;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
+import com.vaadin.flow.dom.Style;
 import com.vaadin.flow.templatemodel.TemplateModel;
-import org.vaddon.CustomMediaQuery;
+import org.vaddon.ClientMediaQuery;
+import org.vaddon.css.query.MediaQuery;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -33,6 +34,9 @@ import java.util.Objects;
 public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLayoutComponent {
     @Id("grid-layout-element")
     Div gridLayout;
+
+    @Id("queries")
+    Div queries;
 
     /**
      * @param components
@@ -267,12 +271,22 @@ public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLa
     }
 
     public void setTemplateAreas(MediaQuery queries, TemplateAreas... areas) {
-        CustomMediaQuery mediaQuery = new CustomMediaQuery(visible -> {
-            if (visible) {
-                setTemplateAreas(areas);
-            }
-        }, queries.getCssValue());
-        getElement().appendChild(mediaQuery.getElement());
+        ClientMediaQuery mediaQuery = new ClientMediaQuery(gridLayout);
+        setTemplateAreas(mediaQuery.getQueryStyle(), areas);
+        mediaQuery.setQuery(queries);
+        this.queries.add(mediaQuery);
+    }
+
+    private void setTemplateAreas(Style style, TemplateAreas[] templateAreas) {
+        if (templateAreas == null) {
+            style.remove("grid-template-areas");
+        } else {
+            String areas = Arrays.stream(templateAreas)
+                    .map(s -> "'" + s.getCssValue() + "'")
+                    .reduce((s, s2) -> s + " " + s2)
+                    .orElse("");
+            style.set("grid-template-areas", areas);
+        }
     }
 
     /**
@@ -289,15 +303,7 @@ public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLa
      * @param templateAreas
      */
     public void setTemplateAreas(TemplateAreas[] templateAreas) {
-        if (templateAreas == null) {
-            gridLayout.getStyle().remove("grid-template-areas");
-        } else {
-            String areas = Arrays.stream(templateAreas)
-                    .map(s -> "'" + s.getCssValue() + "'")
-                    .reduce((s, s2) -> s + " " + s2)
-                    .orElse("");
-            gridLayout.getStyle().set("grid-template-areas", areas);
-        }
+        setTemplateAreas(gridLayout.getStyle(), templateAreas);
     }
 
     /**
