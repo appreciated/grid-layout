@@ -11,7 +11,7 @@ import com.github.appreciated.css.grid.sizes.TemplateAreas;
 import com.github.appreciated.css.inteface.CssUnit;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.HtmlImport;
+import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
@@ -30,7 +30,7 @@ import java.util.Objects;
  * Different to the {@link com.vaadin.flow.component.orderedlayout.VerticalLayout} and {@link com.vaadin.flow.component.orderedlayout.HorizontalLayout} a {@link GridLayout} can span its elements over multiple rows.
  */
 @Tag("grid-layout")
-@HtmlImport("frontend://com/github/appreciated/grid-layout/grid-layout.html")
+@JsModule("./com/github/appreciated/grid-layout/grid-layout.js")
 public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLayoutComponent {
     @Id("grid-layout-element")
     Div gridLayout;
