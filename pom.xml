@@ -5,12 +5,12 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>vaadin-css-grid</artifactId>
-    <version>2.0.0.beta1</version>
+    <version>2.0.0.beta2</version>
     <name>Css Grid Layout</name>
     <description>Integration of the css grid for Vaadin 14</description>
 
     <properties>
-        <vaadin.version>14.0.1</vaadin.version>
+        <vaadin.version>14.0.7</vaadin.version>
         <jetty.version>9.4.15.v20190215</jetty.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -190,6 +190,17 @@
                         <configuration>
                             <quiet>true</quiet>
                             <additionalparam>-Xdoclint:none</additionalparam>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>3.1.2</version>
+                        <configuration>
+                            <!-- Generated file that shouldn't be included in add-ons -->
+                            <excludes>
+                                <exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
+                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
