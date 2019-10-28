@@ -1,7 +1,7 @@
 package com.github.appreciated.css.grid.entities;
 
 import com.github.appreciated.css.grid.interfaces.TemplateRowsAndColsUnit;
-import com.github.appreciated.css.inteface.CssUnit;
+import com.github.appreciated.css.interfaces.CssUnit;
 
 import java.util.Arrays;
 

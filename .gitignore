@@ -1,3 +1,5 @@
 
 /.idea/
 /target/
+/webpack.config.js
+/webpack.generated.js

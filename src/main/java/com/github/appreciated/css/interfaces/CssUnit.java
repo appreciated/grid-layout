@@ -1,4 +1,4 @@
-package com.github.appreciated.css.inteface;
+package com.github.appreciated.css.interfaces;
 
 public interface CssUnit {
     default String getCssValue() {
