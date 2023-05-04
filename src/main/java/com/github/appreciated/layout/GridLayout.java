@@ -13,10 +13,9 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.polymertemplate.Id;
-import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
+import com.vaadin.flow.component.littemplate.LitTemplate;
+import com.vaadin.flow.component.template.Id;
 import com.vaadin.flow.dom.Style;
-import com.vaadin.flow.templatemodel.TemplateModel;
 import org.vaddon.ClientMediaQuery;
 import org.vaddon.css.query.MediaQuery;
 
@@ -31,7 +30,7 @@ import java.util.Objects;
  */
 @Tag("grid-layout")
 @JsModule("./com/github/appreciated/grid-layout/grid-layout.js")
-public class GridLayout extends PolymerTemplate<TemplateModel> implements GridLayoutComponent {
+public class GridLayout extends LitTemplate implements GridLayoutComponent {
     @Id("grid-layout-element")
     Div gridLayout;
 

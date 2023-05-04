@@ -5,7 +5,7 @@ import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 
 import java.util.Arrays;
 
-public interface GridLayoutComponent extends HasElement, ThemableLayout, HasSize, HasStyle, HasOrderedComponents<Component> {
+public interface GridLayoutComponent extends HasElement, ThemableLayout, HasSize, HasStyle, HasOrderedComponents {
 
     default void setColumnAlign(Component component, ColumnAlign align) {
         for (String cssProperty : ColumnAlign.cssProperties) {

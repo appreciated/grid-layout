@@ -1,11 +1,11 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import {html, LitElement} from 'lit';
 
-class GridLayoutElement extends PolymerElement {
+class GridLayoutElement extends LitElement {
     static get is() {
         return 'grid-layout';
     }
 
-    static get template() {
+    render() {
         return html`
 <style>
     :host {
