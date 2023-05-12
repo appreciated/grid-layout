@@ -127,7 +127,7 @@ public class DemoView extends VerticalLayout {
         Div div = new Div();
         div.setClassName("item");
         int nextInt = random.nextInt(0xffffff + 1);
-        java.lang.String colorCode = java.lang.String.format("#%06x", nextInt);
+        String colorCode = String.format("#%06x", nextInt);
         div.add(new Label(colorCode));
         div.getStyle().set("background", colorCode).set("padding", "20px");
         return div;
