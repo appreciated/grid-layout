@@ -3,3 +3,4 @@
 /target/
 /webpack.config.js
 /webpack.generated.js
+/src/main/frontend/

@@ -1,6 +1,6 @@
 # Grid Layout
 
-Vaadin 10 Java integration of https://www.w3schools.com/css/css_grid.asp
+Vaadin Flow integration of https://www.w3schools.com/css/css_grid.asp
 
 ## Development instructions
 
