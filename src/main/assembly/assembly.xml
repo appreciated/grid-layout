@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <assembly
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
     <id>vaadin-css-grid</id>
 
@@ -31,10 +31,10 @@
     </fileSets>
 
     <files>
-        <!-- This is vaadin.com/directory related manifest needed in the 
+        <!-- This is vaadin.com/directory related manifest needed in the
             zip package -->
         <file>
-            <source>assembly/MANIFEST.MF</source>
+            <source>src/main/assembly/MANIFEST.MF</source>
             <outputDirectory>META-INF</outputDirectory>
             <filtered>true</filtered>
         </file>

@@ -5,7 +5,6 @@
     "@polymer/polymer": "3.5.2",
     "@vaadin/bundles": "24.8.3",
     "@vaadin/common-frontend": "0.0.19",
-    "@vaadin/cookie-consent": "24.8.3",
     "@vaadin/polymer-legacy-adapter": "24.8.3",
     "@vaadin/react-components": "24.8.3",
     "@vaadin/vaadin-development-mode-detector": "2.0.7",
@@ -48,7 +47,6 @@
       "@polymer/polymer": "3.5.2",
       "@vaadin/bundles": "24.8.3",
       "@vaadin/common-frontend": "0.0.19",
-      "@vaadin/cookie-consent": "24.8.3",
       "@vaadin/polymer-legacy-adapter": "24.8.3",
       "@vaadin/react-components": "24.8.3",
       "@vaadin/vaadin-development-mode-detector": "2.0.7",
@@ -86,7 +84,7 @@
       "workbox-core": "7.3.0",
       "workbox-precaching": "7.3.0"
     },
-    "hash": "23172a9bcca6d94e9f761a9be092312b19be0acfcafd72af2845604f740d14f3"
+    "hash": "a6f80f9a51eea58cf0a3f3fe63a946015f09a5c0afed0582185a1688274109c5"
   },
   "overrides": {
     "@vaadin/bundles": "$@vaadin/bundles",
@@ -95,7 +93,6 @@
     "@vaadin/vaadin-lumo-styles": "$@vaadin/vaadin-lumo-styles",
     "@vaadin/vaadin-material-styles": "$@vaadin/vaadin-material-styles",
     "@vaadin/vaadin-usage-statistics": "$@vaadin/vaadin-usage-statistics",
-    "@vaadin/cookie-consent": "$@vaadin/cookie-consent",
     "@vaadin/common-frontend": "$@vaadin/common-frontend",
     "construct-style-sheets-polyfill": "$construct-style-sheets-polyfill",
     "lit": "$lit",
